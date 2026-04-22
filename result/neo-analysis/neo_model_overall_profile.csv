@@ -1,0 +1,4 @@
+﻿model,db_count,db_sources,avg_mihi_full,avg_core_mihi,avg_whole_score,avg_sent_score,avg_imagery_score,avg_excess_core_homogeneity,baseline_b1_mihi_full,baseline_b1_whole_score,baseline_b1_sent_score,baseline_b1_imagery_score,best_condition,best_condition_mihi_full,worst_condition,worst_condition_mihi_full
+doubao-seed-2.0-pro,5,b1:strict|b2:strict|b3:strict|c1:strict|c2:strict,0.563697,0.673483,0.796665,0.522927,0.110865,0.144622,0.490574,0.652602,0.513098,0.086596,c2,0.642379,b1,0.490574
+deepseek-3.2-thinking,5,b1:strict|b2:strict|b3:strict|c1:strict|c2:observe,0.536261,0.628285,0.757097,0.470848,0.153854,0.106801,0.450301,0.608778,0.467176,0.064197,c1,0.630861,b1,0.450301
+qwen3.6-plus,5,b1:strict|b2:strict|b3:strict|c1:strict|c2:observe,0.541377,0.644116,0.781168,0.476607,0.115194,0.115254,0.506810,0.688847,0.505522,0.099483,c1,0.595676,b1,0.506810

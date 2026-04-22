@@ -1,0 +1,11 @@
+﻿contrast,scope,model,from_db,to_db,delta_mihi_full,delta_core_mihi,delta_whole_score,delta_sent_score,delta_imagery_score
+改革-沁园春强约束与prompt精简效应,沁园春,doubao-seed-2.0-pro,b2,c2,-0.011383,-0.006390,-0.010221,-0.001708,-0.030928
+改革主题效应,model_level,deepseek-3.2-thinking,b1,b2,0.011194,0.008811,0.070036,-0.066019,0.013924
+改革主题效应,model_level,doubao-seed-2.0-pro,b1,b2,0.041744,0.045040,0.114312,-0.039626,0.020867
+改革主题效应,model_level,qwen3.6-plus,b1,b2,0.011116,0.020556,0.077471,-0.049006,-0.032967
+玉兰-沁园春强约束与prompt精简效应,沁园春,deepseek-3.2-thinking,b3,c1,0.001965,-0.008072,-0.014415,-0.000320,0.042818
+玉兰-沁园春强约束与prompt精简效应,沁园春,doubao-seed-2.0-pro,b3,c1,0.015564,0.020522,0.003187,0.041709,-0.002340
+玉兰-沁园春强约束与prompt精简效应,沁园春,qwen3.6-plus,b3,c1,-0.016841,0.000110,0.018636,-0.022533,-0.086704
+玉兰主题效应,model_level,deepseek-3.2-thinking,b1,b3,0.064991,0.031940,0.066329,-0.010090,0.193371
+玉兰主题效应,model_level,doubao-seed-2.0-pro,b1,b3,0.040990,0.035934,0.075951,-0.012976,0.056767
+玉兰主题效应,model_level,qwen3.6-plus,b1,b3,0.007245,-0.007413,0.012673,-0.031962,0.063643

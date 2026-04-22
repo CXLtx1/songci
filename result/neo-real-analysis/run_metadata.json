@@ -1,0 +1,25 @@
+{
+  "ai_db_keys": [
+    "a1",
+    "b1",
+    "b2",
+    "b3",
+    "c1",
+    "c2"
+  ],
+  "human_db": "D:\\文件\\Projects\\songci\\database\\real_song_ci_dataset.db",
+  "model_path": "D:\\文件\\Projects\\songci\\analyze\\BERT-CCPoem-Model",
+  "device": "cuda",
+  "ai_poem_count": 3122,
+  "ai_sentence_count": 49304,
+  "human_poem_count": 21053,
+  "human_sentence_count": 270107,
+  "target_cipai_count": 36,
+  "sentence_cache_chunks": 6,
+  "sentence_cache_count": 270107,
+  "whole_topk": 10,
+  "whole_semantic_candidates": 64,
+  "sentence_topk": 5,
+  "sentence_semantic_candidates": 64,
+  "whole_lexical_candidates": 160
+}

@@ -1,0 +1,16 @@
+__pycache__
+asset/
+/项目文档.md
+
+# Large local models and embedding caches
+/analyze/BERT-CCPoem-Model/
+/analyze/historical_cache_v2/
+/analyze/neo_real_cache/
+
+# Large local databases
+/database/real_poetry_dataset.db
+
+# Large generated analysis artifacts
+/result/old/
+/result/analysis-3/AI-inner-whole-hidden_connections_c1.csv
+/result/neo-real-analysis/ai_sentence_alignment_details.csv

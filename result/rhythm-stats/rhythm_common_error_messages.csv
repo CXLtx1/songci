@@ -1,0 +1,390 @@
+﻿db,db_label,prompt_type,model,rank,count,issue_type,issue_label,message
+a1,无限制生成,type_c,deepseek-3.2-thinking,1,5,tone_expected_flat,应平实仄,「码」上声（仄），此处须填平声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,2,4,tone_expected_flat,应平实仄,「拟」上声（仄），此处须填平声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,3,4,tone_expected_flat,应平实仄,「似」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,4,3,tone_expected_oblique,应仄实平,「情」平声（平），此处须填仄声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,5,3,tone_expected_flat,应平实仄,「暗」去声（仄）（多音字，取去声读），此处须填平声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,6,3,tone_expected_flat,应平实仄,「法」入声（仄），此处须填平声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,7,3,tone_expected_oblique,应仄实平,「人」平声（平），此处须填仄声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,8,2,tone_expected_oblique,应仄实平,「生」平声（平），此处须填仄声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,9,2,tone_expected_flat,应平实仄,「点」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,10,2,tone_expected_flat,应平实仄,「海」上声（仄），此处须填平声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,11,2,tone_expected_oblique,应仄实平,「茫」平声（平），此处须填仄声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,12,2,tone_expected_oblique,应仄实平,「盘」平声（平），此处须填仄声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,13,2,tone_expected_oblique,应仄实平,「虚」平声（平），此处须填仄声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,14,2,tone_expected_oblique,应仄实平,「千」平声（平），此处须填仄声字
+a1,无限制生成,type_c,deepseek-3.2-thinking,15,2,tone_expected_oblique,应仄实平,「终」平声（平），此处须填仄声字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,1,1,tone_expected_oblique,应仄实平,「汀」平声（平），此处须填仄声字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,2,1,tone_expected_flat,应平实仄,「剥」入声（仄），此处须填平声字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,3,1,length_mismatch,字数不符,字数不符：该变体要求 55 字，实际 48 字，相差 7 字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,4,1,length_mismatch,字数不符,字数不符：该变体要求 46 字，实际 47 字，相差 1 字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,5,1,tone_expected_flat,应平实仄,「桂」去声（仄），此处须填平声字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,6,1,tone_expected_flat,应平实仄,「晚」上声（仄），此处须填平声字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,7,1,tone_expected_flat,应平实仄,「渍」去声（仄），此处须填平声字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,8,1,tone_expected_oblique,应仄实平,「梅」平声（平），此处须填仄声字
+a1,无限制生成,type_c,doubao-seed-2.0-pro,9,1,tone_expected_flat,应平实仄,「齿」上声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,1,2,tone_expected_oblique,应仄实平,「灵」平声（平），此处须填仄声字
+a1,无限制生成,type_c,gemini-3-flash,2,2,tone_expected_oblique,应仄实平,「残」平声（平），此处须填仄声字
+a1,无限制生成,type_c,gemini-3-flash,3,2,tone_expected_flat,应平实仄,「化」去声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,4,2,tone_expected_oblique,应仄实平,「星」平声（平），此处须填仄声字
+a1,无限制生成,type_c,gemini-3-flash,5,2,tone_expected_flat,应平实仄,「万」去声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,6,1,tone_expected_flat,应平实仄,「旧」去声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,7,1,tone_expected_flat,应平实仄,「错」去声（仄）（多音字，取去声读），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,8,1,tone_expected_flat,应平实仄,「斗」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,9,1,tone_expected_flat,应平实仄,「齿」上声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,10,1,tone_expected_flat,应平实仄,「暮」去声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,11,1,tone_expected_oblique,应仄实平,「铜」平声（平），此处须填仄声字
+a1,无限制生成,type_c,gemini-3-flash,12,1,tone_expected_flat,应平实仄,「陌」入声（仄）（多音字，取入声读），此处须填平声字
+a1,无限制生成,type_c,gemini-3-flash,13,1,tone_expected_oblique,应仄实平,「虚」平声（平），此处须填仄声字
+a1,无限制生成,type_c,gemini-3-flash,14,1,tone_expected_oblique,应仄实平,「光」平声（平），此处须填仄声字
+a1,无限制生成,type_c,gemini-3-flash,15,1,tone_expected_flat,应平实仄,「寂」入声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3.1-pro,1,1,tone_expected_flat,应平实仄,「象」上声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3.1-pro,2,1,tone_expected_flat,应平实仄,「内」去声（仄），此处须填平声字
+a1,无限制生成,type_c,gemini-3.1-pro,3,1,tone_expected_oblique,应仄实平,「梭」平声（平），此处须填仄声字
+a1,无限制生成,type_c,gemini-3.1-pro,4,1,tone_expected_flat,应平实仄,「远」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,glm-4.7,1,4,tone_expected_flat,应平实仄,「落」入声（仄），此处须填平声字
+a1,无限制生成,type_c,glm-4.7,2,3,tone_expected_flat,应平实仄,「倚」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,glm-4.7,3,3,tone_expected_oblique,应仄实平,「尘」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-4.7,4,3,tone_expected_oblique,应仄实平,「流」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-4.7,5,3,unknown_char,未收录字警告,「樽」未收录于平水韵（已跳过该字校验，不扣分）
+a1,无限制生成,type_c,glm-4.7,6,3,tone_expected_flat,应平实仄,「万」去声（仄），此处须填平声字
+a1,无限制生成,type_c,glm-4.7,7,3,tone_expected_flat,应平实仄,「一」入声（仄），此处须填平声字
+a1,无限制生成,type_c,glm-4.7,8,2,tone_expected_oblique,应仄实平,「年」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-4.7,9,2,tone_expected_oblique,应仄实平,「光」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-4.7,10,2,tone_expected_oblique,应仄实平,「寒」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-4.7,11,2,tone_expected_flat,应平实仄,「断」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,glm-4.7,12,2,tone_expected_flat,应平实仄,「醉」去声（仄），此处须填平声字
+a1,无限制生成,type_c,glm-4.7,13,2,tone_expected_oblique,应仄实平,「花」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-4.7,14,2,length_mismatch,字数不符,字数不符：该变体要求 101 字，实际 100 字，相差 1 字
+a1,无限制生成,type_c,glm-4.7,15,2,tone_expected_oblique,应仄实平,「西」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,1,4,tone_expected_oblique,应仄实平,「霜」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,2,3,tone_expected_oblique,应仄实平,「谁」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,3,3,tone_expected_flat,应平实仄,「月」入声（仄），此处须填平声字
+a1,无限制生成,type_c,glm-5,4,2,tone_expected_flat,应平实仄,「独」入声（仄），此处须填平声字
+a1,无限制生成,type_c,glm-5,5,2,tone_expected_oblique,应仄实平,「舟」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,6,2,tone_expected_flat,应平实仄,「去」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,glm-5,7,2,tone_expected_flat,应平实仄,「钓」去声（仄），此处须填平声字
+a1,无限制生成,type_c,glm-5,8,2,tone_expected_oblique,应仄实平,「栏」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,9,2,tone_expected_oblique,应仄实平,「回」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,10,2,tone_expected_flat,应平实仄,「莫」去声（仄）（多音字，取去声读），此处须填平声字
+a1,无限制生成,type_c,glm-5,11,2,tone_expected_oblique,应仄实平,「云」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,12,2,tone_expected_oblique,应仄实平,「孤」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,13,2,tone_expected_oblique,应仄实平,「惊」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,14,1,tone_expected_oblique,应仄实平,「琴」平声（平），此处须填仄声字
+a1,无限制生成,type_c,glm-5,15,1,tone_expected_flat,应平实仄,「只」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,1,4,tone_expected_flat,应平实仄,「硅」入声（仄），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,2,3,tone_expected_oblique,应仄实平,「云」平声（平），此处须填仄声字
+a1,无限制生成,type_c,kimi-k2.5,3,2,tone_expected_flat,应平实仄,「万」去声（仄），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,4,2,tone_expected_flat,应平实仄,「转」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,5,2,tone_expected_flat,应平实仄,「错」去声（仄）（多音字，取去声读），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,6,2,tone_expected_flat,应平实仄,「码」上声（仄），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,7,2,tone_expected_oblique,应仄实平,「天」平声（平），此处须填仄声字
+a1,无限制生成,type_c,kimi-k2.5,8,2,tone_expected_oblique,应仄实平,「光」平声（平），此处须填仄声字
+a1,无限制生成,type_c,kimi-k2.5,9,2,tone_expected_flat,应平实仄,「缩」入声（仄），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,10,2,tone_expected_flat,应平实仄,「影」上声（仄），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,11,2,tone_expected_oblique,应仄实平,「人」平声（平），此处须填仄声字
+a1,无限制生成,type_c,kimi-k2.5,12,2,tone_expected_flat,应平实仄,「已」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,13,2,tone_expected_flat,应平实仄,「一」入声（仄），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,14,2,tone_expected_flat,应平实仄,「越」入声（仄）（多音字，取入声读），此处须填平声字
+a1,无限制生成,type_c,kimi-k2.5,15,2,tone_expected_oblique,应仄实平,「谁」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3-max,1,3,tone_expected_oblique,应仄实平,「霜」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3-max,2,3,tone_expected_oblique,应仄实平,「芦」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3-max,3,3,rhyme_mismatch,出韵/押韵问题,「醉」去声，此韵脚须平声
+a1,无限制生成,type_c,qwen3-max,4,3,tone_expected_oblique,应仄实平,「来」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3-max,5,3,tone_expected_flat,应平实仄,「影」上声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3-max,6,2,tone_expected_oblique,应仄实平,「江」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3-max,7,2,tone_expected_flat,应平实仄,「水」上声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3-max,8,2,rhyme_mismatch,出韵/押韵问题,「数」上声（多音字，取上声读），此韵脚须平声
+a1,无限制生成,type_c,qwen3-max,9,2,rhyme_mismatch,出韵/押韵问题,「十」入声，此韵脚须平声
+a1,无限制生成,type_c,qwen3-max,10,2,tone_expected_oblique,应仄实平,「微」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3-max,11,2,tone_expected_oblique,应仄实平,「声」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3-max,12,2,tone_expected_flat,应平实仄,「未」去声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3-max,13,2,tone_expected_flat,应平实仄,「浸」去声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3-max,14,1,tone_expected_flat,应平实仄,「暗」去声（仄）（多音字，取去声读），此处须填平声字
+a1,无限制生成,type_c,qwen3-max,15,1,tone_expected_oblique,应仄实平,「秋」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.5-flash,1,4,tone_expected_oblique,应仄实平,「寒」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.5-flash,2,4,tone_expected_flat,应平实仄,「影」上声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.5-flash,3,3,unknown_char,未收录字警告,「樽」未收录于平水韵（已跳过该字校验，不扣分）
+a1,无限制生成,type_c,qwen3.5-flash,4,3,tone_expected_oblique,应仄实平,「声」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.5-flash,5,3,tone_expected_oblique,应仄实平,「云」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.5-flash,6,2,tone_expected_flat,应平实仄,「柳」上声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.5-flash,7,2,tone_expected_oblique,应仄实平,「山」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.5-flash,8,2,tone_expected_flat,应平实仄,「独」入声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.5-flash,9,2,tone_expected_oblique,应仄实平,「归」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.5-flash,10,2,tone_expected_flat,应平实仄,「色」入声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.5-flash,11,2,tone_expected_flat,应平实仄,「旧」去声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.5-flash,12,2,tone_expected_oblique,应仄实平,「人」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.5-flash,13,2,tone_expected_flat,应平实仄,「断」上声（仄）（多音字，取上声读），此处须填平声字
+a1,无限制生成,type_c,qwen3.5-flash,14,2,tone_expected_flat,应平实仄,「月」入声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.5-flash,15,2,tone_expected_flat,应平实仄,「织」去声（仄）（多音字，取去声读），此处须填平声字
+a1,无限制生成,type_c,qwen3.6-plus,1,4,tone_expected_flat,应平实仄,「欲」入声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.6-plus,2,2,tone_expected_flat,应平实仄,「影」上声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.6-plus,3,2,tone_expected_oblique,应仄实平,「风」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.6-plus,4,2,tone_expected_oblique,应仄实平,「星」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.6-plus,5,2,tone_expected_flat,应平实仄,「雁」去声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.6-plus,6,1,tone_expected_flat,应平实仄,「野」上声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.6-plus,7,1,length_mismatch,字数不符,字数不符：该变体要求 94 字，实际 46 字，相差 48 字
+a1,无限制生成,type_c,qwen3.6-plus,8,1,length_mismatch,字数不符,字数不符：该变体要求 62 字，实际 66 字，相差 4 字
+a1,无限制生成,type_c,qwen3.6-plus,9,1,tone_expected_oblique,应仄实平,「渔」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.6-plus,10,1,tone_expected_flat,应平实仄,「唳」去声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.6-plus,11,1,tone_expected_oblique,应仄实平,「林」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.6-plus,12,1,tone_expected_flat,应平实仄,「晚」上声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.6-plus,13,1,tone_expected_flat,应平实仄,「字」去声（仄），此处须填平声字
+a1,无限制生成,type_c,qwen3.6-plus,14,1,tone_expected_oblique,应仄实平,「天」平声（平），此处须填仄声字
+a1,无限制生成,type_c,qwen3.6-plus,15,1,tone_expected_flat,应平实仄,「远」上声（仄）（多音字，取上声读），此处须填平声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,1,36,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,2,9,unknown_char,未收录字警告,「樽」未收录于平水韵（已跳过该字校验，不扣分）
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,3,9,tone_expected_oblique,应仄实平,「流」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,4,9,tone_expected_flat,应平实仄,「法」入声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,5,8,tone_expected_flat,应平实仄,「月」入声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,6,7,tone_expected_oblique,应仄实平,「无」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,7,7,tone_expected_oblique,应仄实平,「舟」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,8,6,tone_expected_oblique,应仄实平,「风」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,9,6,tone_expected_flat,应平实仄,「息」入声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,10,6,tone_expected_flat,应平实仄,「码」上声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,11,6,tone_expected_oblique,应仄实平,「今」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,12,6,tone_expected_flat,应平实仄,「数」上声（仄）（多音字，取上声读），此处须填平声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,13,5,tone_expected_oblique,应仄实平,「诗」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,14,5,tone_expected_flat,应平实仄,「织」去声（仄）（多音字，取去声读），此处须填平声字
+b1,五词牌-无主题,type_b,deepseek-3.2-thinking,15,5,tone_expected_flat,应平实仄,「实」入声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,1,36,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,2,10,unknown_char,未收录字警告,「樽」未收录于平水韵（已跳过该字校验，不扣分）
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,3,2,tone_expected_oblique,应仄实平,「心」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,4,2,tone_expected_flat,应平实仄,「付」去声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,5,2,length_mismatch,字数不符,字数不符：该变体要求 77 字，实际 78 字，相差 1 字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,6,2,length_mismatch,字数不符,字数不符：该变体要求 44 字，实际 48 字，相差 4 字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,7,1,tone_expected_oblique,应仄实平,「头」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,8,1,tone_expected_flat,应平实仄,「雁」去声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,9,1,tone_expected_flat,应平实仄,「断」上声（仄）（多音字，取上声读），此处须填平声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,10,1,tone_expected_flat,应平实仄,「数」上声（仄）（多音字，取上声读），此处须填平声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,11,1,tone_expected_oblique,应仄实平,「程」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,12,1,tone_expected_flat,应平实仄,「阻」上声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,13,1,tone_expected_oblique,应仄实平,「高」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,14,1,tone_expected_flat,应平实仄,「泗」去声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,doubao-seed-2.0-pro,15,1,tone_expected_oblique,应仄实平,「瓜」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,glm-5,1,16,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b1,五词牌-无主题,type_b,glm-5,2,8,tone_expected_flat,应平实仄,「有」上声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,glm-5,3,7,tone_expected_oblique,应仄实平,「风」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,glm-5,4,7,tone_expected_oblique,应仄实平,「云」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,glm-5,5,6,tone_expected_flat,应平实仄,「事」去声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,glm-5,6,6,tone_expected_flat,应平实仄,「此」上声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,glm-5,7,6,tone_expected_oblique,应仄实平,「栏」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,glm-5,8,5,tone_expected_oblique,应仄实平,「人」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,glm-5,9,5,tone_expected_flat,应平实仄,「独」入声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,glm-5,10,4,tone_expected_flat,应平实仄,「倚」上声（仄）（多音字，取上声读），此处须填平声字
+b1,五词牌-无主题,type_b,glm-5,11,4,tone_expected_oblique,应仄实平,「心」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,glm-5,12,4,tone_expected_flat,应平实仄,「自」去声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,glm-5,13,4,tone_expected_flat,应平实仄,「把」上声（仄）（多音字，取上声读），此处须填平声字
+b1,五词牌-无主题,type_b,glm-5,14,4,tone_expected_flat,应平实仄,「鬓」去声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,glm-5,15,4,tone_expected_oblique,应仄实平,「天」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,qwen3.6-plus,1,22,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b1,五词牌-无主题,type_b,qwen3.6-plus,2,12,length_mismatch,字数不符,字数不符：该变体要求 44 字，实际 48 字，相差 4 字
+b1,五词牌-无主题,type_b,qwen3.6-plus,3,12,unknown_char,未收录字警告,「樽」未收录于平水韵（已跳过该字校验，不扣分）
+b1,五词牌-无主题,type_b,qwen3.6-plus,4,5,length_mismatch,字数不符,字数不符：该变体要求 77 字，实际 37 字，相差 40 字
+b1,五词牌-无主题,type_b,qwen3.6-plus,5,4,length_mismatch,字数不符,字数不符：该变体要求 28 字，实际 27 字，相差 1 字
+b1,五词牌-无主题,type_b,qwen3.6-plus,6,4,length_mismatch,字数不符,字数不符：该变体要求 105 字，实际 56 字，相差 49 字
+b1,五词牌-无主题,type_b,qwen3.6-plus,7,4,tone_expected_oblique,应仄实平,「舟」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,qwen3.6-plus,8,3,tone_expected_oblique,应仄实平,「垂」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,qwen3.6-plus,9,3,tone_expected_oblique,应仄实平,「亭」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,qwen3.6-plus,10,3,tone_expected_oblique,应仄实平,「风」平声（平），此处须填仄声字
+b1,五词牌-无主题,type_b,qwen3.6-plus,11,3,length_mismatch,字数不符,字数不符：该变体要求 55 字，实际 56 字，相差 1 字
+b1,五词牌-无主题,type_b,qwen3.6-plus,12,2,tone_expected_flat,应平实仄,「野」上声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,qwen3.6-plus,13,2,length_mismatch,字数不符,字数不符：该变体要求 77 字，实际 76 字，相差 1 字
+b1,五词牌-无主题,type_b,qwen3.6-plus,14,2,tone_expected_flat,应平实仄,「汉」去声（仄），此处须填平声字
+b1,五词牌-无主题,type_b,qwen3.6-plus,15,2,tone_expected_oblique,应仄实平,「明」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,1,29,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,2,24,tone_expected_oblique,应仄实平,「规」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,3,22,tone_expected_flat,应平实仄,「子」上声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,4,22,tone_expected_flat,应平实仄,「革」入声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,5,21,tone_expected_flat,应平实仄,「老」上声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,6,19,tone_expected_oblique,应仄实平,「新」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,7,18,tone_expected_flat,应平实仄,「矩」上声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,8,17,tone_expected_oblique,应仄实平,「宗」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,9,16,tone_expected_flat,应平实仄,「力」入声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,10,16,tone_expected_flat,应平实仄,「气」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,11,16,tone_expected_oblique,应仄实平,「心」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,12,15,tone_expected_flat,应平实仄,「锁」上声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,13,11,tone_expected_oblique,应仄实平,「严」平声（平）（多音字，取平声读），此处须填仄声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,14,10,tone_expected_flat,应平实仄,「对」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,deepseek-3.2-thinking,15,10,tone_expected_oblique,应仄实平,「门」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,1,34,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,2,19,tone_expected_oblique,应仄实平,「规」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,3,9,tone_expected_flat,应平实仄,「未」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,4,7,tone_expected_flat,应平实仄,「两」上声（仄）（多音字，取上声读），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,5,6,tone_expected_oblique,应仄实平,「徊」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,6,6,tone_expected_flat,应平实仄,「劫」入声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,7,6,tone_expected_flat,应平实仄,「阻」上声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,8,5,tone_expected_flat,应平实仄,「少」上声（仄）（多音字，取上声读），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,9,5,tone_expected_oblique,应仄实平,「怜」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,10,5,tone_expected_flat,应平实仄,「旧」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,11,4,tone_expected_flat,应平实仄,「月」入声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,12,4,tone_expected_flat,应平实仄,「御」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,13,4,tone_expected_flat,应平实仄,「俊」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,14,4,tone_expected_oblique,应仄实平,「灵」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,doubao-seed-2.0-pro,15,4,tone_expected_flat,应平实仄,「守」上声（仄）（多音字，取上声读），此处须填平声字
+b2,五词牌-改革主题,type_d,gemini-3.1-pro,1,1,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b2,五词牌-改革主题,type_d,glm-5,1,11,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b2,五词牌-改革主题,type_d,glm-5,2,8,length_mismatch,字数不符,字数不符：该变体要求 77 字，实际 74 字，相差 3 字
+b2,五词牌-改革主题,type_d,glm-5,3,5,length_mismatch,字数不符,字数不符：该变体要求 46 字，实际 47 字，相差 1 字
+b2,五词牌-改革主题,type_d,glm-5,4,3,tone_expected_oblique,应仄实平,「心」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,glm-5,5,3,tone_expected_oblique,应仄实平,「规」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,glm-5,6,2,length_mismatch,字数不符,字数不符：该变体要求 44 字，实际 48 字，相差 4 字
+b2,五词牌-改革主题,type_d,glm-5,7,2,tone_expected_flat,应平实仄,「改」上声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,glm-5,8,2,tone_expected_flat,应平实仄,「阵」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,glm-5,9,2,tone_expected_oblique,应仄实平,「贤」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,glm-5,10,2,tone_expected_oblique,应仄实平,「风」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,glm-5,11,1,length_mismatch,字数不符,字数不符：该变体要求 55 字，实际 56 字，相差 1 字
+b2,五词牌-改革主题,type_d,glm-5,12,1,tone_expected_oblique,应仄实平,「全」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,glm-5,13,1,tone_expected_oblique,应仄实平,「生」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,glm-5,14,1,length_mismatch,字数不符,字数不符：该变体要求 105 字，实际 94 字，相差 11 字
+b2,五词牌-改革主题,type_d,glm-5,15,1,length_mismatch,字数不符,字数不符：该变体要求 105 字，实际 73 字，相差 32 字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,1,18,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b2,五词牌-改革主题,type_d,qwen3.6-plus,2,7,tone_expected_oblique,应仄实平,「规」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,3,5,tone_expected_flat,应平实仄,「旧」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,4,4,length_mismatch,字数不符,字数不符：该变体要求 44 字，实际 48 字，相差 4 字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,5,4,tone_expected_flat,应平实仄,「律」入声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,6,4,length_mismatch,字数不符,字数不符：该变体要求 77 字，实际 37 字，相差 40 字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,7,4,length_mismatch,字数不符,字数不符：该变体要求 77 字，实际 78 字，相差 1 字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,8,4,tone_expected_oblique,应仄实平,「严」平声（平）（多音字，取平声读），此处须填仄声字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,9,3,tone_expected_oblique,应仄实平,「根」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,10,3,length_mismatch,字数不符,字数不符：该变体要求 44 字，实际 56 字，相差 12 字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,11,3,length_mismatch,字数不符,字数不符：该变体要求 46 字，实际 47 字，相差 1 字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,12,3,tone_expected_oblique,应仄实平,「年」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,13,3,tone_expected_flat,应平实仄,「刃」去声（仄），此处须填平声字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,14,3,tone_expected_oblique,应仄实平,「云」平声（平），此处须填仄声字
+b2,五词牌-改革主题,type_d,qwen3.6-plus,15,3,tone_expected_oblique,应仄实平,「青」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,1,35,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,2,26,tone_expected_flat,应平实仄,「试」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,3,19,tone_expected_oblique,应仄实平,「心」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,4,16,tone_expected_oblique,应仄实平,「兰」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,5,16,tone_expected_flat,应平实仄,「玉」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,6,14,tone_expected_flat,应平实仄,「业」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,7,10,tone_expected_oblique,应仄实平,「生」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,8,10,tone_expected_flat,应平实仄,「见」上声（仄）（多音字，取上声读），此处须填平声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,9,9,tone_expected_oblique,应仄实平,「开」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,10,9,tone_expected_flat,应平实仄,「意」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,11,9,tone_expected_flat,应平实仄,「自」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,12,8,tone_expected_flat,应平实仄,「命」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,13,8,tone_expected_oblique,应仄实平,「清」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,14,8,tone_expected_flat,应平实仄,「映」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,deepseek-3.2-thinking,15,8,tone_expected_oblique,应仄实平,「香」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,1,41,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,2,7,tone_expected_flat,应平实仄,「玉」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,3,6,tone_expected_flat,应平实仄,「试」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,4,5,tone_expected_flat,应平实仄,「路」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,5,4,tone_expected_oblique,应仄实平,「抬」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,6,4,tone_expected_flat,应平实仄,「处」上声（仄）（多音字，取上声读），此处须填平声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,7,3,tone_expected_oblique,应仄实平,「霜」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,8,3,tone_expected_flat,应平实仄,「职」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,9,3,length_mismatch,字数不符,字数不符：该变体要求 77 字，实际 78 字，相差 1 字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,10,2,tone_expected_oblique,应仄实平,「枝」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,11,2,length_mismatch,字数不符,字数不符：该变体要求 46 字，实际 47 字，相差 1 字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,12,2,tone_expected_flat,应平实仄,「讷」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,13,2,tone_expected_flat,应平实仄,「萼」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,14,2,tone_expected_oblique,应仄实平,「风」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,doubao-seed-2.0-pro,15,2,tone_expected_flat,应平实仄,「雪」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,1,20,variant_autocorrect,词牌变体智能纠偏,💡 智能纠偏：该词字数/格律实际匹配的是「浪淘沙令」(54字)，而非「浪淘沙」
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,2,10,tone_expected_oblique,应仄实平,「寒」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,3,10,length_mismatch,字数不符,字数不符：该变体要求 44 字，实际 48 字，相差 4 字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,4,8,length_mismatch,字数不符,字数不符：该变体要求 105 字，实际 56 字，相差 49 字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,5,8,tone_expected_flat,应平实仄,「破」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,6,5,tone_expected_oblique,应仄实平,「霜」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,7,5,length_mismatch,字数不符,字数不符：该变体要求 55 字，实际 56 字，相差 1 字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,8,4,length_mismatch,字数不符,字数不符：该变体要求 77 字，实际 37 字，相差 40 字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,9,4,tone_expected_flat,应平实仄,「未」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,10,4,tone_expected_oblique,应仄实平,「街」平声（平），此处须填仄声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,11,4,tone_expected_flat,应平实仄,「玉」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,12,4,tone_expected_flat,应平实仄,「素」去声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,13,4,tone_expected_flat,应平实仄,「萼」入声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,14,4,tone_expected_flat,应平实仄,「影」上声（仄），此处须填平声字
+b3,五词牌-玉兰主题,type_d,qwen3.6-plus,15,4,tone_expected_oblique,应仄实平,「灯」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,1,66,tone_expected_flat,应平实仄,「玉」入声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,2,28,tone_expected_oblique,应仄实平,「冰」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,3,25,tone_expected_flat,应平实仄,「试」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,4,25,tone_expected_oblique,应仄实平,「心」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,5,24,tone_expected_oblique,应仄实平,「风」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,6,24,tone_expected_flat,应平实仄,「路」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,7,19,tone_expected_flat,应平实仄,「洁」入声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,8,18,tone_expected_oblique,应仄实平,「书」平声（平）（多音字，取平声读），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,9,17,tone_expected_flat,应平实仄,「雪」入声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,10,17,tone_expected_oblique,应仄实平,「前」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,11,17,tone_expected_oblique,应仄实平,「花」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,12,16,tone_expected_flat,应平实仄,「笑」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,13,15,tone_expected_oblique,应仄实平,「眸」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,14,15,tone_expected_flat,应平实仄,「独」入声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,deepseek-3.2-thinking,15,14,tone_expected_oblique,应仄实平,「生」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,1,23,tone_expected_oblique,应仄实平,「眸」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,2,20,tone_expected_oblique,应仄实平,「寒」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,3,14,tone_expected_flat,应平实仄,「屡」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,4,14,tone_expected_flat,应平实仄,「玉」入声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,5,14,tone_expected_flat,应平实仄,「未」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,6,13,tone_expected_oblique,应仄实平,「尘」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,7,13,tone_expected_oblique,应仄实平,「清」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,8,13,tone_expected_oblique,应仄实平,「霜」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,9,11,tone_expected_oblique,应仄实平,「云」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,10,11,tone_expected_flat,应平实仄,「照」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,11,10,tone_expected_flat,应平实仄,「路」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,12,10,tone_expected_flat,应平实仄,「素」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,13,9,tone_expected_flat,应平实仄,「处」上声（仄）（多音字，取上声读），此处须填平声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,14,9,tone_expected_flat,应平实仄,「面」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,doubao-seed-2.0-pro,15,9,tone_expected_flat,应平实仄,「少」上声（仄）（多音字，取上声读），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,1,48,length_mismatch,字数不符,字数不符：该变体要求 105 字，实际 56 字，相差 49 字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,2,15,tone_expected_flat,应平实仄,「玉」入声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,3,14,tone_expected_flat,应平实仄,「自」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,4,14,tone_expected_flat,应平实仄,「素」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,5,13,tone_expected_oblique,应仄实平,「风」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,6,10,tone_expected_oblique,应仄实平,「心」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,7,10,tone_expected_flat,应平实仄,「独」入声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,8,9,tone_expected_flat,应平实仄,「莫」去声（仄）（多音字，取去声读），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,9,9,tone_expected_flat,应平实仄,「路」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,10,9,tone_expected_flat,应平实仄,「暗」去声（仄）（多音字，取去声读），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,11,9,tone_expected_oblique,应仄实平,「初」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,12,8,tone_expected_flat,应平实仄,「破」去声（仄），此处须填平声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,13,8,tone_expected_oblique,应仄实平,「寒」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,14,8,tone_expected_oblique,应仄实平,「春」平声（平），此处须填仄声字
+c1,沁园春-玉兰主题,type_a,qwen3.6-plus,15,8,tone_expected_flat,应平实仄,「冷」上声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,1,56,tone_expected_flat,应平实仄,「老」上声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,2,38,tone_expected_oblique,应仄实平,「宗」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,3,36,tone_expected_oblique,应仄实平,「规」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,4,36,tone_expected_flat,应平实仄,「力」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,5,33,tone_expected_oblique,应仄实平,「心」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,6,30,tone_expected_flat,应平实仄,「革」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,7,29,tone_expected_flat,应平实仄,「旧」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,8,27,tone_expected_flat,应平实仄,「战」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,9,26,tone_expected_flat,应平实仄,「子」上声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,10,26,tone_expected_oblique,应仄实平,「危」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,11,26,tone_expected_flat,应平实仄,「统」上声（仄）（多音字，取上声读），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,12,22,tone_expected_flat,应平实仄,「扎」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,13,21,tone_expected_flat,应平实仄,「矩」上声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,14,21,tone_expected_oblique,应仄实平,「门」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,deepseek-3.2-thinking,15,18,tone_expected_flat,应平实仄,「改」上声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,1,6,tone_expected_flat,应平实仄,「劫」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,2,5,tone_expected_flat,应平实仄,「弛」上声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,3,5,tone_expected_flat,应平实仄,「旧」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,4,5,tone_expected_oblique,应仄实平,「规」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,5,5,tone_expected_flat,应平实仄,「众」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,6,4,tone_expected_flat,应平实仄,「御」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,7,4,tone_expected_flat,应平实仄,「两」上声（仄）（多音字，取上声读），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,8,4,tone_expected_oblique,应仄实平,「时」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,9,4,tone_expected_flat,应平实仄,「律」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,10,4,tone_expected_flat,应平实仄,「破」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,11,4,tone_expected_oblique,应仄实平,「阶」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,12,4,tone_expected_oblique,应仄实平,「灵」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,13,3,tone_expected_flat,应平实仄,「未」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,14,3,tone_expected_flat,应平实仄,「少」上声（仄）（多音字，取上声读），此处须填平声字
+c2,沁园春-改革主题,type_e,doubao-seed-2.0-pro,15,3,tone_expected_oblique,应仄实平,「樊」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,1,10,length_mismatch,字数不符,字数不符：该变体要求 105 字，实际 56 字，相差 49 字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,2,8,tone_expected_flat,应平实仄,「劫」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,3,8,tone_expected_oblique,应仄实平,「新」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,4,7,tone_expected_oblique,应仄实平,「严」平声（平）（多音字，取平声读），此处须填仄声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,5,6,tone_expected_flat,应平实仄,「破」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,6,6,tone_expected_flat,应平实仄,「律」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,7,6,tone_expected_flat,应平实仄,「独」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,8,6,tone_expected_oblique,应仄实平,「规」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,9,5,tone_expected_flat,应平实仄,「锁」上声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,10,5,tone_expected_oblique,应仄实平,「嗟」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,11,5,tone_expected_oblique,应仄实平,「清」平声（平），此处须填仄声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,12,5,tone_expected_flat,应平实仄,「旧」去声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,13,5,tone_expected_flat,应平实仄,「欲」入声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,14,5,tone_expected_flat,应平实仄,「怎」上声（仄），此处须填平声字
+c2,沁园春-改革主题,type_e,qwen3.6-plus,15,4,tone_expected_flat,应平实仄,「夜」去声（仄），此处须填平声字

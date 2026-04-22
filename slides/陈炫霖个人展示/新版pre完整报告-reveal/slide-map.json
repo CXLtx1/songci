@@ -1,0 +1,3776 @@
+[
+  {
+    "index": 1,
+    "id": "slide-001-大模型宋词生成和量化分析简洁报告",
+    "kind": "cover",
+    "chapterTitle": "",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "大模型宋词生成和量化分析简洁报告",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 1,
+        "endLine": 1
+      },
+      {
+        "type": "blockquote",
+        "startLine": 3,
+        "endLine": 6
+      }
+    ],
+    "blockTypes": [
+      "blockquote"
+    ],
+    "continued": false
+  },
+  {
+    "index": 2,
+    "id": "slide-002-〇、引入",
+    "kind": "chapter",
+    "chapterTitle": "〇、引入",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "〇、引入",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 7,
+        "endLine": 7
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 3,
+    "id": "slide-003-〇、引入",
+    "kind": "content",
+    "chapterTitle": "〇、引入",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 9,
+        "endLine": 9
+      },
+      {
+        "type": "list",
+        "startLine": 10,
+        "endLine": 14
+      },
+      {
+        "type": "paragraph",
+        "startLine": 15,
+        "endLine": 15
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 4,
+    "id": "slide-004-一、项目核心探讨的问题",
+    "kind": "chapter",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "一、项目核心探讨的问题",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 17,
+        "endLine": 17
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 5,
+    "id": "slide-005-一、项目核心探讨的问题-1-1-核心问题",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.1 核心问题",
+    "subsectionTitle": "",
+    "headingText": "1.1 核心问题",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 19,
+        "endLine": 19
+      },
+      {
+        "type": "paragraph",
+        "startLine": 21,
+        "endLine": 21
+      },
+      {
+        "type": "list",
+        "startLine": 23,
+        "endLine": 28
+      },
+      {
+        "type": "paragraph",
+        "startLine": 29,
+        "endLine": 29
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 6,
+    "id": "slide-006-一、项目核心探讨的问题-1-2-整个项目的流程",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.2 整个项目的流程",
+    "subsectionTitle": "",
+    "headingText": "1.2 整个项目的流程",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 31,
+        "endLine": 31
+      },
+      {
+        "type": "paragraph",
+        "startLine": 33,
+        "endLine": 33
+      },
+      {
+        "type": "list",
+        "startLine": 35,
+        "endLine": 38
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list"
+    ],
+    "continued": false
+  },
+  {
+    "index": 7,
+    "id": "slide-007-一、项目核心探讨的问题-1-3-六类任务的具体设定",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.3 六类任务的具体设定",
+    "subsectionTitle": "",
+    "headingText": "1.3 六类任务的具体设定",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 39,
+        "endLine": 39
+      },
+      {
+        "type": "paragraph",
+        "startLine": 41,
+        "endLine": 41
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 8,
+    "id": "slide-008-一、项目核心探讨的问题-1-3-六类任务的具体设定",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.3 六类任务的具体设定",
+    "subsectionTitle": "",
+    "headingText": "1.3 六类任务的具体设定",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 43,
+        "endLine": 50
+      },
+      {
+        "type": "paragraph",
+        "startLine": 52,
+        "endLine": 52
+      },
+      {
+        "type": "paragraph",
+        "startLine": 54,
+        "endLine": 54
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 9,
+    "id": "slide-009-一、项目核心探讨的问题-1-4-读后文前，需要先记住的两点",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.4 读后文前，需要先记住的两点",
+    "subsectionTitle": "",
+    "headingText": "1.4 读后文前，需要先记住的两点",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 56,
+        "endLine": 56
+      },
+      {
+        "type": "paragraph",
+        "startLine": 58,
+        "endLine": 58
+      },
+      {
+        "type": "paragraph",
+        "startLine": 60,
+        "endLine": 60
+      },
+      {
+        "type": "list",
+        "startLine": 62,
+        "endLine": 64
+      },
+      {
+        "type": "paragraph",
+        "startLine": 65,
+        "endLine": 65
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 10,
+    "id": "slide-010-一、项目核心探讨的问题-1-5-这份报告里的格律分、意象和主题标签是怎么来的",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.5 这份报告里的格律分、意象和主题标签是怎么来的",
+    "subsectionTitle": "",
+    "headingText": "1.5 这份报告里的格律分、意象和主题标签是怎么来的",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 67,
+        "endLine": 67
+      },
+      {
+        "type": "paragraph",
+        "startLine": 69,
+        "endLine": 69
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 11,
+    "id": "slide-011-一、项目核心探讨的问题-1-5-1-格律分如何计算",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.5 这份报告里的格律分、意象和主题标签是怎么来的",
+    "subsectionTitle": "1.5.1 格律分如何计算",
+    "headingText": "1.5.1 格律分如何计算",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 71,
+        "endLine": 71
+      },
+      {
+        "type": "paragraph",
+        "startLine": 73,
+        "endLine": 73
+      },
+      {
+        "type": "paragraph",
+        "startLine": 75,
+        "endLine": 75
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 12,
+    "id": "slide-012-一、项目核心探讨的问题-1-5-1-格律分如何计算",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.5 这份报告里的格律分、意象和主题标签是怎么来的",
+    "subsectionTitle": "1.5.1 格律分如何计算",
+    "headingText": "1.5.1 格律分如何计算",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 77,
+        "endLine": 82
+      },
+      {
+        "type": "paragraph",
+        "startLine": 84,
+        "endLine": 84
+      },
+      {
+        "type": "paragraph",
+        "startLine": 86,
+        "endLine": 86
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 13,
+    "id": "slide-013-一、项目核心探讨的问题-1-5-2-意象和主题如何提取",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.5 这份报告里的格律分、意象和主题标签是怎么来的",
+    "subsectionTitle": "1.5.2 意象和主题如何提取",
+    "headingText": "1.5.2 意象和主题如何提取",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 88,
+        "endLine": 88
+      },
+      {
+        "type": "paragraph",
+        "startLine": 90,
+        "endLine": 90
+      },
+      {
+        "type": "paragraph",
+        "startLine": 92,
+        "endLine": 92
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 14,
+    "id": "slide-014-一、项目核心探讨的问题-1-5-2-意象和主题如何提取",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.5 这份报告里的格律分、意象和主题标签是怎么来的",
+    "subsectionTitle": "1.5.2 意象和主题如何提取",
+    "headingText": "1.5.2 意象和主题如何提取",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 94,
+        "endLine": 97
+      },
+      {
+        "type": "paragraph",
+        "startLine": 99,
+        "endLine": 99
+      },
+      {
+        "type": "paragraph",
+        "startLine": 101,
+        "endLine": 101
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 15,
+    "id": "slide-015-一、项目核心探讨的问题-1-6-样本规模与模型覆盖",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.6 样本规模与模型覆盖",
+    "subsectionTitle": "",
+    "headingText": "1.6 样本规模与模型覆盖",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 103,
+        "endLine": 103
+      },
+      {
+        "type": "paragraph",
+        "startLine": 105,
+        "endLine": 105
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 16,
+    "id": "slide-016-一、项目核心探讨的问题-1-6-样本规模与模型覆盖",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.6 样本规模与模型覆盖",
+    "subsectionTitle": "",
+    "headingText": "1.6 样本规模与模型覆盖",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 107,
+        "endLine": 114
+      },
+      {
+        "type": "paragraph",
+        "startLine": 116,
+        "endLine": 116
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 17,
+    "id": "slide-017-一、项目核心探讨的问题-1-6-样本规模与模型覆盖",
+    "kind": "content",
+    "chapterTitle": "一、项目核心探讨的问题",
+    "sectionTitle": "1.6 样本规模与模型覆盖",
+    "subsectionTitle": "",
+    "headingText": "1.6 样本规模与模型覆盖",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 118,
+        "endLine": 122
+      },
+      {
+        "type": "paragraph",
+        "startLine": 124,
+        "endLine": 125
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 18,
+    "id": "slide-018-二、按任务-prompt-逐个观察生成结果",
+    "kind": "chapter",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "二、按任务 prompt 逐个观察生成结果",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 127,
+        "endLine": 127
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 19,
+    "id": "slide-019-二、按任务-prompt-逐个观察生成结果-2-1-a1-：自由生成-prompt",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "",
+    "headingText": "2.1 `a1`：自由生成 prompt",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 129,
+        "endLine": 129
+      },
+      {
+        "type": "paragraph",
+        "startLine": 131,
+        "endLine": 131
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 20,
+    "id": "slide-020-二、按任务-prompt-逐个观察生成结果-2-1-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "2.1.1 实际使用的 prompt 原文",
+    "headingText": "2.1.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 133,
+        "endLine": 133
+      },
+      {
+        "type": "code",
+        "startLine": 135,
+        "endLine": 148
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": false
+  },
+  {
+    "index": 21,
+    "id": "slide-021-二、按任务-prompt-逐个观察生成结果-2-1-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "2.1.2 样本展示",
+    "headingText": "2.1.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 150,
+        "endLine": 150
+      },
+      {
+        "type": "paragraph",
+        "startLine": 152,
+        "endLine": 152
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 22,
+    "id": "slide-022-二、按任务-prompt-逐个观察生成结果-2-1-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "2.1.2 样本展示",
+    "headingText": "2.1.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 153,
+        "endLine": 156
+      },
+      {
+        "type": "paragraph",
+        "startLine": 158,
+        "endLine": 158
+      }
+    ],
+    "blockTypes": [
+      "code",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 23,
+    "id": "slide-023-二、按任务-prompt-逐个观察生成结果-2-1-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "2.1.2 样本展示",
+    "headingText": "2.1.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 159,
+        "endLine": 162
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 24,
+    "id": "slide-024-二、按任务-prompt-逐个观察生成结果-2-1-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "2.1.3 先看整体结果",
+    "headingText": "2.1.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 164,
+        "endLine": 164
+      },
+      {
+        "type": "table",
+        "startLine": 166,
+        "endLine": 175
+      },
+      {
+        "type": "paragraph",
+        "startLine": 177,
+        "endLine": 177
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 25,
+    "id": "slide-025-二、按任务-prompt-逐个观察生成结果-2-1-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "2.1.3 先看整体结果",
+    "headingText": "2.1.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 179,
+        "endLine": 179
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 26,
+    "id": "slide-026-二、按任务-prompt-逐个观察生成结果-2-1-4-三个主力模型的默认状态",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "2.1.4 三个主力模型的默认状态",
+    "headingText": "2.1.4 三个主力模型的默认状态",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 181,
+        "endLine": 181
+      },
+      {
+        "type": "table",
+        "startLine": 183,
+        "endLine": 187
+      },
+      {
+        "type": "paragraph",
+        "startLine": 189,
+        "endLine": 189
+      },
+      {
+        "type": "paragraph",
+        "startLine": 191,
+        "endLine": 191
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 27,
+    "id": "slide-027-二、按任务-prompt-逐个观察生成结果-2-1-a1-：自由生成-prompt",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.1 `a1`：自由生成 prompt",
+    "subsectionTitle": "",
+    "headingText": "2.1 `a1`：自由生成 prompt",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 193,
+        "endLine": 193
+      },
+      {
+        "type": "paragraph",
+        "startLine": 195,
+        "endLine": 195
+      }
+    ],
+    "blockTypes": [
+      "subheading",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 28,
+    "id": "slide-028-二、按任务-prompt-逐个观察生成结果-2-2-b1-：固定五词牌、无主题-prompt",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.2 `b1`：固定五词牌、无主题 prompt",
+    "subsectionTitle": "",
+    "headingText": "2.2 `b1`：固定五词牌、无主题 prompt",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 197,
+        "endLine": 197
+      },
+      {
+        "type": "paragraph",
+        "startLine": 199,
+        "endLine": 199
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 29,
+    "id": "slide-029-二、按任务-prompt-逐个观察生成结果-2-2-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.2 `b1`：固定五词牌、无主题 prompt",
+    "subsectionTitle": "2.2.1 实际使用的 prompt 原文",
+    "headingText": "2.2.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 201,
+        "endLine": 201
+      },
+      {
+        "type": "code",
+        "startLine": 203,
+        "endLine": 224
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": false
+  },
+  {
+    "index": 30,
+    "id": "slide-030-二、按任务-prompt-逐个观察生成结果-2-2-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.2 `b1`：固定五词牌、无主题 prompt",
+    "subsectionTitle": "2.2.1 实际使用的 prompt 原文",
+    "headingText": "2.2.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 226,
+        "endLine": 226
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 31,
+    "id": "slide-031-二、按任务-prompt-逐个观察生成结果-2-2-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.2 `b1`：固定五词牌、无主题 prompt",
+    "subsectionTitle": "2.2.2 样本展示",
+    "headingText": "2.2.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 228,
+        "endLine": 228
+      },
+      {
+        "type": "paragraph",
+        "startLine": 230,
+        "endLine": 230
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 32,
+    "id": "slide-032-二、按任务-prompt-逐个观察生成结果-2-2-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.2 `b1`：固定五词牌、无主题 prompt",
+    "subsectionTitle": "2.2.2 样本展示",
+    "headingText": "2.2.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 231,
+        "endLine": 234
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 33,
+    "id": "slide-033-二、按任务-prompt-逐个观察生成结果-2-2-3-五个词牌的总体差异",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.2 `b1`：固定五词牌、无主题 prompt",
+    "subsectionTitle": "2.2.3 五个词牌的总体差异",
+    "headingText": "2.2.3 五个词牌的总体差异",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 236,
+        "endLine": 236
+      },
+      {
+        "type": "table",
+        "startLine": 238,
+        "endLine": 244
+      },
+      {
+        "type": "paragraph",
+        "startLine": 246,
+        "endLine": 246
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 34,
+    "id": "slide-034-二、按任务-prompt-逐个观察生成结果-2-2-4-不同词牌把内容拉向哪里",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.2 `b1`：固定五词牌、无主题 prompt",
+    "subsectionTitle": "2.2.4 不同词牌把内容拉向哪里",
+    "headingText": "2.2.4 不同词牌把内容拉向哪里",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 248,
+        "endLine": 248
+      },
+      {
+        "type": "table",
+        "startLine": 250,
+        "endLine": 256
+      },
+      {
+        "type": "paragraph",
+        "startLine": 258,
+        "endLine": 258
+      },
+      {
+        "type": "paragraph",
+        "startLine": 260,
+        "endLine": 260
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 35,
+    "id": "slide-035-二、按任务-prompt-逐个观察生成结果-2-3-b2-：五词牌-改革主题-prompt",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "",
+    "headingText": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 262,
+        "endLine": 262
+      },
+      {
+        "type": "paragraph",
+        "startLine": 264,
+        "endLine": 264
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 36,
+    "id": "slide-036-二、按任务-prompt-逐个观察生成结果-2-3-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "2.3.1 实际使用的 prompt 原文",
+    "headingText": "2.3.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 266,
+        "endLine": 266
+      },
+      {
+        "type": "paragraph",
+        "startLine": 268,
+        "endLine": 268
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 37,
+    "id": "slide-037-二、按任务-prompt-逐个观察生成结果-2-3-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "2.3.1 实际使用的 prompt 原文",
+    "headingText": "2.3.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 270,
+        "endLine": 292
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 38,
+    "id": "slide-038-二、按任务-prompt-逐个观察生成结果-2-3-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "2.3.1 实际使用的 prompt 原文",
+    "headingText": "2.3.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 270,
+        "endLine": 292
+      },
+      {
+        "type": "paragraph",
+        "startLine": 294,
+        "endLine": 294
+      }
+    ],
+    "blockTypes": [
+      "code",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 39,
+    "id": "slide-039-二、按任务-prompt-逐个观察生成结果-2-3-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "2.3.2 样本展示",
+    "headingText": "2.3.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 296,
+        "endLine": 296
+      },
+      {
+        "type": "paragraph",
+        "startLine": 298,
+        "endLine": 298
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 40,
+    "id": "slide-040-二、按任务-prompt-逐个观察生成结果-2-3-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "2.3.2 样本展示",
+    "headingText": "2.3.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 299,
+        "endLine": 302
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 41,
+    "id": "slide-041-二、按任务-prompt-逐个观察生成结果-2-3-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "2.3.3 先看整体结果",
+    "headingText": "2.3.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 304,
+        "endLine": 304
+      },
+      {
+        "type": "table",
+        "startLine": 306,
+        "endLine": 315
+      },
+      {
+        "type": "paragraph",
+        "startLine": 317,
+        "endLine": 317
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 42,
+    "id": "slide-042-二、按任务-prompt-逐个观察生成结果-2-3-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "2.3.3 先看整体结果",
+    "headingText": "2.3.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 319,
+        "endLine": 319
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 43,
+    "id": "slide-043-二、按任务-prompt-逐个观察生成结果-2-3-4-三个主力模型的响应方式",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.3 `b2`：五词牌 + 改革主题 prompt",
+    "subsectionTitle": "2.3.4 三个主力模型的响应方式",
+    "headingText": "2.3.4 三个主力模型的响应方式",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 321,
+        "endLine": 321
+      },
+      {
+        "type": "table",
+        "startLine": 323,
+        "endLine": 327
+      },
+      {
+        "type": "paragraph",
+        "startLine": 329,
+        "endLine": 329
+      },
+      {
+        "type": "paragraph",
+        "startLine": 331,
+        "endLine": 331
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 44,
+    "id": "slide-044-二、按任务-prompt-逐个观察生成结果-2-4-b3-：五词牌-玉兰主题-prompt",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "",
+    "headingText": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 334,
+        "endLine": 334
+      },
+      {
+        "type": "paragraph",
+        "startLine": 336,
+        "endLine": 336
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 45,
+    "id": "slide-045-二、按任务-prompt-逐个观察生成结果-2-4-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "2.4.1 实际使用的 prompt 原文",
+    "headingText": "2.4.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 338,
+        "endLine": 338
+      },
+      {
+        "type": "paragraph",
+        "startLine": 340,
+        "endLine": 340
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 46,
+    "id": "slide-046-二、按任务-prompt-逐个观察生成结果-2-4-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "2.4.1 实际使用的 prompt 原文",
+    "headingText": "2.4.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 342,
+        "endLine": 363
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 47,
+    "id": "slide-047-二、按任务-prompt-逐个观察生成结果-2-4-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "2.4.1 实际使用的 prompt 原文",
+    "headingText": "2.4.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 365,
+        "endLine": 365
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 48,
+    "id": "slide-048-二、按任务-prompt-逐个观察生成结果-2-4-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "2.4.2 样本展示",
+    "headingText": "2.4.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 367,
+        "endLine": 367
+      },
+      {
+        "type": "paragraph",
+        "startLine": 369,
+        "endLine": 369
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 49,
+    "id": "slide-049-二、按任务-prompt-逐个观察生成结果-2-4-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "2.4.2 样本展示",
+    "headingText": "2.4.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 370,
+        "endLine": 373
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 50,
+    "id": "slide-050-二、按任务-prompt-逐个观察生成结果-2-4-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "2.4.3 先看整体结果",
+    "headingText": "2.4.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 375,
+        "endLine": 375
+      },
+      {
+        "type": "table",
+        "startLine": 377,
+        "endLine": 386
+      },
+      {
+        "type": "paragraph",
+        "startLine": 388,
+        "endLine": 388
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 51,
+    "id": "slide-051-二、按任务-prompt-逐个观察生成结果-2-4-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "2.4.3 先看整体结果",
+    "headingText": "2.4.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 390,
+        "endLine": 390
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 52,
+    "id": "slide-052-二、按任务-prompt-逐个观察生成结果-2-4-4-三个主力模型的响应方式",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.4 `b3`：五词牌 + 玉兰主题 prompt",
+    "subsectionTitle": "2.4.4 三个主力模型的响应方式",
+    "headingText": "2.4.4 三个主力模型的响应方式",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 392,
+        "endLine": 392
+      },
+      {
+        "type": "table",
+        "startLine": 394,
+        "endLine": 398
+      },
+      {
+        "type": "paragraph",
+        "startLine": 400,
+        "endLine": 400
+      },
+      {
+        "type": "paragraph",
+        "startLine": 402,
+        "endLine": 402
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 53,
+    "id": "slide-053-二、按任务-prompt-逐个观察生成结果-2-5-c1-：固定《沁园春》-玉兰主题-显式模板-prompt",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "",
+    "headingText": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 404,
+        "endLine": 404
+      },
+      {
+        "type": "paragraph",
+        "startLine": 406,
+        "endLine": 406
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 54,
+    "id": "slide-054-二、按任务-prompt-逐个观察生成结果-2-5-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "2.5.1 实际使用的 prompt 原文",
+    "headingText": "2.5.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 408,
+        "endLine": 408
+      },
+      {
+        "type": "code",
+        "startLine": 410,
+        "endLine": 448
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": false
+  },
+  {
+    "index": 55,
+    "id": "slide-055-二、按任务-prompt-逐个观察生成结果-2-5-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "2.5.1 实际使用的 prompt 原文",
+    "headingText": "2.5.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 410,
+        "endLine": 448
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 56,
+    "id": "slide-056-二、按任务-prompt-逐个观察生成结果-2-5-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "2.5.1 实际使用的 prompt 原文",
+    "headingText": "2.5.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 450,
+        "endLine": 450
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 57,
+    "id": "slide-057-二、按任务-prompt-逐个观察生成结果-2-5-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "2.5.2 样本展示",
+    "headingText": "2.5.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 452,
+        "endLine": 452
+      },
+      {
+        "type": "paragraph",
+        "startLine": 454,
+        "endLine": 454
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 58,
+    "id": "slide-058-二、按任务-prompt-逐个观察生成结果-2-5-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "2.5.2 样本展示",
+    "headingText": "2.5.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 455,
+        "endLine": 458
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 59,
+    "id": "slide-059-二、按任务-prompt-逐个观察生成结果-2-5-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "2.5.3 先看整体结果",
+    "headingText": "2.5.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 460,
+        "endLine": 460
+      },
+      {
+        "type": "table",
+        "startLine": 462,
+        "endLine": 471
+      },
+      {
+        "type": "paragraph",
+        "startLine": 473,
+        "endLine": 473
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 60,
+    "id": "slide-060-二、按任务-prompt-逐个观察生成结果-2-5-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "2.5.3 先看整体结果",
+    "headingText": "2.5.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 475,
+        "endLine": 475
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 61,
+    "id": "slide-061-二、按任务-prompt-逐个观察生成结果-2-5-4-三个主力模型的响应方式",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt",
+    "subsectionTitle": "2.5.4 三个主力模型的响应方式",
+    "headingText": "2.5.4 三个主力模型的响应方式",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 477,
+        "endLine": 477
+      },
+      {
+        "type": "table",
+        "startLine": 479,
+        "endLine": 483
+      },
+      {
+        "type": "paragraph",
+        "startLine": 485,
+        "endLine": 485
+      },
+      {
+        "type": "paragraph",
+        "startLine": 487,
+        "endLine": 487
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 62,
+    "id": "slide-062-二、按任务-prompt-逐个观察生成结果-2-6-c2-：固定《沁园春》-改革主题-简略格律提醒-prompt",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "subsectionTitle": "",
+    "headingText": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 489,
+        "endLine": 489
+      },
+      {
+        "type": "paragraph",
+        "startLine": 491,
+        "endLine": 491
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 63,
+    "id": "slide-063-二、按任务-prompt-逐个观察生成结果-2-6-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "subsectionTitle": "2.6.1 实际使用的 prompt 原文",
+    "headingText": "2.6.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 493,
+        "endLine": 493
+      },
+      {
+        "type": "code",
+        "startLine": 495,
+        "endLine": 516
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": false
+  },
+  {
+    "index": 64,
+    "id": "slide-064-二、按任务-prompt-逐个观察生成结果-2-6-1-实际使用的-prompt-原文",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "subsectionTitle": "2.6.1 实际使用的 prompt 原文",
+    "headingText": "2.6.1 实际使用的 prompt 原文",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 518,
+        "endLine": 518
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 65,
+    "id": "slide-065-二、按任务-prompt-逐个观察生成结果-2-6-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "subsectionTitle": "2.6.2 样本展示",
+    "headingText": "2.6.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 520,
+        "endLine": 520
+      },
+      {
+        "type": "paragraph",
+        "startLine": 522,
+        "endLine": 522
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 66,
+    "id": "slide-066-二、按任务-prompt-逐个观察生成结果-2-6-2-样本展示",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "subsectionTitle": "2.6.2 样本展示",
+    "headingText": "2.6.2 样本展示",
+    "sourceRefs": [
+      {
+        "type": "code",
+        "startLine": 523,
+        "endLine": 526
+      }
+    ],
+    "blockTypes": [
+      "code"
+    ],
+    "continued": true
+  },
+  {
+    "index": 67,
+    "id": "slide-067-二、按任务-prompt-逐个观察生成结果-2-6-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "subsectionTitle": "2.6.3 先看整体结果",
+    "headingText": "2.6.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 528,
+        "endLine": 528
+      },
+      {
+        "type": "table",
+        "startLine": 530,
+        "endLine": 539
+      },
+      {
+        "type": "paragraph",
+        "startLine": 541,
+        "endLine": 541
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 68,
+    "id": "slide-068-二、按任务-prompt-逐个观察生成结果-2-6-3-先看整体结果",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "subsectionTitle": "2.6.3 先看整体结果",
+    "headingText": "2.6.3 先看整体结果",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 543,
+        "endLine": 543
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 69,
+    "id": "slide-069-二、按任务-prompt-逐个观察生成结果-2-6-4-三个主力模型的响应方式",
+    "kind": "content",
+    "chapterTitle": "二、按任务 prompt 逐个观察生成结果",
+    "sectionTitle": "2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt",
+    "subsectionTitle": "2.6.4 三个主力模型的响应方式",
+    "headingText": "2.6.4 三个主力模型的响应方式",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 545,
+        "endLine": 545
+      },
+      {
+        "type": "table",
+        "startLine": 547,
+        "endLine": 551
+      },
+      {
+        "type": "paragraph",
+        "startLine": 553,
+        "endLine": 553
+      },
+      {
+        "type": "paragraph",
+        "startLine": 555,
+        "endLine": 555
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 70,
+    "id": "slide-070-三、从格律、意象、类型三个方向总结整个任务链",
+    "kind": "chapter",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 557,
+        "endLine": 557
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 71,
+    "id": "slide-071-三、从格律、意象、类型三个方向总结整个任务链",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 559,
+        "endLine": 559
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 72,
+    "id": "slide-072-三、从格律、意象、类型三个方向总结整个任务链-3-1-格律方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.1 格律方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.1 格律方向总结",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 561,
+        "endLine": 561
+      },
+      {
+        "type": "paragraph",
+        "startLine": 563,
+        "endLine": 563
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 73,
+    "id": "slide-073-三、从格律、意象、类型三个方向总结整个任务链-3-1-格律方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.1 格律方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.1 格律方向总结",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 565,
+        "endLine": 572
+      },
+      {
+        "type": "paragraph",
+        "startLine": 574,
+        "endLine": 574
+      },
+      {
+        "type": "paragraph",
+        "startLine": 576,
+        "endLine": 576
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 74,
+    "id": "slide-074-三、从格律、意象、类型三个方向总结整个任务链-3-1-格律方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.1 格律方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.1 格律方向总结",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 578,
+        "endLine": 578
+      },
+      {
+        "type": "paragraph",
+        "startLine": 580,
+        "endLine": 580
+      },
+      {
+        "type": "paragraph",
+        "startLine": 582,
+        "endLine": 582
+      },
+      {
+        "type": "paragraph",
+        "startLine": 584,
+        "endLine": 584
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 75,
+    "id": "slide-075-三、从格律、意象、类型三个方向总结整个任务链-3-1-格律方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.1 格律方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.1 格律方向总结",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 586,
+        "endLine": 586
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 76,
+    "id": "slide-076-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.2 意象方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.2 意象方向总结",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 588,
+        "endLine": 588
+      },
+      {
+        "type": "paragraph",
+        "startLine": 590,
+        "endLine": 590
+      },
+      {
+        "type": "paragraph",
+        "startLine": 592,
+        "endLine": 592
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 77,
+    "id": "slide-077-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.2 意象方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.2 意象方向总结",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 594,
+        "endLine": 600
+      },
+      {
+        "type": "paragraph",
+        "startLine": 602,
+        "endLine": 602
+      },
+      {
+        "type": "paragraph",
+        "startLine": 604,
+        "endLine": 604
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 78,
+    "id": "slide-078-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.2 意象方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.2 意象方向总结",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 606,
+        "endLine": 606
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 79,
+    "id": "slide-079-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.2 意象方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.2 意象方向总结",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 608,
+        "endLine": 615
+      },
+      {
+        "type": "paragraph",
+        "startLine": 617,
+        "endLine": 617
+      },
+      {
+        "type": "paragraph",
+        "startLine": 619,
+        "endLine": 619
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 80,
+    "id": "slide-080-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.2 意象方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.2 意象方向总结",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 621,
+        "endLine": 621
+      },
+      {
+        "type": "paragraph",
+        "startLine": 623,
+        "endLine": 623
+      },
+      {
+        "type": "paragraph",
+        "startLine": 625,
+        "endLine": 625
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 81,
+    "id": "slide-081-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.3 类型方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.3 类型方向总结",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 627,
+        "endLine": 627
+      },
+      {
+        "type": "paragraph",
+        "startLine": 629,
+        "endLine": 629
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 82,
+    "id": "slide-082-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.3 类型方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.3 类型方向总结",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 631,
+        "endLine": 638
+      },
+      {
+        "type": "paragraph",
+        "startLine": 640,
+        "endLine": 640
+      },
+      {
+        "type": "paragraph",
+        "startLine": 642,
+        "endLine": 642
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 83,
+    "id": "slide-083-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.3 类型方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.3 类型方向总结",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 644,
+        "endLine": 644
+      },
+      {
+        "type": "paragraph",
+        "startLine": 646,
+        "endLine": 646
+      },
+      {
+        "type": "paragraph",
+        "startLine": 648,
+        "endLine": 648
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 84,
+    "id": "slide-084-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.3 类型方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.3 类型方向总结",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 650,
+        "endLine": 656
+      },
+      {
+        "type": "paragraph",
+        "startLine": 658,
+        "endLine": 658
+      },
+      {
+        "type": "paragraph",
+        "startLine": 660,
+        "endLine": 660
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 85,
+    "id": "slide-085-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.3 类型方向总结",
+    "subsectionTitle": "",
+    "headingText": "3.3 类型方向总结",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 662,
+        "endLine": 662
+      },
+      {
+        "type": "paragraph",
+        "startLine": 664,
+        "endLine": 664
+      },
+      {
+        "type": "paragraph",
+        "startLine": 666,
+        "endLine": 666
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 86,
+    "id": "slide-086-三、从格律、意象、类型三个方向总结整个任务链-3-4-本部分总结",
+    "kind": "content",
+    "chapterTitle": "三、从格律、意象、类型三个方向总结整个任务链",
+    "sectionTitle": "3.4 本部分总结",
+    "subsectionTitle": "",
+    "headingText": "3.4 本部分总结",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 668,
+        "endLine": 668
+      },
+      {
+        "type": "paragraph",
+        "startLine": 670,
+        "endLine": 670
+      },
+      {
+        "type": "paragraph",
+        "startLine": 672,
+        "endLine": 672
+      },
+      {
+        "type": "paragraph",
+        "startLine": 674,
+        "endLine": 674
+      },
+      {
+        "type": "paragraph",
+        "startLine": 676,
+        "endLine": 676
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 87,
+    "id": "slide-087-四、AI-生成文本与真实宋词的相似性分析",
+    "kind": "chapter",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "四、AI 生成文本与真实宋词的相似性分析",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 678,
+        "endLine": 678
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 88,
+    "id": "slide-088-四、AI-生成文本与真实宋词的相似性分析-4-1-分析逻辑：建立历史基线与评估借用关系",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.1 分析逻辑：建立历史基线与评估借用关系",
+    "subsectionTitle": "",
+    "headingText": "4.1 分析逻辑：建立历史基线与评估借用关系",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 680,
+        "endLine": 680
+      },
+      {
+        "type": "paragraph",
+        "startLine": 682,
+        "endLine": 682
+      },
+      {
+        "type": "list",
+        "startLine": 683,
+        "endLine": 686
+      },
+      {
+        "type": "paragraph",
+        "startLine": 687,
+        "endLine": 688
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 89,
+    "id": "slide-089-四、AI-生成文本与真实宋词的相似性分析-4-2-数据规模与历史基线特征",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.2 数据规模与历史基线特征",
+    "subsectionTitle": "",
+    "headingText": "4.2 数据规模与历史基线特征",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 690,
+        "endLine": 690
+      },
+      {
+        "type": "paragraph",
+        "startLine": 692,
+        "endLine": 692
+      },
+      {
+        "type": "list",
+        "startLine": 693,
+        "endLine": 697
+      },
+      {
+        "type": "paragraph",
+        "startLine": 698,
+        "endLine": 698
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 90,
+    "id": "slide-090-四、AI-生成文本与真实宋词的相似性分析-4-2-数据规模与历史基线特征",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.2 数据规模与历史基线特征",
+    "subsectionTitle": "",
+    "headingText": "4.2 数据规模与历史基线特征",
+    "sourceRefs": [
+      {
+        "type": "list",
+        "startLine": 699,
+        "endLine": 703
+      },
+      {
+        "type": "paragraph",
+        "startLine": 704,
+        "endLine": 704
+      },
+      {
+        "type": "list",
+        "startLine": 705,
+        "endLine": 708
+      }
+    ],
+    "blockTypes": [
+      "list",
+      "paragraph",
+      "list"
+    ],
+    "continued": true
+  },
+  {
+    "index": 91,
+    "id": "slide-091-四、AI-生成文本与真实宋词的相似性分析-4-2-数据规模与历史基线特征",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.2 数据规模与历史基线特征",
+    "subsectionTitle": "",
+    "headingText": "4.2 数据规模与历史基线特征",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 709,
+        "endLine": 709
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 92,
+    "id": "slide-092-四、AI-生成文本与真实宋词的相似性分析-4-3-整体相似性评估结论",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.3 整体相似性评估结论",
+    "subsectionTitle": "",
+    "headingText": "4.3 整体相似性评估结论",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 711,
+        "endLine": 711
+      },
+      {
+        "type": "paragraph",
+        "startLine": 713,
+        "endLine": 713
+      },
+      {
+        "type": "list",
+        "startLine": 714,
+        "endLine": 719
+      },
+      {
+        "type": "paragraph",
+        "startLine": 720,
+        "endLine": 720
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 93,
+    "id": "slide-093-四、AI-生成文本与真实宋词的相似性分析-4-4-任务约束与相似性的交互关系",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.4 任务约束与相似性的交互关系",
+    "subsectionTitle": "",
+    "headingText": "4.4 任务约束与相似性的交互关系",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 722,
+        "endLine": 722
+      },
+      {
+        "type": "paragraph",
+        "startLine": 724,
+        "endLine": 724
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 94,
+    "id": "slide-094-四、AI-生成文本与真实宋词的相似性分析-4-4-任务约束与相似性的交互关系",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.4 任务约束与相似性的交互关系",
+    "subsectionTitle": "",
+    "headingText": "4.4 任务约束与相似性的交互关系",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 726,
+        "endLine": 733
+      },
+      {
+        "type": "paragraph",
+        "startLine": 735,
+        "endLine": 735
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 95,
+    "id": "slide-095-四、AI-生成文本与真实宋词的相似性分析-4-4-任务约束与相似性的交互关系",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.4 任务约束与相似性的交互关系",
+    "subsectionTitle": "",
+    "headingText": "4.4 任务约束与相似性的交互关系",
+    "sourceRefs": [
+      {
+        "type": "list",
+        "startLine": 736,
+        "endLine": 738
+      }
+    ],
+    "blockTypes": [
+      "list"
+    ],
+    "continued": true
+  },
+  {
+    "index": 96,
+    "id": "slide-096-四、AI-生成文本与真实宋词的相似性分析-4-5-不同词牌的相似性风险特征",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.5 不同词牌的相似性风险特征",
+    "subsectionTitle": "",
+    "headingText": "4.5 不同词牌的相似性风险特征",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 739,
+        "endLine": 739
+      },
+      {
+        "type": "paragraph",
+        "startLine": 741,
+        "endLine": 741
+      },
+      {
+        "type": "list",
+        "startLine": 742,
+        "endLine": 746
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list"
+    ],
+    "continued": false
+  },
+  {
+    "index": 97,
+    "id": "slide-097-四、AI-生成文本与真实宋词的相似性分析-4-6-相似性文本溯源的具体案例",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.6 相似性文本溯源的具体案例",
+    "subsectionTitle": "",
+    "headingText": "4.6 相似性文本溯源的具体案例",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 747,
+        "endLine": 747
+      },
+      {
+        "type": "paragraph",
+        "startLine": 749,
+        "endLine": 749
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 98,
+    "id": "slide-098-四、AI-生成文本与真实宋词的相似性分析-例一：高语义贴近，但来源分散，非整首重写",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.6 相似性文本溯源的具体案例",
+    "subsectionTitle": "例一：高语义贴近，但来源分散，非整首重写",
+    "headingText": "例一：高语义贴近，但来源分散，非整首重写",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 751,
+        "endLine": 751
+      },
+      {
+        "type": "paragraph",
+        "startLine": 752,
+        "endLine": 753
+      },
+      {
+        "type": "blockquote",
+        "startLine": 754,
+        "endLine": 755
+      },
+      {
+        "type": "paragraph",
+        "startLine": 756,
+        "endLine": 756
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "blockquote",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 99,
+    "id": "slide-099-四、AI-生成文本与真实宋词的相似性分析-例二：局部句法骨架向单一来源高度收敛",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.6 相似性文本溯源的具体案例",
+    "subsectionTitle": "例二：局部句法骨架向单一来源高度收敛",
+    "headingText": "例二：局部句法骨架向单一来源高度收敛",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 758,
+        "endLine": 758
+      },
+      {
+        "type": "paragraph",
+        "startLine": 759,
+        "endLine": 760
+      },
+      {
+        "type": "blockquote",
+        "startLine": 761,
+        "endLine": 763
+      },
+      {
+        "type": "paragraph",
+        "startLine": 764,
+        "endLine": 764
+      },
+      {
+        "type": "list",
+        "startLine": 765,
+        "endLine": 766
+      },
+      {
+        "type": "paragraph",
+        "startLine": 767,
+        "endLine": 767
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "blockquote",
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 100,
+    "id": "slide-100-四、AI-生成文本与真实宋词的相似性分析-例三：长调强约束下向名作的严重贴合",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.6 相似性文本溯源的具体案例",
+    "subsectionTitle": "例三：长调强约束下向名作的严重贴合",
+    "headingText": "例三：长调强约束下向名作的严重贴合",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 769,
+        "endLine": 769
+      },
+      {
+        "type": "paragraph",
+        "startLine": 770,
+        "endLine": 771
+      },
+      {
+        "type": "blockquote",
+        "startLine": 772,
+        "endLine": 775
+      },
+      {
+        "type": "paragraph",
+        "startLine": 776,
+        "endLine": 776
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "blockquote",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 101,
+    "id": "slide-101-四、AI-生成文本与真实宋词的相似性分析-例三：长调强约束下向名作的严重贴合",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.6 相似性文本溯源的具体案例",
+    "subsectionTitle": "例三：长调强约束下向名作的严重贴合",
+    "headingText": "例三：长调强约束下向名作的严重贴合",
+    "sourceRefs": [
+      {
+        "type": "list",
+        "startLine": 777,
+        "endLine": 781
+      },
+      {
+        "type": "paragraph",
+        "startLine": 782,
+        "endLine": 782
+      }
+    ],
+    "blockTypes": [
+      "list",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 102,
+    "id": "slide-102-四、AI-生成文本与真实宋词的相似性分析-4-7-相似性风险的模型分布差异",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.7 相似性风险的模型分布差异",
+    "subsectionTitle": "",
+    "headingText": "4.7 相似性风险的模型分布差异",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 784,
+        "endLine": 784
+      },
+      {
+        "type": "paragraph",
+        "startLine": 786,
+        "endLine": 786
+      },
+      {
+        "type": "list",
+        "startLine": 787,
+        "endLine": 789
+      },
+      {
+        "type": "paragraph",
+        "startLine": 790,
+        "endLine": 790
+      },
+      {
+        "type": "paragraph",
+        "startLine": 792,
+        "endLine": 792
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 103,
+    "id": "slide-103-四、AI-生成文本与真实宋词的相似性分析-4-7-相似性风险的模型分布差异",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.7 相似性风险的模型分布差异",
+    "subsectionTitle": "",
+    "headingText": "4.7 相似性风险的模型分布差异",
+    "sourceRefs": [
+      {
+        "type": "list",
+        "startLine": 793,
+        "endLine": 796
+      },
+      {
+        "type": "paragraph",
+        "startLine": 797,
+        "endLine": 797
+      },
+      {
+        "type": "list",
+        "startLine": 798,
+        "endLine": 800
+      },
+      {
+        "type": "paragraph",
+        "startLine": 801,
+        "endLine": 801
+      }
+    ],
+    "blockTypes": [
+      "list",
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 104,
+    "id": "slide-104-四、AI-生成文本与真实宋词的相似性分析-4-8-本节结论",
+    "kind": "content",
+    "chapterTitle": "四、AI 生成文本与真实宋词的相似性分析",
+    "sectionTitle": "4.8 本节结论",
+    "subsectionTitle": "",
+    "headingText": "4.8 本节结论",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 803,
+        "endLine": 803
+      },
+      {
+        "type": "list",
+        "startLine": 805,
+        "endLine": 809
+      }
+    ],
+    "blockTypes": [
+      "list"
+    ],
+    "continued": false
+  },
+  {
+    "index": 105,
+    "id": "slide-105-五、AI-生成文本的内部同质化分析",
+    "kind": "chapter",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "五、AI 生成文本的内部同质化分析",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 810,
+        "endLine": 810
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 106,
+    "id": "slide-106-五、AI-生成文本的内部同质化分析-5-1-核心概念辨析：字面相似与语义相似",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.1 核心概念辨析：字面相似与语义相似",
+    "subsectionTitle": "",
+    "headingText": "5.1 核心概念辨析：字面相似与语义相似",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 812,
+        "endLine": 812
+      },
+      {
+        "type": "paragraph",
+        "startLine": 814,
+        "endLine": 814
+      },
+      {
+        "type": "paragraph",
+        "startLine": 816,
+        "endLine": 816
+      },
+      {
+        "type": "list",
+        "startLine": 817,
+        "endLine": 819
+      },
+      {
+        "type": "paragraph",
+        "startLine": 820,
+        "endLine": 820
+      },
+      {
+        "type": "list",
+        "startLine": 822,
+        "endLine": 824
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "list",
+      "paragraph",
+      "list"
+    ],
+    "continued": false
+  },
+  {
+    "index": 107,
+    "id": "slide-107-五、AI-生成文本的内部同质化分析-5-1-核心概念辨析：字面相似与语义相似",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.1 核心概念辨析：字面相似与语义相似",
+    "subsectionTitle": "",
+    "headingText": "5.1 核心概念辨析：字面相似与语义相似",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 825,
+        "endLine": 825
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 108,
+    "id": "slide-108-五、AI-生成文本的内部同质化分析-5-2-同质化评估的核心逻辑：区分整词收束与局部模板化",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.2 同质化评估的核心逻辑：区分整词收束与局部模板化",
+    "subsectionTitle": "",
+    "headingText": "5.2 同质化评估的核心逻辑：区分整词收束与局部模板化",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 827,
+        "endLine": 827
+      },
+      {
+        "type": "paragraph",
+        "startLine": 829,
+        "endLine": 829
+      },
+      {
+        "type": "paragraph",
+        "startLine": 831,
+        "endLine": 832
+      },
+      {
+        "type": "paragraph",
+        "startLine": 834,
+        "endLine": 835
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 109,
+    "id": "slide-109-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "subsectionTitle": "",
+    "headingText": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 837,
+        "endLine": 837
+      },
+      {
+        "type": "paragraph",
+        "startLine": 839,
+        "endLine": 839
+      },
+      {
+        "type": "paragraph",
+        "startLine": 841,
+        "endLine": 841
+      },
+      {
+        "type": "list",
+        "startLine": 842,
+        "endLine": 845
+      },
+      {
+        "type": "paragraph",
+        "startLine": 846,
+        "endLine": 846
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "list",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 110,
+    "id": "slide-110-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "subsectionTitle": "",
+    "headingText": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 848,
+        "endLine": 854
+      },
+      {
+        "type": "paragraph",
+        "startLine": 856,
+        "endLine": 856
+      },
+      {
+        "type": "list",
+        "startLine": 858,
+        "endLine": 861
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "list"
+    ],
+    "continued": true
+  },
+  {
+    "index": 111,
+    "id": "slide-111-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "subsectionTitle": "",
+    "headingText": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 862,
+        "endLine": 862
+      },
+      {
+        "type": "paragraph",
+        "startLine": 864,
+        "endLine": 864
+      },
+      {
+        "type": "paragraph",
+        "startLine": 866,
+        "endLine": 866
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 112,
+    "id": "slide-112-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "subsectionTitle": "",
+    "headingText": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 868,
+        "endLine": 872
+      },
+      {
+        "type": "paragraph",
+        "startLine": 874,
+        "endLine": 874
+      },
+      {
+        "type": "paragraph",
+        "startLine": 876,
+        "endLine": 876
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 113,
+    "id": "slide-113-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "subsectionTitle": "",
+    "headingText": "5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 878,
+        "endLine": 882
+      },
+      {
+        "type": "paragraph",
+        "startLine": 884,
+        "endLine": 884
+      }
+    ],
+    "blockTypes": [
+      "table",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 114,
+    "id": "slide-114-五、AI-生成文本的内部同质化分析-5-4-判断严重性时，不能只看差值变化，还要看差值本身落在什么区间",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间",
+    "subsectionTitle": "",
+    "headingText": "5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 886,
+        "endLine": 886
+      },
+      {
+        "type": "paragraph",
+        "startLine": 888,
+        "endLine": 888
+      },
+      {
+        "type": "list",
+        "startLine": 890,
+        "endLine": 893
+      },
+      {
+        "type": "paragraph",
+        "startLine": 894,
+        "endLine": 894
+      },
+      {
+        "type": "list",
+        "startLine": 896,
+        "endLine": 897
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list",
+      "paragraph",
+      "list"
+    ],
+    "continued": false
+  },
+  {
+    "index": 115,
+    "id": "slide-115-五、AI-生成文本的内部同质化分析-5-4-判断严重性时，不能只看差值变化，还要看差值本身落在什么区间",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间",
+    "subsectionTitle": "",
+    "headingText": "5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 898,
+        "endLine": 898
+      },
+      {
+        "type": "list",
+        "startLine": 900,
+        "endLine": 903
+      },
+      {
+        "type": "paragraph",
+        "startLine": 904,
+        "endLine": 904
+      },
+      {
+        "type": "list",
+        "startLine": 906,
+        "endLine": 908
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list",
+      "paragraph",
+      "list"
+    ],
+    "continued": true
+  },
+  {
+    "index": 116,
+    "id": "slide-116-五、AI-生成文本的内部同质化分析-5-5-模型对同质化风险层级的影响",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.5 模型对同质化风险层级的影响",
+    "subsectionTitle": "",
+    "headingText": "5.5 模型对同质化风险层级的影响",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 909,
+        "endLine": 909
+      },
+      {
+        "type": "paragraph",
+        "startLine": 911,
+        "endLine": 911
+      },
+      {
+        "type": "heading",
+        "startLine": 913,
+        "endLine": 913
+      },
+      {
+        "type": "paragraph",
+        "startLine": 914,
+        "endLine": 916
+      },
+      {
+        "type": "heading",
+        "startLine": 918,
+        "endLine": 918
+      },
+      {
+        "type": "paragraph",
+        "startLine": 919,
+        "endLine": 921
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "subheading",
+      "paragraph",
+      "subheading",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 117,
+    "id": "slide-117-五、AI-生成文本的内部同质化分析-5-5-模型对同质化风险层级的影响",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.5 模型对同质化风险层级的影响",
+    "subsectionTitle": "",
+    "headingText": "5.5 模型对同质化风险层级的影响",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 923,
+        "endLine": 923
+      },
+      {
+        "type": "paragraph",
+        "startLine": 924,
+        "endLine": 926
+      }
+    ],
+    "blockTypes": [
+      "subheading",
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 118,
+    "id": "slide-118-五、AI-生成文本的内部同质化分析-5-6-本节结论",
+    "kind": "content",
+    "chapterTitle": "五、AI 生成文本的内部同质化分析",
+    "sectionTitle": "5.6 本节结论",
+    "subsectionTitle": "",
+    "headingText": "5.6 本节结论",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 928,
+        "endLine": 928
+      },
+      {
+        "type": "paragraph",
+        "startLine": 930,
+        "endLine": 930
+      },
+      {
+        "type": "list",
+        "startLine": 932,
+        "endLine": 938
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "list"
+    ],
+    "continued": false
+  },
+  {
+    "index": 119,
+    "id": "slide-119-六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "kind": "chapter",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 939,
+        "endLine": 939
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 120,
+    "id": "slide-120-六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "kind": "content",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 941,
+        "endLine": 941
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 121,
+    "id": "slide-121-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-1-AI-能不能写出基本成立的宋词",
+    "kind": "content",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "6.1 AI 能不能写出基本成立的宋词",
+    "subsectionTitle": "",
+    "headingText": "6.1 AI 能不能写出基本成立的宋词",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 943,
+        "endLine": 943
+      },
+      {
+        "type": "paragraph",
+        "startLine": 945,
+        "endLine": 945
+      },
+      {
+        "type": "paragraph",
+        "startLine": 947,
+        "endLine": 947
+      },
+      {
+        "type": "paragraph",
+        "startLine": 949,
+        "endLine": 949
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 122,
+    "id": "slide-122-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-2-什么模型更适合宋词创作",
+    "kind": "content",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "6.2 什么模型更适合宋词创作",
+    "subsectionTitle": "",
+    "headingText": "6.2 什么模型更适合宋词创作",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 951,
+        "endLine": 951
+      },
+      {
+        "type": "paragraph",
+        "startLine": 953,
+        "endLine": 953
+      },
+      {
+        "type": "paragraph",
+        "startLine": 955,
+        "endLine": 955
+      },
+      {
+        "type": "paragraph",
+        "startLine": 957,
+        "endLine": 957
+      },
+      {
+        "type": "paragraph",
+        "startLine": 959,
+        "endLine": 959
+      },
+      {
+        "type": "paragraph",
+        "startLine": 961,
+        "endLine": 961
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 123,
+    "id": "slide-123-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-2-什么模型更适合宋词创作",
+    "kind": "content",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "6.2 什么模型更适合宋词创作",
+    "subsectionTitle": "",
+    "headingText": "6.2 什么模型更适合宋词创作",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 963,
+        "endLine": 963
+      }
+    ],
+    "blockTypes": [
+      "paragraph"
+    ],
+    "continued": true
+  },
+  {
+    "index": 124,
+    "id": "slide-124-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-3-什么样的-prompt-更适合宋词创作",
+    "kind": "content",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "6.3 什么样的 prompt 更适合宋词创作",
+    "subsectionTitle": "",
+    "headingText": "6.3 什么样的 prompt 更适合宋词创作",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 965,
+        "endLine": 965
+      },
+      {
+        "type": "paragraph",
+        "startLine": 967,
+        "endLine": 967
+      },
+      {
+        "type": "paragraph",
+        "startLine": 969,
+        "endLine": 969
+      },
+      {
+        "type": "paragraph",
+        "startLine": 971,
+        "endLine": 971
+      },
+      {
+        "type": "paragraph",
+        "startLine": 973,
+        "endLine": 973
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 125,
+    "id": "slide-125-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-4-AI-宋词会不会千篇一律",
+    "kind": "content",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "6.4 AI 宋词会不会千篇一律",
+    "subsectionTitle": "",
+    "headingText": "6.4 AI 宋词会不会千篇一律",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 975,
+        "endLine": 975
+      },
+      {
+        "type": "paragraph",
+        "startLine": 977,
+        "endLine": 977
+      },
+      {
+        "type": "paragraph",
+        "startLine": 979,
+        "endLine": 979
+      },
+      {
+        "type": "paragraph",
+        "startLine": 981,
+        "endLine": 981
+      },
+      {
+        "type": "paragraph",
+        "startLine": 983,
+        "endLine": 983
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 126,
+    "id": "slide-126-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-5-AI-宋词会不会借鉴真实宋词",
+    "kind": "content",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "6.5 AI 宋词会不会借鉴真实宋词",
+    "subsectionTitle": "",
+    "headingText": "6.5 AI 宋词会不会借鉴真实宋词",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 985,
+        "endLine": 985
+      },
+      {
+        "type": "paragraph",
+        "startLine": 987,
+        "endLine": 987
+      },
+      {
+        "type": "paragraph",
+        "startLine": 989,
+        "endLine": 989
+      },
+      {
+        "type": "paragraph",
+        "startLine": 991,
+        "endLine": 991
+      },
+      {
+        "type": "paragraph",
+        "startLine": 993,
+        "endLine": 993
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 127,
+    "id": "slide-127-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-6-最终回答",
+    "kind": "content",
+    "chapterTitle": "六、回到项目最初的问题：这一轮实验究竟回答了什么",
+    "sectionTitle": "6.6 最终回答",
+    "subsectionTitle": "",
+    "headingText": "6.6 最终回答",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 995,
+        "endLine": 995
+      },
+      {
+        "type": "paragraph",
+        "startLine": 997,
+        "endLine": 997
+      },
+      {
+        "type": "paragraph",
+        "startLine": 999,
+        "endLine": 999
+      },
+      {
+        "type": "paragraph",
+        "startLine": 1001,
+        "endLine": 1001
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  },
+  {
+    "index": 128,
+    "id": "slide-128-附：本报告各部分参考文件",
+    "kind": "chapter",
+    "chapterTitle": "附：本报告各部分参考文件",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "附：本报告各部分参考文件",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 1005,
+        "endLine": 1005
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 129,
+    "id": "slide-129-附：本报告各部分参考文件",
+    "kind": "content",
+    "chapterTitle": "附：本报告各部分参考文件",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 1007,
+        "endLine": 1015
+      }
+    ],
+    "blockTypes": [
+      "table"
+    ],
+    "continued": false
+  },
+  {
+    "index": 130,
+    "id": "slide-130-参考的开源项目",
+    "kind": "chapter",
+    "chapterTitle": "参考的开源项目",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "参考的开源项目",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 1017,
+        "endLine": 1017
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 131,
+    "id": "slide-131-参考的开源项目",
+    "kind": "content",
+    "chapterTitle": "参考的开源项目",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "",
+    "sourceRefs": [
+      {
+        "type": "table",
+        "startLine": 1019,
+        "endLine": 1025
+      }
+    ],
+    "blockTypes": [
+      "table"
+    ],
+    "continued": false
+  },
+  {
+    "index": 132,
+    "id": "slide-132-感谢观看",
+    "kind": "chapter",
+    "chapterTitle": "感谢观看",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "感谢观看",
+    "sourceRefs": [
+      {
+        "type": "heading",
+        "startLine": 1027,
+        "endLine": 1027
+      }
+    ],
+    "blockTypes": [],
+    "continued": false
+  },
+  {
+    "index": 133,
+    "id": "slide-133-感谢观看",
+    "kind": "content",
+    "chapterTitle": "感谢观看",
+    "sectionTitle": "",
+    "subsectionTitle": "",
+    "headingText": "",
+    "sourceRefs": [
+      {
+        "type": "paragraph",
+        "startLine": 1029,
+        "endLine": 1029
+      },
+      {
+        "type": "paragraph",
+        "startLine": 1031,
+        "endLine": 1031
+      },
+      {
+        "type": "paragraph",
+        "startLine": 1033,
+        "endLine": 1033
+      }
+    ],
+    "blockTypes": [
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "continued": false
+  }
+]

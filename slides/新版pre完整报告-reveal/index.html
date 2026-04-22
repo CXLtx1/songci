@@ -1,0 +1,2940 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>大模型宋词生成和量化分析简洁报告 - reveal.js</title>
+    <link rel="stylesheet" href="./reveal/reset.css">
+    <link rel="stylesheet" href="./reveal/reveal.css">
+    <link rel="stylesheet" href="./reveal/theme/white.css">
+    <link rel="stylesheet" href="./deck.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+      <section id="slide-001-大模型宋词生成和量化分析简洁报告" data-chapter="" data-section="" data-subsection="" class="cover-slide">
+        <div class="slide-shell cover-shell">
+          <div class="cover-kicker">简略版报告</div>
+          <h1 class="cover-title">大模型宋词生成和量化分析</h1>
+          <div class="cover-notes"><blockquote class="block-quote">汇报人：陈炫霖<br>2026/4/22<br>完整内容请见<code class="inline-code">全项目总报告.md</code><br></blockquote></div>
+        </div>
+      </section>
+    
+        <section class="chapter-stack">
+
+      <section id="slide-002-〇、引入" data-chapter="〇、引入" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">〇、引入</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-003-〇、引入"
+      data-chapter="〇、引入"
+      data-section=""
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">〇、引入</span></div>
+        <div class="content-spacer"></div>
+        <div class="content-body">
+          <p class="block-paragraph">我们可能都想过用大模型写宋词能写得怎么样，具体的，我有以下的问题：</p>
+<ul class="block-list"><li>什么模型更适合宋词创作，</li>
+<li>什么样的提示词更适合宋词创作，</li>
+<li>AI宋词会不会千篇一律，</li>
+<li>AI宋词会不会借鉴真实宋词，</li></ul>
+<p class="block-paragraph">这是我这个项目一开始的目标，我将在最后回答这些问题。</p>
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-004-一、项目核心探讨的问题" data-chapter="一、项目核心探讨的问题" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">一、项目核心探讨的问题</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-005-一、项目核心探讨的问题-1-1-核心问题"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.1 核心问题"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.1 核心问题</span></div>
+        <h3 class="content-title level-3">1.1 核心问题</h3>
+        <div class="content-body">
+          <p class="block-paragraph">这个项目研究的，不是AI写的宋词好不好，而是更具体的五个问题：</p>
+<ol class="block-list"><li>AI 能不能写出在格律和结构上基本成立的宋词。</li>
+<li>在不同任务条件下，AI 会把词写成什么样。</li>
+<li>AI 会稳定偏爱哪些意象、哪些题材、哪些写法。</li>
+<li>AI 在批量生成时会不会越来越写成固定模板。</li>
+<li>AI 生成的宋词与真实宋词之间，到底是风格接近和化用，还是出现了更值得警惕的局部借用亦或是照抄。</li></ol>
+<p class="block-paragraph">换句话说，这个项目不是只看大模型写的宋词好不好，而是同时看形式能力、内容组织、内部同质化和与真实作品的关系。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-006-一、项目核心探讨的问题-1-2-整个项目的流程"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.2 整个项目的流程"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.2 整个项目的流程</span></div>
+        <h3 class="content-title level-3">1.2 整个项目的流程</h3>
+        <div class="content-body">
+          <p class="block-paragraph">如果把整个项目压缩来看，它其实只有三步：</p>
+<ol class="block-list"><li>先设计任务：决定要不要限定词牌、要不要给主题、要不要提供显式格律模板。</li>
+<li>再批量生成：把这些任务分别交给不同模型，得到一批宋词样本，并写入数据库。</li>
+<li>最后统一分析：检查格律，提取意象和主题类型，再看它们是否会同质化、是否会和真实宋词过于接近。</li></ol>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-007-一、项目核心探讨的问题-1-3-六类任务的具体设定"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.3 六类任务的具体设定"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.3 六类任务的具体设定</span></div>
+        <h3 class="content-title level-3">1.3 六类任务的具体设定</h3>
+        <div class="content-body">
+          <p class="block-paragraph">本项目共设计了六组任务：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-008-一、项目核心探讨的问题-1-3-六类任务的具体设定"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.3 六类任务的具体设定"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.3 六类任务的具体设定</span></div>
+        <h3 class="content-title level-3">1.3 六类任务的具体设定</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>数据库</th><th>可以直接理解成什么任务</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">a1</code></td><td>自由生成：词牌不定，主题不定</td></tr>
+<tr><td><code class="inline-code">b1</code></td><td>只加词牌约束：固定在五个词牌中生成，但不给主题</td></tr>
+<tr><td><code class="inline-code">b2</code></td><td>在 <code class="inline-code">b1</code> 基础上加入“改革”主题</td></tr>
+<tr><td><code class="inline-code">b3</code></td><td>在 <code class="inline-code">b1</code> 基础上加入“玉兰”主题</td></tr>
+<tr><td><code class="inline-code">c1</code></td><td>固定《沁园春》、固定玉兰主题，并直接给出格律模板</td></tr>
+<tr><td><code class="inline-code">c2</code></td><td>固定《沁园春》、固定改革主题，但只做简略格律提醒</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">简单说，就是：<code class="inline-code">模型✖词牌✖主题✖提示词</code>，控制变量。</p>
+<p class="block-paragraph">其中 <code class="inline-code">b1</code> 使用的五个词牌是：<code class="inline-code">清平乐</code>、<code class="inline-code">浪淘沙</code>、<code class="inline-code">菩萨蛮</code>、<code class="inline-code">沁园春</code>、<code class="inline-code">祝英台近</code>。后文第二章会按这条链条逐步展开，所以这里先只记住“任务是一路加压的”，不必先记太多内部代号。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-009-一、项目核心探讨的问题-1-4-读后文前，需要先记住的两点"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.4 读后文前，需要先记住的两点"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.4 读后文前，需要先记住的两点</span></div>
+        <h3 class="content-title level-3">1.4 读后文前，需要先记住的两点</h3>
+        <div class="content-body">
+          <p class="block-paragraph">第一，本项目使用a1,b1,c2这样的代号代指任务，每个任务都对应一个数据库和一套提示词。</p>
+<p class="block-paragraph">第二，我只自己编了两个主题：</p>
+<ul class="block-list"><li>改革主题：假设你是一个修仙世界一个宗派的年轻长老，看到了宗派中传统的规矩和观念对宗派中的弟子的压抑，希望能改变这个现实，但是发现严格的规矩的确能一定程度上能保证在危机面前的战斗力，而且宗派中很多长老也很反对这个改革。你在挣扎中写了一首词来抒发自己的想法。</li>
+<li>玉兰主题：假设你是一个喜欢写宋词的大学生，最近在学业和面试上屡遇挫折，但是你看到了一颗盛开着白玉兰花的树，似乎重新找到了生命的实在与价值，便写了一首词。</li></ul>
+<p class="block-paragraph">另外还要特别记住一点：<code class="inline-code">c1</code> 和 <code class="inline-code">c2</code> 虽然都固定《沁园春》，但它们不是同一种强约束。<code class="inline-code">c1</code> 是直接把格律骨架摆出来，<code class="inline-code">c2</code> 则只是提醒模型注意格律规范。这个区别，后面会直接影响格律表现。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-010-一、项目核心探讨的问题-1-5-这份报告里的格律分、意象和主题标签是怎么来的"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.5 这份报告里的格律分、意象和主题标签是怎么来的"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.5 这份报告里的格律分、意象和主题标签是怎么来的</span></div>
+        <h3 class="content-title level-3">1.5 这份报告里的格律分、意象和主题标签是怎么来的</h3>
+        <div class="content-body">
+          <p class="block-paragraph">前面几章会反复用到三个信息：格律分、意象统计和主题类型。这些结果都不是人工逐首随意判断出来的，而是由项目中的程序化流程统一生成的。这里先用尽量简明的方式说明它们的来源，便于后文阅读。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-011-一、项目核心探讨的问题-1-5-1-格律分如何计算"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.5 这份报告里的格律分、意象和主题标签是怎么来的"
+      data-subsection="1.5.1 格律分如何计算"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.5 这份报告里的格律分、意象和主题标签是怎么来的</span><span class="crumb">1.5.1 格律分如何计算</span></div>
+        <h4 class="content-title level-4">1.5.1 格律分如何计算</h4>
+        <div class="content-body">
+          <p class="block-paragraph">本项目的格律校验由 <code class="inline-code">engine/songci_engine.py</code> 完成。它做的不是文学优劣判断，而是把一首生成结果放回对应词牌的规范里，看它在形式上是否成立。</p>
+<p class="block-paragraph">具体来说，程序主要检查四件事：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-012-一、项目核心探讨的问题-1-5-1-格律分如何计算"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.5 这份报告里的格律分、意象和主题标签是怎么来的"
+      data-subsection="1.5.1 格律分如何计算"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.5 这份报告里的格律分、意象和主题标签是怎么来的</span><span class="crumb">1.5.1 格律分如何计算</span></div>
+        <h4 class="content-title level-4">1.5.1 格律分如何计算</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap">
+      <table class="block-table">
+        <thead><tr><th>检查项</th><th>实际在看什么</th><th>在结果中的意义</th></tr></thead>
+        <tbody><tr><td>字数</td><td>这首词总字数和句式长度是否符合该词牌要求</td><td>这是最基础的一关，字数明显不符时，作品通常会被直接判为不成立</td></tr>
+<tr><td>平仄</td><td>应平处是否用了平声字，应仄处是否用了仄声字</td><td>这是格律分里最核心的部分，决定一首词是不是“看起来像这个词牌”</td></tr>
+<tr><td>押韵</td><td>韵脚是不是落在应押的位置，韵部是不是相合</td><td>这部分能区分“句子大体成形”和“真正押韵成篇”</td></tr>
+<tr><td>词牌变体</td><td>如果它没有完全对上原词牌，是否更接近某个相近变体（如<code class="inline-code">浪淘沙</code>和<code class="inline-code">浪淘沙令</code>）</td><td>这有助于区分“写偏到相近体式”</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">从计算方式上说，格律分不是主观印象分，而是程序先按 <code class="inline-code">100</code> 分起算，再根据错误逐步扣分。非韵脚位置的平仄错误会扣分，韵脚错误和出韵会扣得更重；字数如果根本不合词牌要求，通常就会直接导致 <code class="inline-code">0</code> 分。</p>
+<p class="block-paragraph">这里还要补一句：程序同时参考词谱、平水韵和词林正韵。程序自带了比较完整的词谱，可以自动检测到最接近的词体，也自带了多音字的处理，但还是不一定完美。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-013-一、项目核心探讨的问题-1-5-2-意象和主题如何提取"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.5 这份报告里的格律分、意象和主题标签是怎么来的"
+      data-subsection="1.5.2 意象和主题如何提取"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.5 这份报告里的格律分、意象和主题标签是怎么来的</span><span class="crumb">1.5.2 意象和主题如何提取</span></div>
+        <h4 class="content-title level-4">1.5.2 意象和主题如何提取</h4>
+        <div class="content-body">
+          <p class="block-paragraph">意象和主题标签不是生成模型第一次写词时自己报出来的，而是在样本入库之后，再由 <code class="inline-code">generate/extract_imagery.py</code> 做一次后处理补上的。这个脚本会把每三首词组成一组，再交给一个专门的提取 prompt 去阅读和标注。也就是说意象和主题是二次由LLM检测提取的。</p>
+<p class="block-paragraph">这一步主要做两件事：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-014-一、项目核心探讨的问题-1-5-2-意象和主题如何提取"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.5 这份报告里的格律分、意象和主题标签是怎么来的"
+      data-subsection="1.5.2 意象和主题如何提取"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.5 这份报告里的格律分、意象和主题标签是怎么来的</span><span class="crumb">1.5.2 意象和主题如何提取</span></div>
+        <h4 class="content-title level-4">1.5.2 意象和主题如何提取</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap">
+      <table class="block-table">
+        <thead><tr><th>项目</th><th>提取方式</th><th>结果长什么样</th></tr></thead>
+        <tbody><tr><td>意象</td><td>从正文里抽出核心意象，要求尽量用2-3个字的名词性短语来表示</td><td>如 <code class="inline-code">明月</code>、<code class="inline-code">东风</code>、<code class="inline-code">落花</code>、<code class="inline-code">孤舟</code></td></tr>
+<tr><td>主题类型</td><td>从固定的九类中选出最贴切的一类</td><td>如 <code class="inline-code">离别羁旅</code>、<code class="inline-code">怀古咏史</code>、<code class="inline-code">咏物寄托</code>、<code class="inline-code">豪情壮志</code> 等</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">固定的九类主题：<code class="inline-code">[&quot;离别羁旅&quot;, &quot;怀古咏史&quot;, &quot;咏物寄托&quot;, &quot;春怨秋悲&quot;, &quot;山水田园&quot;, &quot;豪情壮志&quot;, &quot;闲适隐逸&quot;, &quot;悼亡相思&quot;, &quot;谈禅说理&quot;]</code></p>
+<p class="block-paragraph">当然，这里的意象和主题标签由LLM(统一使用<code class="inline-code">doubao-seed-2.0-pro</code>)提取，不完全保证严谨性，但已足够进行分析。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-015-一、项目核心探讨的问题-1-6-样本规模与模型覆盖"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.6 样本规模与模型覆盖"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.6 样本规模与模型覆盖</span></div>
+        <h3 class="content-title level-3">1.6 样本规模与模型覆盖</h3>
+        <div class="content-body">
+          <p class="block-paragraph">六个 AI 数据库共计收录 <code class="inline-code">3122</code> 首词。逐库样本分布如下：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-016-一、项目核心探讨的问题-1-6-样本规模与模型覆盖"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.6 样本规模与模型覆盖"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.6 样本规模与模型覆盖</span></div>
+        <h3 class="content-title level-3">1.6 样本规模与模型覆盖</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>数据库</th><th>样本数</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">a1</code></td><td>402</td></tr>
+<tr><td><code class="inline-code">b1</code></td><td>686</td></tr>
+<tr><td><code class="inline-code">b2</code></td><td>628</td></tr>
+<tr><td><code class="inline-code">b3</code></td><td>591</td></tr>
+<tr><td><code class="inline-code">c1</code></td><td>551</td></tr>
+<tr><td><code class="inline-code">c2</code></td><td>264</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">从横向对比的严谨性角度出发，真正适宜作为核心比对对象的，是以下三款覆盖面最广、样本量最大的模型：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-017-一、项目核心探讨的问题-1-6-样本规模与模型覆盖"
+      data-chapter="一、项目核心探讨的问题"
+      data-section="1.6 样本规模与模型覆盖"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">一、项目核心探讨的问题</span><span class="crumb">1.6 样本规模与模型覆盖</span></div>
+        <h3 class="content-title level-3">1.6 样本规模与模型覆盖</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap">
+      <table class="block-table">
+        <thead><tr><th>模型</th><th>统一后的样本数</th><th>说明</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">doubao-seed-2.0-pro</code></td><td>950</td><td>覆盖 6 个数据库，是最完整的主力模型</td></tr>
+<tr><td><code class="inline-code">deepseek-3.2-thinking</code></td><td>949</td><td>将 <code class="inline-code">a1</code> 中的 <code class="inline-code">deepseek-v3.2</code> 与其余库中的 <code class="inline-code">deepseek-reasoner</code> 统一归并</td></tr>
+<tr><td><code class="inline-code">qwen3.6-plus</code></td><td>801</td><td>覆盖 6 个数据库，为第三个主力模型</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">其余模型（如 <code class="inline-code">glm-5</code>、<code class="inline-code">qwen3.5-flash</code>、<code class="inline-code">qwen3-max</code>、<code class="inline-code">glm-4.7</code>、<code class="inline-code">kimi-k2.5</code>、<code class="inline-code">gemini</code>、<code class="inline-code">gpt-5.4-high</code> 等）仅做参考。
+本项目使用的大模型均开启<code class="inline-code">思考模式</code>，使用<code class="inline-code">官方API</code>调用，<strong>不保证APP调用效果相同</strong>。</p>
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-018-二、按任务-prompt-逐个观察生成结果" data-chapter="二、按任务 prompt 逐个观察生成结果" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">二、按任务 prompt 逐个观察生成结果</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-019-二、按任务-prompt-逐个观察生成结果-2-1-a1-：自由生成-prompt"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span></div>
+        <h3 class="content-title level-3">2.1 <code class="inline-code">a1</code>：自由生成 prompt</h3>
+        <div class="content-body">
+          <p class="block-paragraph">这一组任务是整个项目的起点。它不给模型规定词牌，也不给模型规定主题，只要求它自己写出一首“像样的宋词”。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-020-二、按任务-prompt-逐个观察生成结果-2-1-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection="2.1.1 实际使用的 prompt 原文"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span><span class="crumb">2.1.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.1.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>你现在是一位精通宋词的中国古典文学专家，也是一个数据生成引擎。
+你需要自己选择一个词牌，创作一首符合格律的完整的宋词。请务必注意所作词的字数，格律（使用词林正韵、使用钦定词谱）的准确性。内容希望尽可能多样，不能千篇一律。希望能有一定创新性。请尽可能不要抄袭。
+
+【输出要求】
+你必须严格输出且仅输出合法的 JSON 格式数据，不要包含任何额外的解释、问候或 markdown 标记（如 ```json）。
+
+【字段及约束说明】
+1. &quot;cipai&quot; (字符串): 词牌名。
+2. &quot;title&quot; (字符串): 词的自拟题目。
+3. &quot;content&quot; (字符串): 词的正文。请严格遵循该词牌的字数和句式，句子之间用全角逗号“，”或句号“。”分隔，不要包含换行符。
+
+现在，请开始生成。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-021-二、按任务-prompt-逐个观察生成结果-2-1-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection="2.1.2 样本展示"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span><span class="crumb">2.1.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.1.2 样本展示</h4>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">doubao-seed-2.0-pro</code>，<code class="inline-code">鹧鸪天</code>，<code class="inline-code">夏末过郊野残塘</code>，格律分 <code class="inline-code">100</code></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-022-二、按任务-prompt-逐个观察生成结果-2-1-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection="2.1.2 样本展示"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span><span class="crumb">2.1.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.1.2 样本展示</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>岸柳牵风浅著黄，残荷擎雨暗留香。轻鸥点破波心碧，老蛩吟残陌上霜。
+云影淡，客愁长，年光容易误疏狂。欲寻旧梦浑无迹，只剩寒塘送夕阳。</code></pre>
+    </div>
+  
+<p class="block-paragraph"><code class="inline-code">deepseek-3.2-thinking</code>，<code class="inline-code">蝶恋花</code>，<code class="inline-code">数字时代感怀</code>，格律分 <code class="inline-code">100</code></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-023-二、按任务-prompt-逐个观察生成结果-2-1-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection="2.1.2 样本展示"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span><span class="crumb">2.1.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.1.2 样本展示</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>网络连天云卷处，信息纷飞，似雪随风舞。数据海洋深几许，人机对话新情绪。
+代码如诗情未露，算法精微，幻化千般路。古韵新声相映辅，时光流转心长驻。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-024-二、按任务-prompt-逐个观察生成结果-2-1-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection="2.1.3 先看整体结果"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span><span class="crumb">2.1.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.1.3 先看整体结果</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>项目</th><th><code class="inline-code">a1</code> 整体表现</th></tr></thead>
+        <tbody><tr><td>样本总数</td><td><code class="inline-code">402</code></td></tr>
+<tr><td>平均格律分</td><td><code class="inline-code">70.37</code></td></tr>
+<tr><td>满分率</td><td><code class="inline-code">49.0%</code></td></tr>
+<tr><td>高质量比例</td><td><code class="inline-code">59.7%</code></td></tr>
+<tr><td><code class="inline-code">0</code> 分比例</td><td><code class="inline-code">19.9%</code></td></tr>
+<tr><td>最常见词牌</td><td><code class="inline-code">鹧鸪天(97)</code>、<code class="inline-code">青玉案(70)</code>、<code class="inline-code">临江仙(32)</code></td></tr>
+<tr><td>最常见意象</td><td><code class="inline-code">西风(67)</code>、<code class="inline-code">孤舟(55)</code>、<code class="inline-code">芦花(52)</code>、<code class="inline-code">明月(47)</code>、<code class="inline-code">星河(34)</code></td></tr>
+<tr><td>最常见类型</td><td><code class="inline-code">离别羁旅(138)</code>、<code class="inline-code">闲适隐逸(59)</code>、<code class="inline-code">豪情壮志(41)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表先给出三个直接印象。第一，所谓“自由生成”并不等于真正发散，模型很快会回到少数自己熟悉的词牌。第二，意象并不杂乱无章，而是明显偏向风月、舟楫、秋江、远望这一组传统词语。第三，在不指定题目的情况下，模型最容易自然落向的题材，不是议论性、叙事性很强的作品，而是更常见的羁旅感伤一路。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-025-二、按任务-prompt-逐个观察生成结果-2-1-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection="2.1.3 先看整体结果"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span><span class="crumb">2.1.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.1.3 先看整体结果</h4>
+        <div class="content-body">
+          <p class="block-paragraph">换句话说，<code class="inline-code">a1</code> 已经暴露出一个很重要的事实：模型即使没有被要求“写成某种词”，也会主动把自己收束到少数默认路径中。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-026-二、按任务-prompt-逐个观察生成结果-2-1-4-三个主力模型的默认状态"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection="2.1.4 三个主力模型的默认状态"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span><span class="crumb">2.1.4 三个主力模型的默认状态</span></div>
+        <h4 class="content-title level-4">2.1.4 三个主力模型的默认状态</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>模型</th><th>样本</th><th>平均格律分</th><th>默认词牌</th><th>意象倾向</th><th>类型倾向</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">doubao-seed-2.0-pro</code></td><td><code class="inline-code">50</code></td><td><code class="inline-code">94.32</code></td><td><code class="inline-code">鹧鸪天(26)</code>、<code class="inline-code">卜算子(18)</code>、<code class="inline-code">浣溪沙(5)</code></td><td><code class="inline-code">清露</code>、<code class="inline-code">岸柳</code>、<code class="inline-code">石径</code>、<code class="inline-code">晚风</code>、<code class="inline-code">野菊</code></td><td><code class="inline-code">闲适隐逸(14)</code>、<code class="inline-code">山水田园(11)</code>、<code class="inline-code">离别羁旅(8)</code></td></tr>
+<tr><td><code class="inline-code">deepseek-3.2-thinking</code></td><td><code class="inline-code">50</code></td><td><code class="inline-code">69.52</code></td><td><code class="inline-code">鹧鸪天(15)</code>、<code class="inline-code">青玉案(11)</code>、<code class="inline-code">蝶恋花(5)</code></td><td><code class="inline-code">数据</code>、<code class="inline-code">代码</code>、<code class="inline-code">算法</code>、<code class="inline-code">星河</code>、<code class="inline-code">键盘</code></td><td><code class="inline-code">咏物寄托(13)</code>、<code class="inline-code">悼亡相思(9)</code>、<code class="inline-code">豪情壮志(7)</code></td></tr>
+<tr><td><code class="inline-code">qwen3.6-plus</code></td><td><code class="inline-code">49</code></td><td><code class="inline-code">64.49</code></td><td><code class="inline-code">鹧鸪天(21)</code>、<code class="inline-code">青玉案(8)</code>、<code class="inline-code">临江仙(8)</code></td><td><code class="inline-code">孤舟</code>、<code class="inline-code">雁字</code>、<code class="inline-code">西风</code>、<code class="inline-code">芦花</code>、<code class="inline-code">星斗</code></td><td><code class="inline-code">离别羁旅(29)</code>、<code class="inline-code">闲适隐逸(8)</code>、<code class="inline-code">豪情壮志(4)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">从格律表现看，三者一开始就拉开了差距。<code class="inline-code">doubao</code> 在自由状态下已经非常稳，平均分 <code class="inline-code">94.32</code>，说明它会主动选择自己能驾驭的词牌；<code class="inline-code">deepseek</code> 和 <code class="inline-code">qwen3.6-plus</code> 则明显没那么稳，尤其 <code class="inline-code">qwen3.6-plus</code> 在自由任务里也已经出现了较高的失误率。</p>
+<p class="block-paragraph dense">从内容倾向看，三者的“默认宋词观”也不一样。<code class="inline-code">doubao</code> 更像在写传统景物词，常用的是清露、岸柳、石径、晚风这一类不太冒险的古典语汇；<code class="inline-code">deepseek</code> 最特别，它会把 <code class="inline-code">数据</code>、<code class="inline-code">代码</code>、<code class="inline-code">算法</code> 这类现代词直接带进词里，这种写法确实有辨识度，但也最容易让读者感到它并没有完全进入宋词语境；<code class="inline-code">qwen3.6-plus</code> 则最容易迅速滑回到羁旅感伤这条旧路上，孤舟、雁字、西风、芦花几乎很快就组成了它的默认场景。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-027-二、按任务-prompt-逐个观察生成结果-2-1-a1-：自由生成-prompt"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.1 `a1`：自由生成 prompt"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.1 <code class="inline-code">a1</code>：自由生成 prompt</span></div>
+        <h3 class="content-title level-3">2.1 <code class="inline-code">a1</code>：自由生成 prompt</h3>
+        <div class="content-body">
+          <h5 class="inline-subheading">2.1.5 补充观察</h5>
+<p class="block-paragraph">补充模型里也能看到类似现象。<code class="inline-code">qwen3-max</code> 的平均格律分达到 <code class="inline-code">93.17</code>，看上去很强，但它的 <code class="inline-code">48</code> 首样本中有 <code class="inline-code">39</code> 首都写成了 <code class="inline-code">青玉案</code>，类型上也几乎压到 <code class="inline-code">离别羁旅</code> 一路，这说明它的高分部分建立在很强的默认收束上。相较之下，<code class="inline-code">glm-5</code> 的分布更散，但稳定性不足，说明“会换词牌”和“能写稳”并不是一回事。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-028-二、按任务-prompt-逐个观察生成结果-2-2-b1-：固定五词牌、无主题-prompt"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.2 `b1`：固定五词牌、无主题 prompt"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.2 <code class="inline-code">b1</code>：固定五词牌、无主题 prompt</span></div>
+        <h3 class="content-title level-3">2.2 <code class="inline-code">b1</code>：固定五词牌、无主题 prompt</h3>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">b1</code> 比 <code class="inline-code">a1</code> 只多了一层限制：研究者不再让模型自己挑词牌，而是固定在五个词牌中生成。但主题仍然不规定。也正因为如此，<code class="inline-code">b1</code> 很适合拿来观察“形式约束”本身的作用，看词牌一旦被指定，模型的格律、意象和题材会如何变化。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-029-二、按任务-prompt-逐个观察生成结果-2-2-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.2 `b1`：固定五词牌、无主题 prompt"
+      data-subsection="2.2.1 实际使用的 prompt 原文"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.2 <code class="inline-code">b1</code>：固定五词牌、无主题 prompt</span><span class="crumb">2.2.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.2.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>你现在是一位精通宋词的中国古典文学专家，也是一个数据生成引擎。
+你需要使用我提供的【词牌名】，创作一首符合格律的完整的宋词,使用词林正韵,使用钦定词谱。请务必注意所作词的字数，保证要输出完整的一首词，并注意格律的准确性。内容希望尽可能多样，不能千篇一律。希望能有一定创新性。请尽可能不要抄袭。
+
+【输出要求】
+你必须严格输出且仅输出合法的 JSON 格式数据，不要包含任何额外的解释、问候或 markdown 标记（如 ```json）。
+
+【字段及约束说明】
+1. &quot;cipai&quot; (字符串): 词牌名。
+2. &quot;title&quot; (字符串): 词的自拟题目。
+3. &quot;content&quot; (字符串): 词的正文。请严格遵循该词牌的字数和句式，句子之间用全角逗号“，”或句号“。”分隔，不要包含换行符。
+
+【示例】
+输出：
+{
+  &quot;cipai&quot;: &quot;如梦令&quot;,
+  &quot;title&quot;: &quot;春晚&quot;,
+  &quot;content&quot;: &quot;昨夜雨疏风骤，浓睡不消残酒。试问卷帘人，却道海棠依旧。知否，知否？应是绿肥红瘦。&quot;,
+}
+
+现在，请开始生成。输入：词牌名：《{cipai_name}》</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-030-二、按任务-prompt-逐个观察生成结果-2-2-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.2 `b1`：固定五词牌、无主题 prompt"
+      data-subsection="2.2.1 实际使用的 prompt 原文"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.2 <code class="inline-code">b1</code>：固定五词牌、无主题 prompt</span><span class="crumb">2.2.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.2.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          <p class="block-paragraph">实际运行时，最后一行中的 <code class="inline-code">{cipai_name}</code> 会被分别替换成 <code class="inline-code">清平乐</code>、<code class="inline-code">浪淘沙</code>、<code class="inline-code">菩萨蛮</code>、<code class="inline-code">沁园春</code>、<code class="inline-code">祝英台近</code>。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-031-二、按任务-prompt-逐个观察生成结果-2-2-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.2 `b1`：固定五词牌、无主题 prompt"
+      data-subsection="2.2.2 样本展示"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.2 <code class="inline-code">b1</code>：固定五词牌、无主题 prompt</span><span class="crumb">2.2.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.2.2 样本展示</h4>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">doubao-seed-2.0-pro</code>，<code class="inline-code">浪淘沙</code>，<code class="inline-code">客中秋望</code>，格律分 <code class="inline-code">100</code></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-032-二、按任务-prompt-逐个观察生成结果-2-2-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.2 `b1`：固定五词牌、无主题 prompt"
+      data-subsection="2.2.2 样本展示"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.2 <code class="inline-code">b1</code>：固定五词牌、无主题 prompt</span><span class="crumb">2.2.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.2.2 样本展示</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>霜叶满汀湾，雁带秋寒。西风吹袂倚阑干。望极遥天烟水阔，何处家山。
+客鬓已催残，旧约都闲。孤灯酒醒漏声阑。待得东君传信早，同醉花间。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-033-二、按任务-prompt-逐个观察生成结果-2-2-3-五个词牌的总体差异"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.2 `b1`：固定五词牌、无主题 prompt"
+      data-subsection="2.2.3 五个词牌的总体差异"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.2 <code class="inline-code">b1</code>：固定五词牌、无主题 prompt</span><span class="crumb">2.2.3 五个词牌的总体差异</span></div>
+        <h4 class="content-title level-4">2.2.3 五个词牌的总体差异</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>词牌</th><th>样本</th><th>平均格律分</th><th>满分率</th><th>高质量比例</th><th><code class="inline-code">0</code> 分比例</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">浪淘沙</code></td><td><code class="inline-code">125</code></td><td><code class="inline-code">84.10</code></td><td><code class="inline-code">74.4%</code></td><td><code class="inline-code">80.8%</code></td><td><code class="inline-code">12.0%</code></td></tr>
+<tr><td><code class="inline-code">清平乐</code></td><td><code class="inline-code">136</code></td><td><code class="inline-code">84.00</code></td><td><code class="inline-code">71.3%</code></td><td><code class="inline-code">77.9%</code></td><td><code class="inline-code">11.8%</code></td></tr>
+<tr><td><code class="inline-code">菩萨蛮</code></td><td><code class="inline-code">148</code></td><td><code class="inline-code">72.43</code></td><td><code class="inline-code">53.4%</code></td><td><code class="inline-code">58.8%</code></td><td><code class="inline-code">14.2%</code></td></tr>
+<tr><td><code class="inline-code">祝英台近</code></td><td><code class="inline-code">135</code></td><td><code class="inline-code">62.81</code></td><td><code class="inline-code">39.3%</code></td><td><code class="inline-code">52.6%</code></td><td><code class="inline-code">27.4%</code></td></tr>
+<tr><td><code class="inline-code">沁园春</code></td><td><code class="inline-code">142</code></td><td><code class="inline-code">56.90</code></td><td><code class="inline-code">36.6%</code></td><td><code class="inline-code">46.5%</code></td><td><code class="inline-code">31.7%</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表已经把词牌差异说得很清楚。<code class="inline-code">清平乐</code> 和 <code class="inline-code">浪淘沙</code> 是明显的“稳区”，模型写起来最不容易崩；<code class="inline-code">菩萨蛮</code> 虽然还在可控范围内，但已经没那么稳；<code class="inline-code">祝英台近</code> 和 <code class="inline-code">沁园春</code> 则明显进入高压区，其中《沁园春》最难。也就是说，<code class="inline-code">b1</code> 的意义不在于让所有模型普遍变好，而在于第一次把“词牌难度”这件事直接摆到了台面上。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-034-二、按任务-prompt-逐个观察生成结果-2-2-4-不同词牌把内容拉向哪里"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.2 `b1`：固定五词牌、无主题 prompt"
+      data-subsection="2.2.4 不同词牌把内容拉向哪里"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.2 <code class="inline-code">b1</code>：固定五词牌、无主题 prompt</span><span class="crumb">2.2.4 不同词牌把内容拉向哪里</span></div>
+        <h4 class="content-title level-4">2.2.4 不同词牌把内容拉向哪里</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap">
+      <table class="block-table">
+        <thead><tr><th>词牌</th><th>代表意象</th><th>主要类型</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">清平乐</code></td><td><code class="inline-code">明月</code>、<code class="inline-code">西风</code>、<code class="inline-code">斜阳</code>、<code class="inline-code">清风</code>、<code class="inline-code">孤舟</code></td><td><code class="inline-code">闲适隐逸(47)</code>、<code class="inline-code">离别羁旅(32)</code>、<code class="inline-code">山水田园(20)</code></td></tr>
+<tr><td><code class="inline-code">浪淘沙</code></td><td><code class="inline-code">孤舟</code>、<code class="inline-code">烟水</code>、<code class="inline-code">荻花</code>、<code class="inline-code">雁字</code>、<code class="inline-code">明月</code></td><td><code class="inline-code">离别羁旅(79)</code>、<code class="inline-code">闲适隐逸(16)</code>、<code class="inline-code">怀古咏史(13)</code></td></tr>
+<tr><td><code class="inline-code">菩萨蛮</code></td><td><code class="inline-code">明月</code>、<code class="inline-code">孤舟</code>、<code class="inline-code">芦花</code>、<code class="inline-code">烟波</code>、<code class="inline-code">西风</code></td><td><code class="inline-code">离别羁旅(90)</code>、<code class="inline-code">悼亡相思(15)</code>、<code class="inline-code">春怨秋悲(13)</code></td></tr>
+<tr><td><code class="inline-code">沁园春</code></td><td><code class="inline-code">明月</code>、<code class="inline-code">雁阵</code>、<code class="inline-code">斜阳</code>、<code class="inline-code">西风</code>、<code class="inline-code">芦花</code></td><td><code class="inline-code">怀古咏史(51)</code>、<code class="inline-code">豪情壮志(35)</code>、<code class="inline-code">闲适隐逸(28)</code></td></tr>
+<tr><td><code class="inline-code">祝英台近</code></td><td><code class="inline-code">暮云</code>、<code class="inline-code">西风</code>、<code class="inline-code">明月</code>、<code class="inline-code">雁字</code>、<code class="inline-code">阑干</code></td><td><code class="inline-code">离别羁旅(80)</code>、<code class="inline-code">悼亡相思(28)</code>、<code class="inline-code">春怨秋悲(14)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">从内容上看，五个词牌并不是简单地“换了个外壳”。<code class="inline-code">清平乐</code> 更容易把模型拉向清景、闲情、小令式的抒写，所以它的主类型是 <code class="inline-code">闲适隐逸</code>；<code class="inline-code">浪淘沙</code> 很快就把内容推向江天远望、舟中怀人的羁旅场景；<code class="inline-code">菩萨蛮</code> 和 <code class="inline-code">祝英台近</code> 也偏感伤，但前者更容易滑向秋江晚景，后者则更容易形成栏畔回望、欲说还休的凝结情绪。</p>
+<p class="block-paragraph">最特别的是《沁园春》。它的格律最难稳住，但内容并没有像其他几个词牌那样大量压到羁旅感伤一路，反而更容易转向 <code class="inline-code">怀古咏史</code> 和 <code class="inline-code">豪情壮志</code>。这说明《沁园春》对模型造成的影响，不只是“更难”，也是“更容易把内容往大开大合、议论放言的方向带”。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-035-二、按任务-prompt-逐个观察生成结果-2-3-b2-：五词牌-改革主题-prompt"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span></div>
+        <h3 class="content-title level-3">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</h3>
+        <div class="content-body">
+          <p class="block-paragraph">到了 <code class="inline-code">b2</code>，词牌仍然固定在前面的五个词牌中，但 prompt 又额外加入了“宗门改革”的完整情境。也就是说，模型此时不只是要把词写成某一词牌，还要把词写成一个处在制度压迫与改革犹疑中的人物之作。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-036-二、按任务-prompt-逐个观察生成结果-2-3-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection="2.3.1 实际使用的 prompt 原文"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span><span class="crumb">2.3.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.3.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          <p class="block-paragraph">下面列出一条实际输入的完整 prompt。<code class="inline-code">b2</code> 在运行时会在五个词牌之间轮换；这里以《清平乐》这一条为例，其他几条仅词牌名不同，主题内容完全相同。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-037-二、按任务-prompt-逐个观察生成结果-2-3-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection="2.3.1 实际使用的 prompt 原文"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span><span class="crumb">2.3.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.3.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>你现在是一位精通宋词的中国古典文学专家，也是一个数据生成引擎。
+你需要使用我提供的【词牌名】和【主题和背景】，创作一首符合格律的完整的宋词，使用词林正韵，最好使用钦定词谱。请务必注意所作词的完整性和格律的准确性。你需要在主题和背景的框架下充分发挥创造力，体现文学的美，努力学习使用词人常用的抒情手法。希望能有一定创新性。请尽可能不要抄袭。
+
+【输出要求】
+你必须严格输出且仅输出合法的 JSON 格式数据，不要包含任何额外的解释、问候或 markdown 标记（如 ```json）。
+
+【字段及约束说明】
+1. &quot;cipai&quot; (字符串): 词牌名。
+2. &quot;title&quot; (字符串): 词的自拟题目。
+3. &quot;content&quot; (字符串): 词的正文。请严格遵循该词牌的字数和句式，句子之间用全角逗号“，”或句号“。”分隔，不要包含换行符。
+
+【示例】
+输出：
+{
+  &quot;cipai&quot;: &quot;如梦令&quot;,
+  &quot;title&quot;: &quot;春晚&quot;,
+  &quot;content&quot;: &quot;昨夜雨疏风骤，浓睡不消残酒。试问卷帘人，却道海棠依旧。知否，知否？应是绿肥红瘦。&quot;,
+}
+
+现在，请开始生成。输入：词牌名：《清平乐》，</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-038-二、按任务-prompt-逐个观察生成结果-2-3-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection="2.3.1 实际使用的 prompt 原文"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span><span class="crumb">2.3.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.3.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>主题和背景：假设你是一个修仙世界一个宗派的年轻长老，看到了宗派中传统的规矩和观念对宗派中的弟子的压抑，希望能改变这个现实，但是发现严格的规矩的确能一定程度上能保证在危机面前的战斗力，而且宗派中很多长老也很反对这个改革。你在挣扎中写了一首词来抒发自己的想法。</code></pre>
+    </div>
+  
+<p class="block-paragraph">与 <code class="inline-code">b1</code> 相比，这里新增的不是一个抽象的“改革”标签，而是一整段带有人物身份、制度冲突和心理挣扎的写作情境。它要求模型把形式、场景和立场同时组织起来，因此比 <code class="inline-code">b1</code> 明显更难。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-039-二、按任务-prompt-逐个观察生成结果-2-3-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection="2.3.2 样本展示"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span><span class="crumb">2.3.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.3.2 样本展示</h4>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">doubao-seed-2.0-pro</code>，<code class="inline-code">清平乐</code>，<code class="inline-code">玄峰观规有感</code>，格律分 <code class="inline-code">100</code></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-040-二、按任务-prompt-逐个观察生成结果-2-3-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection="2.3.2 样本展示"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span><span class="crumb">2.3.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.3.2 样本展示</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>霜钟催鼓，束尽青衿步。旧例森严传自古，可护玄门寒暑。
+诸公各执陈章，谁怜少俊摧藏？我欲裁冰剪雨，又恐寒透云廊。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-041-二、按任务-prompt-逐个观察生成结果-2-3-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection="2.3.3 先看整体结果"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span><span class="crumb">2.3.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.3.3 先看整体结果</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>项目</th><th><code class="inline-code">b2</code> 整体表现</th></tr></thead>
+        <tbody><tr><td>样本总数</td><td><code class="inline-code">628</code></td></tr>
+<tr><td>平均格律分</td><td><code class="inline-code">63.03</code></td></tr>
+<tr><td>满分率</td><td><code class="inline-code">40.1%</code></td></tr>
+<tr><td>高质量比例</td><td><code class="inline-code">50.6%</code></td></tr>
+<tr><td><code class="inline-code">0</code> 分比例</td><td><code class="inline-code">24.0%</code></td></tr>
+<tr><td>与 <code class="inline-code">b1</code> 简比</td><td>均分 <code class="inline-code">-8.71</code>；高质量比例 <code class="inline-code">-12.2</code> 个百分点；<code class="inline-code">0</code> 分比例 <code class="inline-code">+4.5</code> 个百分点</td></tr>
+<tr><td>最常见意象</td><td><code class="inline-code">樊笼(71)</code>、<code class="inline-code">劫火(54)</code>、<code class="inline-code">灵根(51)</code>、<code class="inline-code">剑气(48)</code>、<code class="inline-code">铁律(48)</code></td></tr>
+<tr><td>最常见类型</td><td><code class="inline-code">谈禅说理(258)</code>、<code class="inline-code">咏物寄托(249)</code>、<code class="inline-code">豪情壮志(121)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">和 <code class="inline-code">b1</code> 相比，<code class="inline-code">b2</code> 最直观的变化，是模型不再自然滑向羁旅感伤一路，而是被这组改革叙事强行拉进新的词汇场。<code class="inline-code">樊笼</code>、<code class="inline-code">劫火</code>、<code class="inline-code">灵根</code>、<code class="inline-code">剑气</code>、<code class="inline-code">铁律</code> 这些词已经说明，主题压力一旦加入，意象池就不再由词牌单独决定，而开始被情境本身改写。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-042-二、按任务-prompt-逐个观察生成结果-2-3-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection="2.3.3 先看整体结果"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span><span class="crumb">2.3.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.3.3 先看整体结果</h4>
+        <div class="content-body">
+          <p class="block-paragraph">同时，这种改写并不是free的。<code class="inline-code">b2</code> 的平均格律分比 <code class="inline-code">b1</code> 低了 <code class="inline-code">8.71</code> 分，<code class="inline-code">0</code> 分比例也明显上升。这说明主题进入之后，模型确实更容易顾此失彼。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-043-二、按任务-prompt-逐个观察生成结果-2-3-4-三个主力模型的响应方式"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.3 `b2`：五词牌 + 改革主题 prompt"
+      data-subsection="2.3.4 三个主力模型的响应方式"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.3 <code class="inline-code">b2</code>：五词牌 + 改革主题 prompt</span><span class="crumb">2.3.4 三个主力模型的响应方式</span></div>
+        <h4 class="content-title level-4">2.3.4 三个主力模型的响应方式</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>模型</th><th>样本</th><th>平均格律分</th><th>意象倾向</th><th>类型倾向</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">doubao-seed-2.0-pro</code></td><td><code class="inline-code">200</code></td><td><code class="inline-code">81.08</code></td><td><code class="inline-code">樊笼</code>、<code class="inline-code">劫火</code>、<code class="inline-code">松风</code>、<code class="inline-code">雏鹰</code>、<code class="inline-code">云</code></td><td><code class="inline-code">谈禅说理(126)</code>、<code class="inline-code">咏物寄托(66)</code>、<code class="inline-code">豪情壮志(8)</code></td></tr>
+<tr><td><code class="inline-code">deepseek-3.2-thinking</code></td><td><code class="inline-code">200</code></td><td><code class="inline-code">51.92</code></td><td><code class="inline-code">春风</code>、<code class="inline-code">晨钟</code>、<code class="inline-code">暮鼓</code>、<code class="inline-code">宗门</code>、<code class="inline-code">剑气</code></td><td><code class="inline-code">咏物寄托(78)</code>、<code class="inline-code">谈禅说理(77)</code>、<code class="inline-code">豪情壮志(45)</code></td></tr>
+<tr><td><code class="inline-code">qwen3.6-plus</code></td><td><code class="inline-code">161</code></td><td><code class="inline-code">59.43</code></td><td><code class="inline-code">铁律</code>、<code class="inline-code">青衿</code>、<code class="inline-code">星斗</code>、<code class="inline-code">剑阁</code>、<code class="inline-code">灵根</code></td><td><code class="inline-code">咏物寄托(67)</code>、<code class="inline-code">豪情壮志(51)</code>、<code class="inline-code">谈禅说理(43)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph dense">三款主力模型对这条 prompt 的响应方向并不一样。<code class="inline-code">doubao</code> 仍然保持了明显的格律优势，平均分还有 <code class="inline-code">81.08</code>，说明它在“加了主题之后”仍能把形式守住不少；但它的内容明显转向说理色彩最强的一路，<code class="inline-code">谈禅说理</code> 占到 <code class="inline-code">126</code> 首，几乎成了它理解“改革主题”的主要方式。<code class="inline-code">deepseek</code> 的格律压力最大，均分掉到 <code class="inline-code">51.92</code>，但在内容上反而最摇摆，<code class="inline-code">咏物寄托</code> 和 <code class="inline-code">谈禅说理</code> 几乎并列。<code class="inline-code">qwen3.6-plus</code> 则更容易把这类主题写成带有立志、冲决意味的作品，所以 <code class="inline-code">豪情壮志</code> 的比重明显高于另外两家。</p>
+<p class="block-paragraph">也就是说，同样面对“宗门改革”这一情境，不同模型理解它的方式并不一致。有的把它写成说理，有的把它写成象征寄托，有的更倾向把它写成带冲突感的抒怀词。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-044-二、按任务-prompt-逐个观察生成结果-2-4-b3-：五词牌-玉兰主题-prompt"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span></div>
+        <h3 class="content-title level-3">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</h3>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">b3</code> 和 <code class="inline-code">b2</code> 结构相同，仍然是五词牌轮换，但主题从“宗门改革”换成了“大学生在白玉兰前重新找到生命价值”。因此，这一节最值得看的，不只是它和 <code class="inline-code">b1</code> 的差异，也包括它和 <code class="inline-code">b2</code> 的差异：同样是在五词牌里加主题，两类主题会把内容推向不同方向。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-045-二、按任务-prompt-逐个观察生成结果-2-4-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection="2.4.1 实际使用的 prompt 原文"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span><span class="crumb">2.4.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.4.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          <p class="block-paragraph">同样地，<code class="inline-code">b3</code> 在运行时会轮换五个词牌。下面列出一条实际输入的完整 prompt，这里仍以《清平乐》为例。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-046-二、按任务-prompt-逐个观察生成结果-2-4-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection="2.4.1 实际使用的 prompt 原文"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span><span class="crumb">2.4.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.4.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>你现在是一位精通宋词的中国古典文学专家，也是一个数据生成引擎。
+你需要使用我提供的【词牌名】和【主题和背景】，创作一首符合格律的完整的宋词，使用词林正韵，最好使用钦定词谱。请务必注意所作词的完整性和格律的准确性。你需要在主题和背景的框架下充分发挥创造力，体现文学的美，努力学习使用词人常用的抒情手法。希望能有一定创新性。请尽可能不要抄袭。
+
+【输出要求】
+你必须严格输出且仅输出合法的 JSON 格式数据，不要包含任何额外的解释、问候或 markdown 标记（如 ```json）。
+
+【字段及约束说明】
+1. &quot;cipai&quot; (字符串): 词牌名。
+2. &quot;title&quot; (字符串): 词的自拟题目。
+3. &quot;content&quot; (字符串): 词的正文。请严格遵循该词牌的字数和句式，句子之间用全角逗号“，”或句号“。”分隔，不要包含换行符。
+
+【示例】
+输出：
+{
+  &quot;cipai&quot;: &quot;如梦令&quot;,
+  &quot;title&quot;: &quot;春晚&quot;,
+  &quot;content&quot;: &quot;昨夜雨疏风骤，浓睡不消残酒。试问卷帘人，却道海棠依旧。知否，知否？应是绿肥红瘦。&quot;,
+}
+
+现在，请开始生成。输入：词牌名：《清平乐》，主题和背景：假设你是一个喜欢写宋词的大学生，最近在学业和面试上屡遇挫折，但是你看到了一颗盛开着白玉兰花的树，似乎重新找到了生命的实在与价值，便写了一首词。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-047-二、按任务-prompt-逐个观察生成结果-2-4-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection="2.4.1 实际使用的 prompt 原文"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span><span class="crumb">2.4.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.4.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          <p class="block-paragraph">和 <code class="inline-code">b1</code> 相比，这里同样增加了完整情境；但和 <code class="inline-code">b2</code> 不同的是，这一情境从一开始就更容易朝“景物中心”的写法收束，因为白玉兰本身就是一个很强的意象锚点。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-048-二、按任务-prompt-逐个观察生成结果-2-4-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection="2.4.2 样本展示"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span><span class="crumb">2.4.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.4.2 样本展示</h4>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">deepseek-3.2-thinking</code>，<code class="inline-code">清平乐</code>，<code class="inline-code">玉兰春悟</code>，格律分 <code class="inline-code">100</code></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-049-二、按任务-prompt-逐个观察生成结果-2-4-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection="2.4.2 样本展示"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span><span class="crumb">2.4.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.4.2 样本展示</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>书山倦旅，面试风兼雨。壮志未酬心自苦，寂寂春寒谁诉。
+忽看玉树花开，冰姿玉骨皑皑。霎那灵光顿悟，心灯点亮重来。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-050-二、按任务-prompt-逐个观察生成结果-2-4-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection="2.4.3 先看整体结果"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span><span class="crumb">2.4.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.4.3 先看整体结果</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>项目</th><th><code class="inline-code">b3</code> 整体表现</th></tr></thead>
+        <tbody><tr><td>样本总数</td><td><code class="inline-code">591</code></td></tr>
+<tr><td>平均格律分</td><td><code class="inline-code">65.55</code></td></tr>
+<tr><td>满分率</td><td><code class="inline-code">44.3%</code></td></tr>
+<tr><td>高质量比例</td><td><code class="inline-code">54.7%</code></td></tr>
+<tr><td><code class="inline-code">0</code> 分比例</td><td><code class="inline-code">25.2%</code></td></tr>
+<tr><td>与 <code class="inline-code">b1</code> 简比</td><td>均分 <code class="inline-code">-6.19</code>；高质量比例 <code class="inline-code">-8.1</code> 个百分点；<code class="inline-code">0</code> 分比例 <code class="inline-code">+5.7</code> 个百分点</td></tr>
+<tr><td>最常见意象</td><td><code class="inline-code">玉兰(198)</code>、<code class="inline-code">寒窗(98)</code>、<code class="inline-code">素萼(76)</code>、<code class="inline-code">玉树(51)</code>、<code class="inline-code">暗香(51)</code></td></tr>
+<tr><td>最常见类型</td><td><code class="inline-code">咏物寄托(544)</code>、<code class="inline-code">豪情壮志(31)</code>、<code class="inline-code">谈禅说理(11)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表说明，<code class="inline-code">b3</code> 和 <code class="inline-code">b2</code> 都属于“加主题之后格律下降”的一类任务，但两者对内容的影响很不一样。<code class="inline-code">b2</code> 让内容转向制度、冲突和立场；<code class="inline-code">b3</code> 则几乎立刻把内容压缩到“咏物寄托”一路。只看类型分布就能看出来：<code class="inline-code">591</code> 首中有 <code class="inline-code">544</code> 首都落在这一类，收束程度远高于 <code class="inline-code">b2</code>。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-051-二、按任务-prompt-逐个观察生成结果-2-4-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection="2.4.3 先看整体结果"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span><span class="crumb">2.4.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.4.3 先看整体结果</h4>
+        <div class="content-body">
+          <p class="block-paragraph">也正因为这样，<code class="inline-code">b3</code> 的内容比 <code class="inline-code">b2</code> 更整齐，也更容易重复。它让模型更快进入“以玉兰寄托处境和心志”的模式，但这也意味着模型能走的路更窄。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-052-二、按任务-prompt-逐个观察生成结果-2-4-4-三个主力模型的响应方式"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.4 `b3`：五词牌 + 玉兰主题 prompt"
+      data-subsection="2.4.4 三个主力模型的响应方式"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.4 <code class="inline-code">b3</code>：五词牌 + 玉兰主题 prompt</span><span class="crumb">2.4.4 三个主力模型的响应方式</span></div>
+        <h4 class="content-title level-4">2.4.4 三个主力模型的响应方式</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>模型</th><th>样本</th><th>平均格律分</th><th>意象倾向</th><th>类型倾向</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">doubao-seed-2.0-pro</code></td><td><code class="inline-code">200</code></td><td><code class="inline-code">87.04</code></td><td><code class="inline-code">玉兰</code>、<code class="inline-code">灯窗</code>、<code class="inline-code">寒窗</code>、<code class="inline-code">春寒</code>、<code class="inline-code">清光</code></td><td><code class="inline-code">咏物寄托(183)</code>、<code class="inline-code">豪情壮志(17)</code></td></tr>
+<tr><td><code class="inline-code">deepseek-3.2-thinking</code></td><td><code class="inline-code">200</code></td><td><code class="inline-code">55.02</code></td><td><code class="inline-code">玉兰</code>、<code class="inline-code">玉树</code>、<code class="inline-code">风霜</code>、<code class="inline-code">清香</code>、<code class="inline-code">春风</code></td><td><code class="inline-code">咏物寄托(186)</code>、<code class="inline-code">谈禅说理(10)</code>、<code class="inline-code">豪情壮志(2)</code></td></tr>
+<tr><td><code class="inline-code">qwen3.6-plus</code></td><td><code class="inline-code">189</code></td><td><code class="inline-code">53.59</code></td><td><code class="inline-code">寒窗</code>、<code class="inline-code">素萼</code>、<code class="inline-code">长街</code>、<code class="inline-code">冰绡</code>、<code class="inline-code">青衫</code></td><td><code class="inline-code">咏物寄托(173)</code>、<code class="inline-code">豪情壮志(12)</code>、<code class="inline-code">春怨秋悲(3)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph dense">在这条 prompt 下，三家模型的内容方向反而比 <code class="inline-code">b2</code> 更接近。无论是 <code class="inline-code">doubao</code>、<code class="inline-code">deepseek</code> 还是 <code class="inline-code">qwen3.6-plus</code>，都大体被锁进了“玉兰 - 自况 - 寄托”这一条线上。差异主要体现在形式稳定性和细部意象选择上。<code class="inline-code">doubao</code> 依旧保持最高的格律分，而且会把玉兰与 <code class="inline-code">灯窗</code>、<code class="inline-code">寒窗</code>、<code class="inline-code">清光</code> 这类相对柔和的环境词配在一起；<code class="inline-code">deepseek</code> 更直接地抓住 <code class="inline-code">玉兰</code>、<code class="inline-code">玉树</code>、<code class="inline-code">清香</code> 这些贴近对象本身的词；<code class="inline-code">qwen3.6-plus</code> 则更容易把玉兰主题拖向人物处境，例如 <code class="inline-code">寒窗</code>、<code class="inline-code">长街</code>、<code class="inline-code">青衫</code> 这些词就比前两家更重“人”的痕迹。</p>
+<p class="block-paragraph">换言之，<code class="inline-code">b3</code> 不是让三家模型写出了完全不同的东西，而是让它们在同一条狭窄通道里各自显出一点偏向。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-053-二、按任务-prompt-逐个观察生成结果-2-5-c1-：固定《沁园春》-玉兰主题-显式模板-prompt"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span></div>
+        <h3 class="content-title level-3">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</h3>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">c1</code> 在 <code class="inline-code">b3</code> 的基础上又往前推了一步。它不再让模型在五词牌里轮换，而是把词牌固定成《沁园春》；同时，prompt 里直接给出了这一词牌的格律骨架。也就是说，这一组既是玉兰主题任务，也是一次明确的长调结构测试。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-054-二、按任务-prompt-逐个观察生成结果-2-5-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection="2.5.1 实际使用的 prompt 原文"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span><span class="crumb">2.5.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.5.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>你现在是一位精通宋词的中国古典文学专家，也是一个数据生成引擎。
+你需要使用词牌沁园春，并根据主题和背景，创作一首完全符合格律的完整的宋词。请务必注意所作词格律的准确性。内容希望尽可能多样，不能千篇一律。你需要在主题和背景的框架下充分发挥创造力，体现文学的美，努力学习使用词人常用的抒情手法。希望能有一定创新性。请尽可能不要抄袭。
+【格律参考】
+中仄平平，仄仄平平，仄仄仄平。
+
+仄中平中仄，中平中仄，中平中仄，中仄平平。
+
+中仄平平，中平中仄，中仄平平中仄平。
+
+平平仄，仄中平中仄，中仄平平。
+
+
+平平中仄平平，仄中仄平平中仄平。
+
+仄中平中仄，中平中仄，中平中仄，中仄平平。
+
+中仄平平，中平中仄，中仄平平中仄平。
+
+平平仄，仄中平中仄，中仄平平。
+</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-055-二、按任务-prompt-逐个观察生成结果-2-5-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection="2.5.1 实际使用的 prompt 原文"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span><span class="crumb">2.5.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.5.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>【输出要求】
+你必须严格输出且仅输出合法的 JSON 格式数据，不要包含任何额外的解释、问候或 markdown 标记（如 ```json）。
+
+【字段及约束说明】
+1. &quot;cipai&quot; (字符串): 词牌名。
+2. &quot;title&quot; (字符串): 词的自拟题目。
+3. &quot;content&quot; (字符串): 词的正文。请严格遵循该词牌的字数和句式，句子之间用全角逗号“，”或句号“。”分隔，不要包含换行符。
+
+【示例】
+输出：
+{
+  &quot;cipai&quot;: &quot;如梦令&quot;,
+  &quot;title&quot;: &quot;春晚&quot;,
+  &quot;content&quot;: &quot;昨夜雨疏风骤，浓睡不消残酒。试问卷帘人，却道海棠依旧。知否，知否？应是绿肥红瘦。&quot;,
+}
+
+输入：主题和背景：假设你是一个喜欢写宋词的大学生，最近在学业和面试上屡遇挫折，但是你看到了一颗盛开着白玉兰花的树，似乎重新找到了生命的实在与价值，便写了一首词。现在，请开始生成。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-056-二、按任务-prompt-逐个观察生成结果-2-5-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection="2.5.1 实际使用的 prompt 原文"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span><span class="crumb">2.5.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.5.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          <p class="block-paragraph">和 <code class="inline-code">b3</code> 相比，这里新增了两层硬约束：一是词牌不再轮换，直接固定为《沁园春》；二是 prompt 不再只说“请注意格律”，而是把格律参考直接摆在模型面前。这使它成为第二章里最明确的“强结构约束”任务。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-057-二、按任务-prompt-逐个观察生成结果-2-5-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection="2.5.2 样本展示"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span><span class="crumb">2.5.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.5.2 样本展示</h4>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">doubao-seed-2.0-pro</code>，<code class="inline-code">沁园春</code>，<code class="inline-code">阶前见玉兰感作</code>，格律分 <code class="inline-code">100</code></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-058-二、按任务-prompt-逐个观察生成结果-2-5-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection="2.5.2 样本展示"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span><span class="crumb">2.5.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.5.2 样本展示</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>案积尘笺，笔冷清灯，屡负选场。正霜痕凝鬓，囊空剩句，云程望断，翼倦愁张。信步闲阶，抬眸忽见，万朵冰蕤压矮墙。风过处，落清芬满袖，熨我肝肠。
+从前意气休伤，把块垒都浇清露香。想玉苞经岁，寒欺雪压，初心未改，才绽清光。我亦青年，何甘偃蹇，纵有磋磨道更长。抬眸望，趁春光明媚，再整行装。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-059-二、按任务-prompt-逐个观察生成结果-2-5-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection="2.5.3 先看整体结果"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span><span class="crumb">2.5.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.5.3 先看整体结果</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>项目</th><th><code class="inline-code">c1</code> 整体表现</th></tr></thead>
+        <tbody><tr><td>样本总数</td><td><code class="inline-code">551</code></td></tr>
+<tr><td>平均格律分</td><td><code class="inline-code">61.79</code></td></tr>
+<tr><td>满分率</td><td><code class="inline-code">41.6%</code></td></tr>
+<tr><td>高质量比例</td><td><code class="inline-code">53.5%</code></td></tr>
+<tr><td><code class="inline-code">0</code> 分比例</td><td><code class="inline-code">31.4%</code></td></tr>
+<tr><td>与 <code class="inline-code">b3</code> 简比</td><td>均分 <code class="inline-code">-3.76</code>；高质量比例 <code class="inline-code">-1.1</code> 个百分点；<code class="inline-code">0</code> 分比例 <code class="inline-code">+6.2</code> 个百分点</td></tr>
+<tr><td>最常见意象</td><td><code class="inline-code">玉兰(137)</code>、<code class="inline-code">琼枝(128)</code>、<code class="inline-code">寒窗(92)</code>、<code class="inline-code">琼英(86)</code>、<code class="inline-code">玉树(80)</code></td></tr>
+<tr><td>最常见类型</td><td><code class="inline-code">咏物寄托(483)</code>、<code class="inline-code">豪情壮志(60)</code>、<code class="inline-code">离别羁旅(4)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这组结果很有意思。按直觉看，prompt 已经直接把格律模板摆出来，似乎应该更容易；但从总体数据看，<code class="inline-code">c1</code> 的平均格律分仍比 <code class="inline-code">b3</code> 低了 <code class="inline-code">3.76</code> 分，<code class="inline-code">0</code> 分比例还上升了 <code class="inline-code">6.2</code> 个百分点。也就是说，显式模板确实提供了帮助，但它并不足以完全抵消《沁园春》这一长调本身带来的结构压力。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-060-二、按任务-prompt-逐个观察生成结果-2-5-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection="2.5.3 先看整体结果"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span><span class="crumb">2.5.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.5.3 先看整体结果</h4>
+        <div class="content-body">
+          <p class="block-paragraph">不过，内容上的收束确实更强了。到了 <code class="inline-code">c1</code>，玉兰主题几乎彻底占住中心，意象和类型都比 <code class="inline-code">b3</code> 更整齐。这说明显式模板没有让内容发散，反而在“固定长调 + 固定主题”的双重压力下，把模型进一步压到少数稳定写法中。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-061-二、按任务-prompt-逐个观察生成结果-2-5-4-三个主力模型的响应方式"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.5 `c1`：固定《沁园春》+ 玉兰主题 + 显式模板 prompt"
+      data-subsection="2.5.4 三个主力模型的响应方式"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.5 <code class="inline-code">c1</code>：固定《沁园春》+ 玉兰主题 + 显式模板 prompt</span><span class="crumb">2.5.4 三个主力模型的响应方式</span></div>
+        <h4 class="content-title level-4">2.5.4 三个主力模型的响应方式</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>模型</th><th>样本</th><th>平均格律分</th><th>意象倾向</th><th>类型倾向</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">doubao-seed-2.0-pro</code></td><td><code class="inline-code">200</code></td><td><code class="inline-code">74.66</code></td><td><code class="inline-code">风埃</code>、<code class="inline-code">清芬</code>、<code class="inline-code">琼英</code>、<code class="inline-code">灯窗</code>、<code class="inline-code">尘笺</code></td><td><code class="inline-code">咏物寄托(168)</code>、<code class="inline-code">豪情壮志(32)</code></td></tr>
+<tr><td><code class="inline-code">deepseek-3.2-thinking</code></td><td><code class="inline-code">200</code></td><td><code class="inline-code">63.48</code></td><td><code class="inline-code">玉兰</code>、<code class="inline-code">玉树</code>、<code class="inline-code">琼枝</code>、<code class="inline-code">寒窗</code>、<code class="inline-code">清香</code></td><td><code class="inline-code">咏物寄托(193)</code>、<code class="inline-code">豪情壮志(6)</code>、<code class="inline-code">闲适隐逸(1)</code></td></tr>
+<tr><td><code class="inline-code">qwen3.6-plus</code></td><td><code class="inline-code">149</code></td><td><code class="inline-code">41.72</code></td><td><code class="inline-code">琼枝</code>、<code class="inline-code">寒窗</code>、<code class="inline-code">素萼</code>、<code class="inline-code">长街</code>、<code class="inline-code">青衫</code></td><td><code class="inline-code">咏物寄托(121)</code>、<code class="inline-code">豪情壮志(21)</code>、<code class="inline-code">离别羁旅(4)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">在 <code class="inline-code">c1</code> 里，三家模型对内容的理解已经非常接近，差别主要在于谁还能在《沁园春》里把形式稳住。<code class="inline-code">doubao</code> 仍然是最稳的一家，均分 <code class="inline-code">74.66</code>；<code class="inline-code">deepseek</code> 虽然低一些，但还维持在可读区间；<code class="inline-code">qwen3.6-plus</code> 则掉到 <code class="inline-code">41.72</code>，说明它在长调和强结构条件下的压力显著高于前两家。</p>
+<p class="block-paragraph dense">值得注意的是，<code class="inline-code">deepseek</code> 在这组里反而比 <code class="inline-code">b3</code> 更像是“直接顺着物象走”，<code class="inline-code">玉兰</code>、<code class="inline-code">玉树</code>、<code class="inline-code">琼枝</code>、<code class="inline-code">清香</code> 都是非常贴物的词；<code class="inline-code">doubao</code> 则会加入 <code class="inline-code">风埃</code>、<code class="inline-code">尘笺</code>、<code class="inline-code">灯窗</code> 这类更能把玉兰与人物处境连起来的词。也就是说，到了强结构任务里，模型之间的区别不再主要体现在题材归属，而更体现在它们如何组织“物”与“人”的关系。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-062-二、按任务-prompt-逐个观察生成结果-2-6-c2-：固定《沁园春》-改革主题-简略格律提醒-prompt"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</span></div>
+        <h3 class="content-title level-3">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</h3>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">c2</code> 和 <code class="inline-code">c1</code> 看起来很像，都是固定《沁园春》；但它们其实不是一类任务。<code class="inline-code">c1</code> 是显式模板任务，直接把格律骨架写在 prompt 里；<code class="inline-code">c2</code> 则没有给出完整模板，只是简短提醒模型要用词林正韵和钦定词谱。因此，<code class="inline-code">c2</code> 更适合被理解为“强主题 + 简略格律提醒”，而不是“比 <code class="inline-code">c1</code> 更强的模板约束”。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-063-二、按任务-prompt-逐个观察生成结果-2-6-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt"
+      data-subsection="2.6.1 实际使用的 prompt 原文"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</span><span class="crumb">2.6.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.6.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>你现在是一位精通宋词的中国古典文学专家，也是一个数据生成引擎。
+你需要使用词牌沁园春，并根据主题和背景，使用词林正韵,使用钦定词谱，创作一首完全符合格律的完整的宋词。
+
+【输出要求】
+你必须严格输出且仅输出合法的 JSON 格式数据，不要包含任何额外的解释、问候或 markdown 标记（如 ```json）。
+
+【字段及约束说明】
+1. &quot;cipai&quot; (字符串): 词牌名。
+2. &quot;title&quot; (字符串): 词的自拟题目。
+3. &quot;content&quot; (字符串): 词的正文。请严格遵循该词牌的字数和句式，句子之间用全角逗号“，”或句号“。”分隔，不要包含换行符。
+
+【示例】
+输出：
+{
+  &quot;cipai&quot;: &quot;如梦令&quot;,
+  &quot;title&quot;: &quot;春晚&quot;,
+  &quot;content&quot;: &quot;昨夜雨疏风骤，浓睡不消残酒。试问卷帘人，却道海棠依旧。知否，知否？应是绿肥红瘦。&quot;,
+}
+
+输入：主题和背景：假设你是一个修仙世界一个宗派的年轻长老，看到了宗派中传统的规矩和观念对宗派中的弟子的压抑，希望能改变这个现实，但是发现严格的规矩的确能一定程度上能保证在危机面前的战斗力，而且宗派中很多长老也很反对这个改革。你在挣扎中写了一首词来抒发自己的想法。现在，请开始生成。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-064-二、按任务-prompt-逐个观察生成结果-2-6-1-实际使用的-prompt-原文"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt"
+      data-subsection="2.6.1 实际使用的 prompt 原文"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</span><span class="crumb">2.6.1 实际使用的 prompt 原文</span></div>
+        <h4 class="content-title level-4">2.6.1 实际使用的 prompt 原文</h4>
+        <div class="content-body">
+          <p class="block-paragraph">与 <code class="inline-code">b2</code> 相比，这里新增的是“固定《沁园春》”；但与 <code class="inline-code">c1</code> 不同，它没有给出可直接照着走的格律骨架。也正因为如此，<code class="inline-code">c2</code> 其实把模型同时推向了两个高压点：一个是长调结构本身，一个是改革主题的叙事负担。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-065-二、按任务-prompt-逐个观察生成结果-2-6-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt"
+      data-subsection="2.6.2 样本展示"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</span><span class="crumb">2.6.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.6.2 样本展示</h4>
+        <div class="content-body">
+          <p class="block-paragraph"><code class="inline-code">doubao-seed-2.0-pro</code>，<code class="inline-code">沁园春</code>，<code class="inline-code">宗门感怀</code>，格律分 <code class="inline-code">100</code></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-066-二、按任务-prompt-逐个观察生成结果-2-6-2-样本展示"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt"
+      data-subsection="2.6.2 样本展示"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</span><span class="crumb">2.6.2 样本展示</span></div>
+        <h4 class="content-title level-4">2.6.2 样本展示</h4>
+        <div class="content-body">
+          
+    <div class="code-wrap">
+      <div class="code-label">text</div>
+      <pre class="block-code"><code>万仞云峰，千叠松涛，一派仙乡。看丹炉火冷，弦歌久寂，剑痕封壁，戒律凝霜。雏鹤拘笼，新梅缚索，未许风华恣意扬。低徊久，叹陈规误尽，少辈轩昂。
+从来世路多妨，况劫火频临未可量。若束绳尽去，行舟易覆，篱藩全撤，御侮难防。宿老言深，孤心意冷，取舍何从费忖量。凭栏望，待劈开云翳，再整门纲。</code></pre>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-067-二、按任务-prompt-逐个观察生成结果-2-6-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt"
+      data-subsection="2.6.3 先看整体结果"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</span><span class="crumb">2.6.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.6.3 先看整体结果</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>项目</th><th><code class="inline-code">c2</code> 整体表现</th></tr></thead>
+        <tbody><tr><td>样本总数</td><td><code class="inline-code">264</code></td></tr>
+<tr><td>平均格律分</td><td><code class="inline-code">44.24</code></td></tr>
+<tr><td>满分率</td><td><code class="inline-code">22.7%</code></td></tr>
+<tr><td>高质量比例</td><td><code class="inline-code">34.1%</code></td></tr>
+<tr><td><code class="inline-code">0</code> 分比例</td><td><code class="inline-code">45.1%</code></td></tr>
+<tr><td>与 <code class="inline-code">b2</code> 简比</td><td>均分 <code class="inline-code">-18.79</code>；高质量比例 <code class="inline-code">-16.5</code> 个百分点；<code class="inline-code">0</code> 分比例 <code class="inline-code">+21.0</code> 个百分点</td></tr>
+<tr><td>最常见意象</td><td><code class="inline-code">青衿(46)</code>、<code class="inline-code">灵根(38)</code>、<code class="inline-code">樊笼(38)</code>、<code class="inline-code">丹炉(36)</code>、<code class="inline-code">晨钟(35)</code></td></tr>
+<tr><td>最常见类型</td><td><code class="inline-code">谈禅说理(151)</code>、<code class="inline-code">豪情壮志(86)</code>、<code class="inline-code">咏物寄托(26)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表几乎已经把 <code class="inline-code">c2</code> 的问题说明白了。和 <code class="inline-code">b2</code> 相比，平均格律分一下子掉了 <code class="inline-code">18.79</code> 分，<code class="inline-code">0</code> 分比例直接升到 <code class="inline-code">45.1%</code>。也就是说，固定《沁园春》以后，单靠“请注意词林正韵、请注意钦定词谱”这种提醒，并不足以支撑模型把长调稳定写完。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-068-二、按任务-prompt-逐个观察生成结果-2-6-3-先看整体结果"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt"
+      data-subsection="2.6.3 先看整体结果"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</span><span class="crumb">2.6.3 先看整体结果</span></div>
+        <h4 class="content-title level-4">2.6.3 先看整体结果</h4>
+        <div class="content-body">
+          <p class="block-paragraph">不过，内容上的收束反而更强了。到了 <code class="inline-code">c2</code>，类型基本被压到 <code class="inline-code">谈禅说理</code> 和 <code class="inline-code">豪情壮志</code> 两路，说明改革主题并没有松掉，反而在长调压力下变得更硬。问题不在于模型忘了写什么，而在于它们很难一边守住长调结构，一边把这些主题内容完整组织起来。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-069-二、按任务-prompt-逐个观察生成结果-2-6-4-三个主力模型的响应方式"
+      data-chapter="二、按任务 prompt 逐个观察生成结果"
+      data-section="2.6 `c2`：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt"
+      data-subsection="2.6.4 三个主力模型的响应方式"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">二、按任务 prompt 逐个观察生成结果</span><span class="crumb">2.6 <code class="inline-code">c2</code>：固定《沁园春》+ 改革主题 + 简略格律提醒 prompt</span><span class="crumb">2.6.4 三个主力模型的响应方式</span></div>
+        <h4 class="content-title level-4">2.6.4 三个主力模型的响应方式</h4>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>模型</th><th>样本</th><th>平均格律分</th><th>意象倾向</th><th>类型倾向</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">doubao-seed-2.0-pro</code></td><td><code class="inline-code">100</code></td><td><code class="inline-code">79.76</code></td><td><code class="inline-code">樊笼</code>、<code class="inline-code">仙峰</code>、<code class="inline-code">丹台</code>、<code class="inline-code">青衿</code>、<code class="inline-code">万木</code></td><td><code class="inline-code">谈禅说理(80)</code>、<code class="inline-code">豪情壮志(14)</code>、<code class="inline-code">咏物寄托(6)</code></td></tr>
+<tr><td><code class="inline-code">deepseek-3.2-thinking</code></td><td><code class="inline-code">99</code></td><td><code class="inline-code">18.59</code></td><td><code class="inline-code">晨钟</code>、<code class="inline-code">暮鼓</code>、<code class="inline-code">春风</code>、<code class="inline-code">宗门</code>、<code class="inline-code">弟子</code></td><td><code class="inline-code">谈禅说理(49)</code>、<code class="inline-code">豪情壮志(40)</code>、<code class="inline-code">咏物寄托(9)</code></td></tr>
+<tr><td><code class="inline-code">qwen3.6-plus</code></td><td><code class="inline-code">65</code></td><td><code class="inline-code">28.68</code></td><td><code class="inline-code">青衿</code>、<code class="inline-code">丹炉</code>、<code class="inline-code">灵根</code>、<code class="inline-code">剑阁</code>、<code class="inline-code">铁律</code></td><td><code class="inline-code">豪情壮志(32)</code>、<code class="inline-code">谈禅说理(22)</code>、<code class="inline-code">咏物寄托(11)</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这组里，三家模型的差距被彻底拉开。<code class="inline-code">doubao</code> 虽然也受到影响，但平均格律分还有 <code class="inline-code">79.76</code>，说明它基本能把“固定《沁园春》+ 改革主题”撑住；<code class="inline-code">deepseek</code> 和 <code class="inline-code">qwen3.6-plus</code> 则都明显崩掉了，尤其 <code class="inline-code">deepseek</code> 只剩 <code class="inline-code">18.59</code> 分，已经不是局部失误，而是结构层面的大面积失守。</p>
+<p class="block-paragraph">从内容看，三家其实都没有偏离主题。<code class="inline-code">晨钟</code>、<code class="inline-code">暮鼓</code>、<code class="inline-code">宗门</code>、<code class="inline-code">弟子</code>、<code class="inline-code">铁律</code>、<code class="inline-code">灵根</code> 这些词都很清楚地落在改革情境里。问题恰恰在于：它们在“知道要写什么”的同时，没有同样稳定地“知道怎么把它写成《沁园春》”。这也正是 <code class="inline-code">c2</code> 与 <code class="inline-code">c1</code> 的根本区别所在。</p>
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-070-三、从格律、意象、类型三个方向总结整个任务链" data-chapter="三、从格律、意象、类型三个方向总结整个任务链" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">三、从格律、意象、类型三个方向总结整个任务链</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-071-三、从格律、意象、类型三个方向总结整个任务链"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section=""
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span></div>
+        <div class="content-spacer"></div>
+        <div class="content-body">
+          <p class="block-paragraph">到了这一章，重点不再是逐条展示 prompt 本身，而是把第二章分散呈现的数据重新收束成三条更清楚的线索：形式如何变化，意象如何改写，类型如何收束。这里不再重复第二章已经展示过的模型逐项结果。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-072-三、从格律、意象、类型三个方向总结整个任务链-3-1-格律方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.1 格律方向总结"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.1 格律方向总结</span></div>
+        <h3 class="content-title level-3">3.1 格律方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">先把整条任务链的格律变化压缩成一张表：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-073-三、从格律、意象、类型三个方向总结整个任务链-3-1-格律方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.1 格律方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.1 格律方向总结</span></div>
+        <h3 class="content-title level-3">3.1 格律方向总结</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>任务</th><th>平均格律分</th><th>高质量比例</th><th><code class="inline-code">0</code> 分比例</th><th>字数不符比例</th><th>应平实仄比例</th><th>应仄实平比例</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">a1</code></td><td><code class="inline-code">70.37</code></td><td><code class="inline-code">59.7%</code></td><td><code class="inline-code">19.9%</code></td><td><code class="inline-code">11.4%</code></td><td><code class="inline-code">35.1%</code></td><td><code class="inline-code">28.6%</code></td></tr>
+<tr><td><code class="inline-code">b1</code></td><td><code class="inline-code">71.74</code></td><td><code class="inline-code">62.8%</code></td><td><code class="inline-code">19.5%</code></td><td><code class="inline-code">14.7%</code></td><td><code class="inline-code">24.3%</code></td><td><code class="inline-code">26.8%</code></td></tr>
+<tr><td><code class="inline-code">b2</code></td><td><code class="inline-code">63.03</code></td><td><code class="inline-code">50.6%</code></td><td><code class="inline-code">24.0%</code></td><td><code class="inline-code">18.8%</code></td><td><code class="inline-code">36.9%</code></td><td><code class="inline-code">31.7%</code></td></tr>
+<tr><td><code class="inline-code">b3</code></td><td><code class="inline-code">65.55</code></td><td><code class="inline-code">54.7%</code></td><td><code class="inline-code">25.2%</code></td><td><code class="inline-code">19.5%</code></td><td><code class="inline-code">31.3%</code></td><td><code class="inline-code">27.2%</code></td></tr>
+<tr><td><code class="inline-code">c1</code></td><td><code class="inline-code">61.79</code></td><td><code class="inline-code">53.5%</code></td><td><code class="inline-code">31.4%</code></td><td><code class="inline-code">10.2%</code></td><td><code class="inline-code">44.8%</code></td><td><code class="inline-code">35.9%</code></td></tr>
+<tr><td><code class="inline-code">c2</code></td><td><code class="inline-code">44.24</code></td><td><code class="inline-code">34.1%</code></td><td><code class="inline-code">45.1%</code></td><td><code class="inline-code">14.0%</code></td><td><code class="inline-code">60.2%</code></td><td><code class="inline-code">49.2%</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表可以帮助我们把几个关键变化分开来看。</p>
+<p class="block-paragraph">第一，从 <code class="inline-code">a1</code> 到 <code class="inline-code">b1</code>，格律整体并没有发生剧烈变化，但确实略有改善。平均分从 <code class="inline-code">70.37</code> 升到 <code class="inline-code">71.74</code>，高质量比例也从 <code class="inline-code">59.7%</code> 升到 <code class="inline-code">62.8%</code>。这说明单纯把词牌固定下来，确实能给模型一个基本的形式支架。换句话说，词牌约束本身不是负担，它在不少时候反而能减少模型在“写哪种词”上的摇摆。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-074-三、从格律、意象、类型三个方向总结整个任务链-3-1-格律方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.1 格律方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.1 格律方向总结</span></div>
+        <h3 class="content-title level-3">3.1 格律方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">第二，真正明显的下滑出现在主题进入之后。<code class="inline-code">b2</code> 和 <code class="inline-code">b3</code> 的平均分都低于 <code class="inline-code">b1</code>，其中改革主题的 <code class="inline-code">b2</code> 跌得更明显，均分降到 <code class="inline-code">63.03</code>。这说明主题不是一个附加说明，而是会真实占用模型的组织能力。模型在同时处理人物身份、处境冲突和抒情方向时，更容易在形式控制上失手。</p>
+<p class="block-paragraph dense">第三，长调测试把这种压力进一步放大。<code class="inline-code">c1</code> 和 <code class="inline-code">c2</code> 都固定到《沁园春》，但两者表现并不一样。<code class="inline-code">c1</code> 虽然平均分只有 <code class="inline-code">61.79</code>，但至少仍然维持在一个可读区间；<code class="inline-code">c2</code> 则直接跌到 <code class="inline-code">44.24</code>，<code class="inline-code">0</code> 分比例高达 <code class="inline-code">45.1%</code>。这说明《沁园春》真正困难的地方，不只在于它是长调，更在于长调需要持续、完整的结构控制。只提醒“注意词林正韵、注意钦定词谱”并不能替代显式模板。</p>
+<p class="block-paragraph dense">如果把错误类型拆开看，规律会更清楚。<code class="inline-code">c1</code> 的一个值得注意的特点是：它的字数不符比例只有 <code class="inline-code">10.2%</code>，反而低于 <code class="inline-code">b2</code> 和 <code class="inline-code">b3</code>。这说明显式模板确实能帮助模型守住整体篇幅和句式外框。但与此同时，<code class="inline-code">c1</code> 的平仄错误却急剧升高，<code class="inline-code">应平实仄</code> 达到 <code class="inline-code">44.8%</code>，<code class="inline-code">应仄实平</code> 达到 <code class="inline-code">35.9%</code>。也就是说，模板可以帮模型“写够”，却不能保证它“逐句写准”。</p>
+<p class="block-paragraph"><code class="inline-code">c2</code> 则更极端。它的字数不符并不是最严重的，但平仄链条几乎全面失守：<code class="inline-code">应平实仄</code> 达到 <code class="inline-code">60.2%</code>，<code class="inline-code">应仄实平</code> 达到 <code class="inline-code">49.2%</code>。这说明到了“改革主题 + 长调 + 无显式模板”的组合里，模型最先崩掉的不是押韵或个别句子，而是整条平仄链的持续控制能力。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-075-三、从格律、意象、类型三个方向总结整个任务链-3-1-格律方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.1 格律方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.1 格律方向总结</span></div>
+        <h3 class="content-title level-3">3.1 格律方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">因此，从格律这一条线看，整条任务链给出的结论并不复杂：词牌约束本身有助于稳定形式，主题压力会挤占形式控制，长调会把这种压力成倍放大，而显式模板只能部分缓解这种放大，不能彻底消除它。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-076-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.2 意象方向总结"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.2 意象方向总结</span></div>
+        <h3 class="content-title level-3">3.2 意象方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">和格律相比，意象这条线的变化更快，也更明显。模型并不是先大幅改变题材，再慢慢改变意象；相反，很多时候意象池是最先发生重组的。</p>
+<p class="block-paragraph">先看数据库之间的重合度：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-077-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.2 意象方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.2 意象方向总结</span></div>
+        <h3 class="content-title level-3">3.2 意象方向总结</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap">
+      <table class="block-table">
+        <thead><tr><th>对比组</th><th>共享意象 Jaccard</th><th>Top20 重合数</th><th>说明</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">a1</code> vs <code class="inline-code">b1</code></td><td><code class="inline-code">0.256</code></td><td><code class="inline-code">15</code></td><td>词牌固定后，默认意象仍大量延续</td></tr>
+<tr><td><code class="inline-code">b1</code> vs <code class="inline-code">b2</code></td><td><code class="inline-code">0.106</code></td><td><code class="inline-code">2</code></td><td>改革主题大幅改写原有意象池</td></tr>
+<tr><td><code class="inline-code">b1</code> vs <code class="inline-code">b3</code></td><td><code class="inline-code">0.127</code></td><td><code class="inline-code">1</code></td><td>玉兰主题几乎重建意象中心</td></tr>
+<tr><td><code class="inline-code">b3</code> vs <code class="inline-code">c1</code></td><td><code class="inline-code">0.275</code></td><td><code class="inline-code">16</code></td><td>固定《沁园春》后，玉兰主题意象仍高度延续</td></tr>
+<tr><td><code class="inline-code">b2</code> vs <code class="inline-code">c2</code></td><td><code class="inline-code">0.219</code></td><td><code class="inline-code">14</code></td><td>改革主题进入《沁园春》后，核心意象大体保留</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表说明，意象变化并不是平均发生的。<code class="inline-code">a1</code> 和 <code class="inline-code">b1</code> 的 top20 意象有 <code class="inline-code">15</code> 个重合，说明从“自由生成”到“固定五词牌”，模型依然基本活在同一套常见词语里，无非是把这些词放进更稳定的词牌框架中。也就是说，词牌能改变组织方式，但不一定立刻改写底层意象池。</p>
+<p class="block-paragraph">真正的改写发生在主题进入之后。无论是 <code class="inline-code">b2</code> 还是 <code class="inline-code">b3</code>，与 <code class="inline-code">b1</code> 的 top20 重合都几乎消失：前者只剩 <code class="inline-code">2</code> 个，后者只剩 <code class="inline-code">1</code> 个。这一点非常关键，因为它说明主题不是在原有意象池上做轻微修饰，而是在相当大程度上重建了一套新的高频词汇。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-078-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.2 意象方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.2 意象方向总结</span></div>
+        <h3 class="content-title level-3">3.2 意象方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">各数据库的高频意象也能把这种改写过程说得更具体：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-079-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.2 意象方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.2 意象方向总结</span></div>
+        <h3 class="content-title level-3">3.2 意象方向总结</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>任务</th><th>最常见意象前 5</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">a1</code></td><td><code class="inline-code">西风</code>、<code class="inline-code">孤舟</code>、<code class="inline-code">芦花</code>、<code class="inline-code">明月</code>、<code class="inline-code">星河</code></td></tr>
+<tr><td><code class="inline-code">b1</code></td><td><code class="inline-code">明月</code>、<code class="inline-code">孤舟</code>、<code class="inline-code">西风</code>、<code class="inline-code">暮云</code>、<code class="inline-code">雁字</code></td></tr>
+<tr><td><code class="inline-code">b2</code></td><td><code class="inline-code">樊笼</code>、<code class="inline-code">劫火</code>、<code class="inline-code">灵根</code>、<code class="inline-code">剑气</code>、<code class="inline-code">铁律</code></td></tr>
+<tr><td><code class="inline-code">b3</code></td><td><code class="inline-code">玉兰</code>、<code class="inline-code">寒窗</code>、<code class="inline-code">素萼</code>、<code class="inline-code">玉树</code>、<code class="inline-code">暗香</code></td></tr>
+<tr><td><code class="inline-code">c1</code></td><td><code class="inline-code">玉兰</code>、<code class="inline-code">琼枝</code>、<code class="inline-code">寒窗</code>、<code class="inline-code">琼英</code>、<code class="inline-code">玉树</code></td></tr>
+<tr><td><code class="inline-code">c2</code></td><td><code class="inline-code">青衿</code>、<code class="inline-code">灵根</code>、<code class="inline-code">樊笼</code>、<code class="inline-code">丹炉</code>、<code class="inline-code">晨钟</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph dense">从这张表可以看出，<code class="inline-code">a1</code> 和 <code class="inline-code">b1</code> 的默认意象池主要还是风月、舟楫、秋江、远望这一套传统词汇。到了 <code class="inline-code">b2</code>，这套默认池立刻被宗门改革叙事改写成另一组词：<code class="inline-code">樊笼</code>、<code class="inline-code">劫火</code>、<code class="inline-code">灵根</code>、<code class="inline-code">剑气</code>、<code class="inline-code">铁律</code>，都明显带着制度压抑、修行体系和冲突感。到了 <code class="inline-code">b3</code>，又换成以玉兰为中心的另一组词：<code class="inline-code">玉兰</code>、<code class="inline-code">素萼</code>、<code class="inline-code">玉树</code>、<code class="inline-code">暗香</code>、<code class="inline-code">寒窗</code>。</p>
+<p class="block-paragraph">这说明词牌约束主要影响的是“怎么写”，而主题约束更直接影响“写什么”。这也是为什么第二章里一旦主题进入，读者会立刻感到作品面目发生了变化。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-080-三、从格律、意象、类型三个方向总结整个任务链-3-2-意象方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.2 意象方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.2 意象方向总结</span></div>
+        <h3 class="content-title level-3">3.2 意象方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">再往下看，<code class="inline-code">b3</code> 与 <code class="inline-code">c1</code> 的 top20 意象重合达到 <code class="inline-code">16</code> 个，而 <code class="inline-code">b2</code> 与 <code class="inline-code">c2</code> 也达到 <code class="inline-code">14</code> 个。这说明进入《沁园春》以后，主题本身并没有被洗掉。长调改变的更多是形式难度，而不是意象方向。换言之，到了长调任务里，模型通常还是知道自己应该围绕什么写，只是它未必有能力把这些内容稳定地安放进长调结构中。</p>
+<p class="block-paragraph dense">这一条线还揭示出一个更细的差别：玉兰主题比改革主题更容易形成高度模板化的物象中心。<code class="inline-code">b3</code> 中 <code class="inline-code">玉兰</code> 一项就覆盖了 <code class="inline-code">36.4%</code> 的作品，到了 <code class="inline-code">c1</code>，<code class="inline-code">玉兰</code>、<code class="inline-code">琼枝</code>、<code class="inline-code">琼英</code>、<code class="inline-code">玉树</code>、<code class="inline-code">素萼</code> 这一串词几乎构成了一套稳定的替换链。改革主题虽然也会收束，但它的词汇中心更多分散在 <code class="inline-code">樊笼</code>、<code class="inline-code">灵根</code>、<code class="inline-code">青衿</code>、<code class="inline-code">晨钟</code>、<code class="inline-code">暮鼓</code>、<code class="inline-code">宗门</code> 等多个节点上，没有玉兰主题那样单核。</p>
+<p class="block-paragraph">因此，从意象这条线看，最重要的结论有两点。第一，默认意象池确实存在，而且在无主题任务中非常稳定；第二，主题一旦进入，意象会被迅速改写，其中玉兰主题的收束更强、更像围绕中心物象组织，改革主题则更像围绕情境词群展开。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-081-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.3 类型方向总结"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.3 类型方向总结</span></div>
+        <h3 class="content-title level-3">3.3 类型方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">先看整条任务链的数据库级分布：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-082-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.3 类型方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.3 类型方向总结</span></div>
+        <h3 class="content-title level-3">3.3 类型方向总结</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>任务</th><th>第一类型</th><th>占比</th><th>第二类型</th><th>占比</th><th>第三类型</th><th>占比</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">a1</code></td><td><code class="inline-code">离别羁旅</code></td><td><code class="inline-code">34.3%</code></td><td><code class="inline-code">闲适隐逸</code></td><td><code class="inline-code">14.7%</code></td><td><code class="inline-code">豪情壮志</code></td><td><code class="inline-code">10.2%</code></td></tr>
+<tr><td><code class="inline-code">b1</code></td><td><code class="inline-code">离别羁旅</code></td><td><code class="inline-code">42.7%</code></td><td><code class="inline-code">闲适隐逸</code></td><td><code class="inline-code">15.7%</code></td><td><code class="inline-code">怀古咏史</code></td><td><code class="inline-code">9.8%</code></td></tr>
+<tr><td><code class="inline-code">b2</code></td><td><code class="inline-code">谈禅说理</code></td><td><code class="inline-code">41.1%</code></td><td><code class="inline-code">咏物寄托</code></td><td><code class="inline-code">39.6%</code></td><td><code class="inline-code">豪情壮志</code></td><td><code class="inline-code">19.3%</code></td></tr>
+<tr><td><code class="inline-code">b3</code></td><td><code class="inline-code">咏物寄托</code></td><td><code class="inline-code">92.0%</code></td><td><code class="inline-code">豪情壮志</code></td><td><code class="inline-code">5.2%</code></td><td><code class="inline-code">谈禅说理</code></td><td><code class="inline-code">1.9%</code></td></tr>
+<tr><td><code class="inline-code">c1</code></td><td><code class="inline-code">咏物寄托</code></td><td><code class="inline-code">87.7%</code></td><td><code class="inline-code">豪情壮志</code></td><td><code class="inline-code">10.9%</code></td><td><code class="inline-code">离别羁旅</code></td><td><code class="inline-code">0.7%</code></td></tr>
+<tr><td><code class="inline-code">c2</code></td><td><code class="inline-code">谈禅说理</code></td><td><code class="inline-code">57.2%</code></td><td><code class="inline-code">豪情壮志</code></td><td><code class="inline-code">32.6%</code></td><td><code class="inline-code">咏物寄托</code></td><td><code class="inline-code">9.8%</code></td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表把整个项目最清楚的一条线索直接摆了出来。</p>
+<p class="block-paragraph">在无主题阶段，模型默认最容易把词写成 <code class="inline-code">离别羁旅</code>。<code class="inline-code">a1</code> 是 <code class="inline-code">34.3%</code>，到了 <code class="inline-code">b1</code> 还升到 <code class="inline-code">42.7%</code>。这说明只要不规定主题，模型对“宋词”最自然的理解，仍然是远行、怀人、秋景、感伤这一整套传统抒情模式。词牌固定以后，这一倾向没有减弱，反而更强。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-083-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.3 类型方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.3 类型方向总结</span></div>
+        <h3 class="content-title level-3">3.3 类型方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">改革主题进来以后，类型中心明显转移。<code class="inline-code">b2</code> 里，<code class="inline-code">离别羁旅</code> 已经不再是主轴，前两位变成 <code class="inline-code">谈禅说理</code> 和 <code class="inline-code">咏物寄托</code>。这说明这类题目很难再被写成纯粹的羁旅感伤词，而更容易被模型理解成“借物说理”“借处境立论”“以冲突写志”的作品。</p>
+<p class="block-paragraph">玉兰主题的变化更激烈。<code class="inline-code">b3</code> 中 <code class="inline-code">咏物寄托</code> 一项就占到 <code class="inline-code">92.0%</code>，到了 <code class="inline-code">c1</code> 仍有 <code class="inline-code">87.7%</code>。这几乎已经不是“偏向”某种类型，而是被一种中心写法高度锁定。这也是为什么第二章里玉兰主题看起来特别整齐：它不是偶然相似，而是类型上已经几乎被压成同一路数。</p>
+<p class="block-paragraph">模型之间的差异，也可以更集中地看出来：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-084-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.3 类型方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.3 类型方向总结</span></div>
+        <h3 class="content-title level-3">3.3 类型方向总结</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap">
+      <table class="block-table">
+        <thead><tr><th>任务</th><th><code class="inline-code">doubao-seed-2.0-pro</code></th><th><code class="inline-code">deepseek-3.2-thinking</code></th><th><code class="inline-code">qwen3.6-plus</code></th></tr></thead>
+        <tbody><tr><td><code class="inline-code">a1</code></td><td><code class="inline-code">闲适隐逸</code> 为首，<code class="inline-code">28.0%</code></td><td><code class="inline-code">咏物寄托</code> 为首，<code class="inline-code">26.0%</code></td><td><code class="inline-code">离别羁旅</code> 为首，<code class="inline-code">59.2%</code></td></tr>
+<tr><td><code class="inline-code">b2</code></td><td><code class="inline-code">谈禅说理</code> 为首，<code class="inline-code">63.0%</code></td><td><code class="inline-code">咏物寄托</code> <code class="inline-code">39.0%</code>，<code class="inline-code">谈禅说理</code> <code class="inline-code">38.5%</code>，最摇摆</td><td><code class="inline-code">咏物寄托</code> 为首，<code class="inline-code">41.6%</code>，<code class="inline-code">豪情壮志</code> 次之</td></tr>
+<tr><td><code class="inline-code">b3</code></td><td><code class="inline-code">咏物寄托</code> 为首，<code class="inline-code">91.5%</code></td><td><code class="inline-code">咏物寄托</code> 为首，<code class="inline-code">93.0%</code></td><td><code class="inline-code">咏物寄托</code> 为首，<code class="inline-code">91.5%</code></td></tr>
+<tr><td><code class="inline-code">c1</code></td><td><code class="inline-code">咏物寄托</code> 为首，<code class="inline-code">84.0%</code></td><td><code class="inline-code">咏物寄托</code> 为首，<code class="inline-code">96.5%</code></td><td><code class="inline-code">咏物寄托</code> 为首，<code class="inline-code">81.2%</code></td></tr>
+<tr><td><code class="inline-code">c2</code></td><td><code class="inline-code">谈禅说理</code> 为首，<code class="inline-code">80.0%</code></td><td><code class="inline-code">谈禅说理</code> <code class="inline-code">49.5%</code>，<code class="inline-code">豪情壮志</code> <code class="inline-code">40.4%</code></td><td><code class="inline-code">豪情壮志</code> 为首，<code class="inline-code">49.2%</code>，<code class="inline-code">谈禅说理</code> 次之</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表揭示了三点。</p>
+<p class="block-paragraph">第一，在没有主题时，<code class="inline-code">qwen3.6-plus</code> 最容易模板化地滑向 <code class="inline-code">离别羁旅</code>，这一点在 <code class="inline-code">a1</code> 就已经非常明显。它不是到了后面才开始收束，而是起点就比另外两家更窄。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-085-三、从格律、意象、类型三个方向总结整个任务链-3-3-类型方向总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.3 类型方向总结"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.3 类型方向总结</span></div>
+        <h3 class="content-title level-3">3.3 类型方向总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">第二，在改革主题下，三家模型并没有被锁到同一种类型里。<code class="inline-code">doubao</code> 最容易把它写成说理之作，<code class="inline-code">qwen3.6-plus</code> 更容易保留抒怀和立志色彩，<code class="inline-code">deepseek</code> 则常常在说理与寄托之间来回摆动。这说明改革主题虽然能改变默认类型，但它并不像玉兰主题那样会把所有模型都压进同一条窄路。</p>
+<p class="block-paragraph">第三，玉兰主题才是整条任务链里收束最强的节点。到了 <code class="inline-code">b3</code> 和 <code class="inline-code">c1</code>，三家主力模型都被压到 <code class="inline-code">咏物寄托</code> 一路，比例普遍超过 <code class="inline-code">80%</code>，<code class="inline-code">deepseek</code> 甚至达到 <code class="inline-code">96.5%</code>。这说明玉兰主题几乎天然地带着强模板倾向，它会快速缩减模型的可选写法空间。</p>
+<p class="block-paragraph">因此，从类型这条线看，整条任务链可以概括成一句话：无主题时默认落向羁旅感伤，改革主题把作品压向说理与立志，玉兰主题则几乎把作品锁定为咏物寄托。这其中，主题的力量明显大于词牌，而模型差异主要体现在“被主题压住之后，还能保留多少自己的默认偏向”。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-086-三、从格律、意象、类型三个方向总结整个任务链-3-4-本部分总结"
+      data-chapter="三、从格律、意象、类型三个方向总结整个任务链"
+      data-section="3.4 本部分总结"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">三、从格律、意象、类型三个方向总结整个任务链</span><span class="crumb">3.4 本部分总结</span></div>
+        <h3 class="content-title level-3">3.4 本部分总结</h3>
+        <div class="content-body">
+          <p class="block-paragraph">把格律、意象、类型三条线放在一起看，第二章背后的总趋势就比较清楚了。</p>
+<p class="block-paragraph">第一，prompt 改变生成，往往不是平均地改变所有层面，而是有先后顺序。词牌最先影响的是形式框架和局部内容惯性；主题最先改写的是意象池和类型中心；长调则把形式压力骤然放大。也就是说，模型不是同时在所有维度一起变化，而是在不同 prompt 下被分别推向不同的压力点。</p>
+<p class="block-paragraph">第二，整条任务链里变化最大的一步，不是从 <code class="inline-code">a1</code> 到 <code class="inline-code">b1</code>，而是从无主题进入主题阶段，尤其是 <code class="inline-code">b1 -&gt; b2</code> 和 <code class="inline-code">b1 -&gt; b3</code>。前者几乎重建了意象池，后者几乎锁定了类型中心。到了 <code class="inline-code">c1</code> 和 <code class="inline-code">c2</code>，变化更多体现在形式崩塌程度，而不再是内容方向本身。</p>
+<p class="block-paragraph">第三，最值得后文继续关注的风险，不是“模型会不会写成某一类词”，而是两类更深的问题。一类是形式层的持续失控，尤其是长调中的平仄链崩塌；另一类是内容层的过快收束，尤其是玉兰主题下几乎整齐划一的咏物寄托写法。前者会影响作品能否成立，后者则关系到批量生成是否迅速滑向模板化。</p>
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-087-四、AI-生成文本与真实宋词的相似性分析" data-chapter="四、AI 生成文本与真实宋词的相似性分析" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">四、AI 生成文本与真实宋词的相似性分析</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-088-四、AI-生成文本与真实宋词的相似性分析-4-1-分析逻辑：建立历史基线与评估借用关系"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.1 分析逻辑：建立历史基线与评估借用关系"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.1 分析逻辑：建立历史基线与评估借用关系</span></div>
+        <h3 class="content-title level-3">4.1 分析逻辑：建立历史基线与评估借用关系</h3>
+        <div class="content-body">
+          <p class="block-paragraph">在探讨文本相似性时，为确保严谨性，不宜简单使用“抄袭”等定性词汇。本研究遵循以下三步逻辑进行论证：</p>
+<ol class="block-list"><li>首先量化真实历史宋词体系内部固有的相似度分布（建立历史基线）。</li>
+<li>其次评估 AI 整体作品与某一首真实宋词文本的接近程度。</li>
+<li>最后考察 AI 作品中的局部语句是否高频度地追溯复刻同一首真实来源。</li></ol>
+<p class="block-paragraph">本项目的所有相似性分析都使用了python的<code class="inline-code">differlib</code>库和向量模型<code class="inline-code">BERT-CCPoem-Model</code>以及<code class="inline-code">pytorch</code>库，这里暂时不去探讨其原理。
+相似性分析的相似度使用了复杂的指标，详情请见完整报告。由于时间因素，暂时不详细说明，但简单说就是数字越大相似性越大。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-089-四、AI-生成文本与真实宋词的相似性分析-4-2-数据规模与历史基线特征"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.2 数据规模与历史基线特征"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.2 数据规模与历史基线特征</span></div>
+        <h3 class="content-title level-3">4.2 数据规模与历史基线特征</h3>
+        <div class="content-body">
+          <p class="block-paragraph">本阶段的相似性测算涵盖了庞大的数据基数：</p>
+<ul class="block-list"><li>AI 作品 <code class="inline-code">3122</code> 首</li>
+<li>AI 句子 <code class="inline-code">49304</code> 句</li>
+<li>真实宋词 <code class="inline-code">21053</code> 首</li>
+<li>真实句子 <code class="inline-code">270107</code> 句</li></ul>
+<p class="block-paragraph">经过对比测算，真实历史宋词内部本身就存在较高的相互借鉴度。其加权汇总的基线数据如下：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-090-四、AI-生成文本与真实宋词的相似性分析-4-2-数据规模与历史基线特征"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.2 数据规模与历史基线特征"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.2 数据规模与历史基线特征</span></div>
+        <h3 class="content-title level-3">4.2 数据规模与历史基线特征</h3>
+        <div class="content-body">
+          <ul class="block-list"><li>整首语义相似度均值约为 <code class="inline-code">0.8404</code></li>
+<li>整首字面相似度均值约为 <code class="inline-code">0.2366</code></li>
+<li>句级语义相似度均值约为 <code class="inline-code">0.7318</code></li>
+<li>句级字面相似度均值约为 <code class="inline-code">0.4415</code></li></ul>
+<p class="block-paragraph">更为关键的是，在 AI 与真实语料的比对中，共检出 <code class="inline-code">2145</code> 条句级字面相似度达 <code class="inline-code">1.0</code> 的完全匹配项，但对其结构拆解后发现：</p>
+<ul class="block-list"><li><code class="inline-code">2127</code> 条隶属于 <code class="inline-code">&lt;=5</code> 字的短句。</li>
+<li><code class="inline-code">18</code> 条隶属于 <code class="inline-code">6-8</code> 字的句子。</li>
+<li>9 字以上的长句几乎不存在完全一致的匹配。</li></ul>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-091-四、AI-生成文本与真实宋词的相似性分析-4-2-数据规模与历史基线特征"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.2 数据规模与历史基线特征"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.2 数据规模与历史基线特征</span></div>
+        <h3 class="content-title level-3">4.2 数据规模与历史基线特征</h3>
+        <div class="content-body">
+          <p class="block-paragraph">这证明，绝对的字面一致主要集中在短句与高频的格式化套语层面，不可将此类重叠一概定性为异常的文本剽窃。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-092-四、AI-生成文本与真实宋词的相似性分析-4-3-整体相似性评估结论"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.3 整体相似性评估结论"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.3 整体相似性评估结论</span></div>
+        <h3 class="content-title level-3">4.3 整体相似性评估结论</h3>
+        <div class="content-body">
+          <p class="block-paragraph">从整首作品维度的匹配结果来看：</p>
+<ul class="block-list"><li>整首语义分位达到历史库 <code class="inline-code">P95</code> 及以上的作品为 <code class="inline-code">45</code> 首，占比 <code class="inline-code">1.44%</code></li>
+<li>整首字面分位达到历史库 <code class="inline-code">P95</code> 及以上的作品为 <code class="inline-code">46</code> 首，占比 <code class="inline-code">1.47%</code></li>
+<li>语义主来源覆盖率 <code class="inline-code">&gt;= 0.2</code> 的作品为 <code class="inline-code">30</code> 首，占比 <code class="inline-code">0.96%</code></li>
+<li>字面主来源覆盖率 <code class="inline-code">&gt;= 0.2</code> 的作品为 <code class="inline-code">41</code> 首，占比 <code class="inline-code">1.31%</code></li>
+<li>主来源覆盖率 <code class="inline-code">&gt;= 0.5</code>（即半数以上句子来源于同一古词）的作品数量，在语义与字面维度均为 <code class="inline-code">0</code>。</li></ul>
+<p class="block-paragraph">数据表明，在所有生成的 <code class="inline-code">3122</code> 首作品中，几乎不存在基于单一历史来源全篇重写的现象。绝大多数样本的生成模式，更接近于从庞大的传统宋词意象池中，分散抽调意境元素与成熟的抒情构件进行重组。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-093-四、AI-生成文本与真实宋词的相似性分析-4-4-任务约束与相似性的交互关系"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.4 任务约束与相似性的交互关系"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.4 任务约束与相似性的交互关系</span></div>
+        <h3 class="content-title level-3">4.4 任务约束与相似性的交互关系</h3>
+        <div class="content-body">
+          <p class="block-paragraph">不同任务条件下的相似度特征统计如下：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-094-四、AI-生成文本与真实宋词的相似性分析-4-4-任务约束与相似性的交互关系"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.4 任务约束与相似性的交互关系"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.4 任务约束与相似性的交互关系</span></div>
+        <h3 class="content-title level-3">4.4 任务约束与相似性的交互关系</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>任务说明</th><th>平均整首语义分</th><th>平均语义分位</th><th>平均整首字面分</th><th>平均字面分位</th></tr></thead>
+        <tbody><tr><td>完全自由生成</td><td>0.8539</td><td>0.6916</td><td>0.1991</td><td>0.3376</td></tr>
+<tr><td>五词牌、无主题</td><td>0.8524</td><td>0.6326</td><td>0.2099</td><td>0.3640</td></tr>
+<tr><td>五词牌、改革主题</td><td>0.8352</td><td>0.5040</td><td>0.1880</td><td>0.1476</td></tr>
+<tr><td>五词牌、玉兰主题</td><td>0.8477</td><td>0.6032</td><td>0.1938</td><td>0.2004</td></tr>
+<tr><td>固定 <code class="inline-code">沁园春</code>、玉兰主题、显式模板</td><td>0.8723</td><td>0.2453</td><td>0.1792</td><td>0.1694</td></tr>
+<tr><td>固定 <code class="inline-code">沁园春</code>、改革主题、简略提醒</td><td>0.8695</td><td>0.2053</td><td>0.1788</td><td>0.1289</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">此类分布揭示出：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-095-四、AI-生成文本与真实宋词的相似性分析-4-4-任务约束与相似性的交互关系"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.4 任务约束与相似性的交互关系"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.4 任务约束与相似性的交互关系</span></div>
+        <h3 class="content-title level-3">4.4 任务约束与相似性的交互关系</h3>
+        <div class="content-body">
+          <ol class="block-list"><li><code class="inline-code">c1</code> 与 <code class="inline-code">c2</code> 任务的绝对整首语义得分很高，但其历史分位值却相对较低。这说明固定《沁园春》这一长调格式确实容易生成极具传统质感的文本，但这主要归因于《沁园春》自身在历史文献库中的基线原本就较高，而非发生了异常的集中重合。</li>
+<li>真正容易触及历史相似度高尾部的，反而是自由或半自由的无约束条件。因为在这些任务中，模型更容易直接滑入成熟且惯用的词境模板。</li></ol>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-096-四、AI-生成文本与真实宋词的相似性分析-4-5-不同词牌的相似性风险特征"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.5 不同词牌的相似性风险特征"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.5 不同词牌的相似性风险特征</span></div>
+        <h3 class="content-title level-3">4.5 不同词牌的相似性风险特征</h3>
+        <div class="content-body">
+          <p class="block-paragraph">在“五词牌、不规定主题”的对照组中，各词牌展现出不同的风险形态：</p>
+<ul class="block-list"><li><code class="inline-code">祝英台近</code>：句级语义 <code class="inline-code">P95</code> 比例为 <code class="inline-code">56.2%</code>，句级字面 <code class="inline-code">P95</code> 比例高达 <code class="inline-code">70.1%</code>，是局部借用与改写风险最高的词牌类型。</li>
+<li><code class="inline-code">浪淘沙</code>：整首语义分位均值达 <code class="inline-code">0.7627</code>，呈现出整体性坠入传统意境套用的特征。</li>
+<li><code class="inline-code">沁园春</code>：其整首字面最近邻追溯至同名历史词牌的比例为 <code class="inline-code">32.4%</code>，同词牌吸附效应最为明显，但该现象必须结合其自身极高的历史基线进行审慎解读。</li>
+<li><code class="inline-code">清平乐</code> 与 <code class="inline-code">菩萨蛮</code>：表现更接近常规的模块化拼装，未表现出强烈的局部借用敏感性。</li></ul>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-097-四、AI-生成文本与真实宋词的相似性分析-4-6-相似性文本溯源的具体案例"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.6 相似性文本溯源的具体案例"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.6 相似性文本溯源的具体案例</span></div>
+        <h3 class="content-title level-3">4.6 相似性文本溯源的具体案例</h3>
+        <div class="content-body">
+          <p class="block-paragraph">为了清晰阐释“借用关系”的具体表征，此处必须引入典型的实证案例。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-098-四、AI-生成文本与真实宋词的相似性分析-例一：高语义贴近，但来源分散，非整首重写"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.6 相似性文本溯源的具体案例"
+      data-subsection="例一：高语义贴近，但来源分散，非整首重写"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.6 相似性文本溯源的具体案例</span><span class="crumb">例一：高语义贴近，但来源分散，非整首重写</span></div>
+        <h4 class="content-title level-4">例一：高语义贴近，但来源分散，非整首重写</h4>
+        <div class="content-body">
+          <p class="block-paragraph">样本：<code class="inline-code">a1:81</code>，<code class="inline-code">qwen3-max</code>，<code class="inline-code">青玉案《秋江夜泊》</code>
+AI 文本片段：</p>
+<blockquote class="block-quote">西风卷尽芦花雪，又送客、孤舟发。月照寒汀烟水阔。<br></blockquote>
+<p class="block-paragraph">分析：该词整首语义分位高达 <code class="inline-code">0.9781</code>，最近邻整体指向方岳的《齐天乐》，但主来源覆盖率仅为 <code class="inline-code">0.0833</code>。其实质并非在重写某一首词，而是将传统羁旅词中极为成熟的一组意象构件进行了高密度的重新拼装。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-099-四、AI-生成文本与真实宋词的相似性分析-例二：局部句法骨架向单一来源高度收敛"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.6 相似性文本溯源的具体案例"
+      data-subsection="例二：局部句法骨架向单一来源高度收敛"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.6 相似性文本溯源的具体案例</span><span class="crumb">例二：局部句法骨架向单一来源高度收敛</span></div>
+        <h4 class="content-title level-4">例二：局部句法骨架向单一来源高度收敛</h4>
+        <div class="content-body">
+          <p class="block-paragraph">样本：<code class="inline-code">b2:364</code>，<code class="inline-code">deepseek-3.2-thinking</code>，<code class="inline-code">祝英台近《仙门感怀》</code>
+AI 文本片段：</p>
+<blockquote class="block-quote">怕上层楼，危机暗中满。<br>断肠规矩如链，青春空晚，更谁劝、莺声留挽？<br></blockquote>
+<p class="block-paragraph">分析：该词整首字面分位达到顶峰 <code class="inline-code">1.0000</code>，字面主来源覆盖率达 <code class="inline-code">0.25</code>，最近邻溯源至辛弃疾的《祝英台令》。其局部字词对应关系极为直接：</p>
+<ul class="block-list"><li><code class="inline-code">怕上层楼</code> 对 <code class="inline-code">怕上层楼</code></li>
+<li><code class="inline-code">更谁劝、莺声留挽</code> 对 <code class="inline-code">倩谁唤、流莺声住</code></li></ul>
+<p class="block-paragraph">此类情况呈现出明显的局部改写式借用特征。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-100-四、AI-生成文本与真实宋词的相似性分析-例三：长调强约束下向名作的严重贴合"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.6 相似性文本溯源的具体案例"
+      data-subsection="例三：长调强约束下向名作的严重贴合"
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.6 相似性文本溯源的具体案例</span><span class="crumb">例三：长调强约束下向名作的严重贴合</span></div>
+        <h4 class="content-title level-4">例三：长调强约束下向名作的严重贴合</h4>
+        <div class="content-body">
+          <p class="block-paragraph">样本：<code class="inline-code">c2:193</code>，<code class="inline-code">deepseek-3.2-thinking</code>，<code class="inline-code">沁园春《宗规感怀》</code>
+AI 文本片段：</p>
+<blockquote class="block-quote">世路艰险，劳生有限，似此压抑长难容。微吟罢，凭栏杆无语，心事重重。<br>有宏图千卷，胸中万策；致君尧舜，此事非空。<br>用舍由时，行藏在我……<br></blockquote>
+<p class="block-paragraph">分析：整首字面分位达 <code class="inline-code">0.9905</code>，语义和字面的主来源覆盖率分别高达 <code class="inline-code">0.36</code> 和 <code class="inline-code">0.32</code>，最近邻显著指向苏轼的名作《沁园春》。其文本重合关系极度贴近：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-101-四、AI-生成文本与真实宋词的相似性分析-例三：长调强约束下向名作的严重贴合"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.6 相似性文本溯源的具体案例"
+      data-subsection="例三：长调强约束下向名作的严重贴合"
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.6 相似性文本溯源的具体案例</span><span class="crumb">例三：长调强约束下向名作的严重贴合</span></div>
+        <h4 class="content-title level-4">例三：长调强约束下向名作的严重贴合</h4>
+        <div class="content-body">
+          <ul class="block-list"><li><code class="inline-code">劳生有限</code> 对 <code class="inline-code">劳生有限</code></li>
+<li><code class="inline-code">微吟罢</code> 对 <code class="inline-code">微吟罢</code></li>
+<li><code class="inline-code">胸中万策</code> 对 <code class="inline-code">胸中万卷</code></li>
+<li><code class="inline-code">致君尧舜</code> 对 <code class="inline-code">致君尧舜</code></li>
+<li><code class="inline-code">用舍由时，行藏在我</code> 对 <code class="inline-code">用舍由时，行藏在我</code></li></ul>
+<p class="block-paragraph">此类案例必须引起警惕并进行人工复核，因其不仅在整体上模仿了某类词风，更是在关键结构节点上持续倒向特定的历史名作。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-102-四、AI-生成文本与真实宋词的相似性分析-4-7-相似性风险的模型分布差异"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.7 相似性风险的模型分布差异"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.7 相似性风险的模型分布差异</span></div>
+        <h3 class="content-title level-3">4.7 相似性风险的模型分布差异</h3>
+        <div class="content-body">
+          <p class="block-paragraph">若设定高风险阈值为：</p>
+<ul class="block-list"><li>整首字面分位进入历史 <code class="inline-code">P95</code></li>
+<li>且字面主来源覆盖率 <code class="inline-code">&gt;= 0.2</code></li></ul>
+<p class="block-paragraph">全数据库符合该条件的仅有 <code class="inline-code">15</code> 首作品，且**这 <code class="inline-code">15</code> 首全部出自 <code class="inline-code">deepseek-3.2-thinking</code> 模型**。</p>
+<p class="block-paragraph">其任务分布主要集中于：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-103-四、AI-生成文本与真实宋词的相似性分析-4-7-相似性风险的模型分布差异"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.7 相似性风险的模型分布差异"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.7 相似性风险的模型分布差异</span></div>
+        <h3 class="content-title level-3">4.7 相似性风险的模型分布差异</h3>
+        <div class="content-body">
+          <ul class="block-list"><li>固定 <code class="inline-code">沁园春</code> + 改革主题 + 简略提醒：<code class="inline-code">6</code> 首</li>
+<li>五词牌 + 改革主题：<code class="inline-code">5</code> 首</li>
+<li>五词牌、不规定主题：<code class="inline-code">4</code> 首</li></ul>
+<p class="block-paragraph">其词牌分布主要集中于：</p>
+<ul class="block-list"><li><code class="inline-code">沁园春</code>：<code class="inline-code">11</code> 首</li>
+<li><code class="inline-code">祝英台近</code>：<code class="inline-code">4</code> 首</li></ul>
+<p class="block-paragraph">结论非常明确：文本借用风险并非在整个生成体系中均匀分布，而是高度依赖于特定模型自身的特性，并受特定任务参数叠加放大的影响。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-104-四、AI-生成文本与真实宋词的相似性分析-4-8-本节结论"
+      data-chapter="四、AI 生成文本与真实宋词的相似性分析"
+      data-section="4.8 本节结论"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">四、AI 生成文本与真实宋词的相似性分析</span><span class="crumb">4.8 本节结论</span></div>
+        <h3 class="content-title level-3">4.8 本节结论</h3>
+        <div class="content-body">
+          <ol class="block-list"><li>绝大部分 AI 宋词并未表现出“基于单一历史来源全篇重写”的特征。</li>
+<li>模型的创作常态是对庞大历史意象池、短句套语及成熟词境的高密度复用。</li>
+<li>真正值得警惕的是局部文本过度向单一来源聚拢的现象，尤以 <code class="inline-code">deepseek</code> 在处理《祝英台近》与《沁园春》时的部分样本最为典型。</li>
+<li>基于上述实证，将此类现象表述为“借鉴”、“借用关系”或“来源相似性”更为客观严谨，不宜不加区分地统称为“抄袭”。</li></ol>
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-105-五、AI-生成文本的内部同质化分析" data-chapter="五、AI 生成文本的内部同质化分析" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">五、AI 生成文本的内部同质化分析</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-106-五、AI-生成文本的内部同质化分析-5-1-核心概念辨析：字面相似与语义相似"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.1 核心概念辨析：字面相似与语义相似"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.1 核心概念辨析：字面相似与语义相似</span></div>
+        <h3 class="content-title level-3">5.1 核心概念辨析：字面相似与语义相似</h3>
+        <div class="content-body">
+          <p class="block-paragraph">在评估同质化指标前，必须通过具体案例界定两种相似度的本质区别，避免由于概念抽象而产生理解偏差。</p>
+<p class="block-paragraph"><strong>语义相似（换词不换意）：</strong></p>
+<ul class="block-list"><li>例 1：AI 文本：<code class="inline-code">素萼破寒轻绽</code>，真实来源：<code class="inline-code">绛萼欺寒</code>（语义相似度约 <code class="inline-code">0.9001</code>，字面相似度 <code class="inline-code">0.4</code>。字面用词差异大，但核心表达结构高度一致。）</li>
+<li>例 2：AI 文本：<code class="inline-code">几度风萍浪梗</code>，真实来源：<code class="inline-code">此际浪萍风梗</code>（语义相似度约 <code class="inline-code">0.9045</code>，字面相似度 <code class="inline-code">0.4444</code>。词序与副词已变，但表达的意境指向完全一致。）</li></ul>
+<p class="block-paragraph"><strong>字面相似（高度重合）：</strong></p>
+<ul class="block-list"><li>例 3：AI 文本：<code class="inline-code">银汉无声转玉盘</code>，真实来源：<code class="inline-code">银汗无声转玉盘</code>（字面相似度约 <code class="inline-code">0.8571</code>，语义相似度约 <code class="inline-code">0.9003</code>。仅一字之差，属于极强的局部文本贴近。）</li>
+<li>例 4：AI 文本：<code class="inline-code">暗香浮动黄昏后</code>，真实来源：<code class="inline-code">暗香浮动黄昏后</code>（字面与语义完全一致的绝对重合案例。）</li></ul>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-107-五、AI-生成文本的内部同质化分析-5-1-核心概念辨析：字面相似与语义相似"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.1 核心概念辨析：字面相似与语义相似"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.1 核心概念辨析：字面相似与语义相似</span></div>
+        <h3 class="content-title level-3">5.1 核心概念辨析：字面相似与语义相似</h3>
+        <div class="content-body">
+          <p class="block-paragraph">综上，两者不可混为一谈：语义相似偏向考察“是否沿用同一套表达骨架”，而字面相似则用于判定“具体语句是否陷入了机械复刻”。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-108-五、AI-生成文本的内部同质化分析-5-2-同质化评估的核心逻辑：区分整词收束与局部模板化"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.2 同质化评估的核心逻辑：区分整词收束与局部模板化"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.2 同质化评估的核心逻辑：区分整词收束与局部模板化</span></div>
+        <h3 class="content-title level-3">5.2 同质化评估的核心逻辑：区分整词收束与局部模板化</h3>
+        <div class="content-body">
+          <p class="block-paragraph">这是本节评估同质化现象时应该明白的。</p>
+<p class="block-paragraph">同题写作本来就应该在整首层面更接近。  
+如果几百首“改革主题”或“玉兰主题”的词，在整体情境、主导情绪、意象方向上完全不接近，那反而说明 prompt 没有起作用。</p>
+<p class="block-paragraph">因此，<strong>整词同质化度上升，在主题约束下是正常现象，也是应该发生的现象。</strong>  
+真正需要警惕的是：句子同质化度是不是也被一并推高，导致局部表达开始模板化、套语化。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-109-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</span></div>
+        <h3 class="content-title level-3">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</h3>
+        <div class="content-body">
+          <p class="block-paragraph">通过计算“整词同质化度 - 句子同质化度”的差值，可以直观地辨别模型是正常的主题相同还是局部句子重复。</p>
+<p class="block-paragraph">基准判定依据如下：</p>
+<ul class="block-list"><li>差值 <code class="inline-code">&lt;= 0.18</code>：句子层级的数据紧迫逼近整词层级，代表局部模板化风险较高。</li>
+<li>差值在 <code class="inline-code">0.18 - 0.30</code>：主要体现为宏观整词层面的收束，局部模板化风险处于中等水平。</li>
+<li>差值 <code class="inline-code">&gt;= 0.30</code>：宏观整词收束极为强烈，显著高于局部句子的趋同程度，此时文本展现出“同题写作总体相似，但局部句法尚有一定差异”的形态。</li></ul>
+<p class="block-paragraph">各任务表现均值对照：</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-110-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</span></div>
+        <h3 class="content-title level-3">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>任务说明</th><th>整词同质化度均值</th><th>句子同质化度均值</th><th>二者差值</th><th>用差值做的快速判断</th></tr></thead>
+        <tbody><tr><td>五词牌、无主题</td><td>0.6501</td><td>0.4953</td><td>0.1548</td><td>句子层风险偏重</td></tr>
+<tr><td>五词牌、改革主题</td><td>0.7263</td><td>0.4384</td><td>0.2880</td><td>中等，主要是整词收束</td></tr>
+<tr><td>五词牌、玉兰主题</td><td>0.7104</td><td>0.4728</td><td>0.2377</td><td>中等，主要是整词收束</td></tr>
+<tr><td>固定 <code class="inline-code">沁园春</code>、玉兰主题、显式模板</td><td>0.8951</td><td>0.5362</td><td>0.3589</td><td>整词收束很强，句子层相对次之</td></tr>
+<tr><td>固定 <code class="inline-code">沁园春</code>、改革主题、简略提醒</td><td>0.9256</td><td>0.5082</td><td>0.4174</td><td>整词收束极强，句子层相对次之</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">这张表非常重要，因为它说明：</p>
+<ol class="block-list"><li>一旦给定主题，整词同质化度会明显上升。</li>
+<li>但在“五词牌 + 主题”这一步，差值反而变大了。</li>
+<li>这说明主题首先影响的是“整首词写什么”，而不是“每一句都写得越来越像”。</li></ol>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-111-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</span></div>
+        <h3 class="content-title level-3">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</h3>
+        <div class="content-body">
+          <p class="block-paragraph">换句话说，<strong>主题 prompt 先带来的是合理的整词收束，而不是坏的句子模板化。</strong></p>
+<p class="block-paragraph">若进一步下看到模型维度，分析同主题下由五词牌转向长调强约束时，差值产生的动态变化，情况将更加清晰：</p>
+<p class="block-paragraph">**改革主题内部：<code class="inline-code">b2 -&gt; c2</code> 的模型差值**</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-112-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</span></div>
+        <h3 class="content-title level-3">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>模型</th><th><code class="inline-code">b2</code> 差值</th><th><code class="inline-code">c2</code> 差值</th><th>差值变化</th><th>用差值做的快速判断</th><th>解释</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">doubao-seed-2.0-pro</code></td><td><code class="inline-code">0.2711</code></td><td><code class="inline-code">0.3579</code></td><td><code class="inline-code">+0.0868</code></td><td>从中等转向整词收束更强</td><td>整词与句子都不低，但进入 <code class="inline-code">c2</code> 后整词抬得更快，说明它首先在整体结构和主题框架上进一步收紧</td></tr>
+<tr><td><code class="inline-code">deepseek-3.2-thinking</code></td><td><code class="inline-code">0.2800</code></td><td><code class="inline-code">0.4264</code></td><td><code class="inline-code">+0.1464</code></td><td>从中等转向整词收束极强</td><td>这里的 <code class="inline-code">c2</code> 取观察分析低样本值；差值变大说明 surviving 样本更多集中在整词层，但也意味着高格律可用样本太少</td></tr>
+<tr><td><code class="inline-code">qwen3.6-plus</code></td><td><code class="inline-code">0.3128</code></td><td><code class="inline-code">0.4679</code></td><td><code class="inline-code">+0.1551</code></td><td>本来就偏整词收束，进入 <code class="inline-code">c2</code> 后更明显</td><td>句子层没有同步追高，更多是整词层继续收紧，而不是局部模板突然恶化</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">*注：<code class="inline-code">deepseek</code> 与 <code class="inline-code">qwen</code> 在 <code class="inline-code">c2</code> 任务中因符合基本格律要求的样本稀少，此处取观察分析值。*</p>
+<p class="block-paragraph">**玉兰主题内部：<code class="inline-code">b3 -&gt; c1</code> 的模型差值**</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-113-五、AI-生成文本的内部同质化分析-5-3-用“整词同质化度-句子同质化度”的差值来理解这个问题"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</span></div>
+        <h3 class="content-title level-3">5.3 用“整词同质化度 - 句子同质化度”的差值来理解这个问题</h3>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>模型</th><th><code class="inline-code">b3</code> 差值</th><th><code class="inline-code">c1</code> 差值</th><th>差值变化</th><th>用差值做的快速判断</th><th>解释</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">doubao-seed-2.0-pro</code></td><td><code class="inline-code">0.2450</code></td><td><code class="inline-code">0.3552</code></td><td><code class="inline-code">+0.1102</code></td><td>从中等转向整词收束更强</td><td><code class="inline-code">c1</code> 中句子层也高，但整词层抬得更快，说明显式模板先把整体结构做得更整齐</td></tr>
+<tr><td><code class="inline-code">deepseek-3.2-thinking</code></td><td><code class="inline-code">0.2294</code></td><td><code class="inline-code">0.3547</code></td><td><code class="inline-code">+0.1253</code></td><td>从中等转向整词收束更强</td><td>进入 <code class="inline-code">c1</code> 后，整词层被显著拉紧，句子层也升，但没有追得和整词一样快</td></tr>
+<tr><td><code class="inline-code">qwen3.6-plus</code></td><td><code class="inline-code">0.2386</code></td><td><code class="inline-code">0.3666</code></td><td><code class="inline-code">+0.1280</code></td><td>从中等转向整词收束更强</td><td>它在 <code class="inline-code">b3</code> 时已经有稳定主题收束，到了 <code class="inline-code">c1</code> 后更多是整词进一步靠近，而不是句子层突然爆发</td></tr></tbody>
+      </table>
+    </div>
+  
+<p class="block-paragraph">把这两张表和前面的总体表放在一起，就能得到一个更清楚的判断：<strong>同样是更强约束，不同模型虽然都会把差值拉大，但“拉大”的含义并不一样。有的模型是在整词层继续收紧，有的模型则是根本写不出像样的词。</strong></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-114-五、AI-生成文本的内部同质化分析-5-4-判断严重性时，不能只看差值变化，还要看差值本身落在什么区间"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间</span></div>
+        <h3 class="content-title level-3">5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间</h3>
+        <div class="content-body">
+          <p class="block-paragraph">现在可以把这一部分的逻辑统一成三步：</p>
+<ol class="block-list"><li>先看差值本身：判断当前更像“整词收束”还是“句子模板化”。</li>
+<li>再看差值变化：判断强约束之后压力是在向整词层移动，还是向句子层移动。</li>
+<li>最后再看句子同质化度本身：判断局部句法是否已经高到值得警惕。</li></ol>
+<p class="block-paragraph">因此，真正的风险并不是“只要同质化升高就危险”，而是下面两种情况：</p>
+<ul class="block-list"><li>差值本身偏小，说明句子层已经和整词层靠得很近。</li>
+<li>或者差值虽然不小，但句子同质化度本身仍然很高，说明模型在整体很像的同时，局部表达也已经明显收紧。</li></ul>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-115-五、AI-生成文本的内部同质化分析-5-4-判断严重性时，不能只看差值变化，还要看差值本身落在什么区间"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间</span></div>
+        <h3 class="content-title level-3">5.4 判断严重性时，不能只看差值变化，还要看差值本身落在什么区间</h3>
+        <div class="content-body">
+          <p class="block-paragraph">从当前数据看：</p>
+<ul class="block-list"><li><code class="inline-code">b1</code> 的平均差值只有 <code class="inline-code">0.1548</code>，这反而说明无主题条件下，模型更容易直接滑向熟悉句法和套语。</li>
+<li><code class="inline-code">b2</code> 与 <code class="inline-code">b3</code> 的差值扩大到 <code class="inline-code">0.2880</code> 和 <code class="inline-code">0.2377</code>，说明主题先把压力集中到整词层，这是相对正常的。</li>
+<li><code class="inline-code">c1</code> 与 <code class="inline-code">c2</code> 的差值进一步扩大到 <code class="inline-code">0.3589</code> 与 <code class="inline-code">0.4174</code>，说明强约束后整词收束极强；但与此同时，<code class="inline-code">c1</code> 的句子同质化度均值仍高达 <code class="inline-code">0.5362</code>，<code class="inline-code">c2</code> 也达到 <code class="inline-code">0.5082</code>，所以不能简单把“大差值”理解成“完全不危险”。</li></ul>
+<p class="block-paragraph">更准确地说：</p>
+<ul class="block-list"><li>小差值：更像“句子层已经危险地跟上来了”。</li>
+<li>大差值：更像“整体写得太像了”，但还要继续检查句子分是不是也已经过高。</li></ul>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-116-五、AI-生成文本的内部同质化分析-5-5-模型对同质化风险层级的影响"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.5 模型对同质化风险层级的影响"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.5 模型对同质化风险层级的影响</span></div>
+        <h3 class="content-title level-3">5.5 模型对同质化风险层级的影响</h3>
+        <div class="content-body">
+          <p class="block-paragraph">真正决定风险如何演化与落地的，往往是模型固有的属性特征，而非任务名称的表面设定。</p>
+<h5 class="inline-subheading"><code class="inline-code">doubao-seed-2.0-pro</code></h5>
+<p class="block-paragraph dense"><strong>表现特征</strong>：格律控制最佳，整词结构维持能力最强。
+从差值看，其在 <code class="inline-code">b1</code> 时差值仅 <code class="inline-code">0.1395</code>，句子层风险已然显现；至 <code class="inline-code">b2</code>、<code class="inline-code">b3</code> 时差值分别拉伸至 <code class="inline-code">0.2711</code>、<code class="inline-code">0.2450</code>，表明主题成功将其引向整词收束；进入强约束的 <code class="inline-code">c1</code>、<code class="inline-code">c2</code> 后，差值进一步升至 <code class="inline-code">0.3552</code> 与 <code class="inline-code">0.3579</code>。
+这表明其很好的规范执行力，反而使其“整体极度工整稳健、整体较为雷同”。</p>
+<h5 class="inline-subheading"><code class="inline-code">deepseek-3.2-thinking</code></h5>
+<p class="block-paragraph dense"><strong>表现特征</strong>：受主题指令牵引最为剧烈，且外部来源借用风险最高。
+其差值从 <code class="inline-code">b1</code> 的 <code class="inline-code">0.1416</code> 扩大至 <code class="inline-code">b2</code> 的 <code class="inline-code">0.2800</code> 与 <code class="inline-code">b3</code> 的 <code class="inline-code">0.2294</code>，表明对主题设定的响应极其敏锐，迅速从局部模板化转向整词收敛；进入 <code class="inline-code">c1</code> 与 <code class="inline-code">c2</code>（观察样本）后，差值升至 <code class="inline-code">0.3547</code> 与 <code class="inline-code">0.4264</code>。但结合前文可知，历史高度重合的尾部高风险样本几乎全集中于该模型身上。
+其综合特征为：对主题极为顺从、意象高度收敛，潜在问题较多。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-117-五、AI-生成文本的内部同质化分析-5-5-模型对同质化风险层级的影响"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.5 模型对同质化风险层级的影响"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.5 模型对同质化风险层级的影响</span></div>
+        <h3 class="content-title level-3">5.5 模型对同质化风险层级的影响</h3>
+        <div class="content-body">
+          <h5 class="inline-subheading"><code class="inline-code">qwen3.6-plus</code></h5>
+<p class="block-paragraph dense"><strong>表现特征</strong>：自带强烈的题材偏好惯性，在长调处理上极易失控。
+其在无约束的 <code class="inline-code">b1</code> 阶段差值已达 <code class="inline-code">0.1833</code>，表现出先天的题材集中倾向；进入 <code class="inline-code">b2</code>、<code class="inline-code">b3</code> 后差值为 <code class="inline-code">0.3128</code>、<code class="inline-code">0.2386</code>；在遭遇长调压力的 <code class="inline-code">c1</code> 与 <code class="inline-code">c2</code>（观察样本）中，差值升至 <code class="inline-code">0.3666</code> 与 <code class="inline-code">0.4679</code>。
+这说明其同质化的演进并非在于句式的层层固化，而是源自长调带来的形式大面积崩盘，导致最终仅存活少量高度同质化的合格样本。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-118-五、AI-生成文本的内部同质化分析-5-6-本节结论"
+      data-chapter="五、AI 生成文本的内部同质化分析"
+      data-section="5.6 本节结论"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">五、AI 生成文本的内部同质化分析</span><span class="crumb">5.6 本节结论</span></div>
+        <h3 class="content-title level-3">5.6 本节结论</h3>
+        <div class="content-body">
+          <p class="block-paragraph">本节需确立以下六个核心判断：</p>
+<ol class="block-list"><li>评估同质化必须进行分层拆解，严格区分整词层面的宏观相似与句子层面的微观字面复刻，以免将同题写作带来的合理趋同误判为机械模板化。</li>
+<li>“差值分析法”（整词 - 句子同质化）是前置研判的核心手段。差值过小预警句子局部已面临模板化危机；差值庞大则说明约束条件有效压制了主题的发散性。</li>
+<li>判断同质化时，第二步要再看差值变化。<code class="inline-code">b1 -&gt; b2</code> 与 <code class="inline-code">b1 -&gt; b3</code> 中差值扩大，说明主题先压缩的是整首词的内容方向；<code class="inline-code">b2 -&gt; c2</code> 与 <code class="inline-code">b3 -&gt; c1</code> 中差值继续扩大，则说明强约束进一步强化了整体收束</li>
+<li>主题任务下出现整词同质化度的抬升是必然且合理的现象，代表模型在积极响应指令。真正的危险信号是局部句子同质化指标脱离合理区间随之飙升，或在高位差值的掩护下已触及绝对的高限。</li>
+<li>三款主力模型具备截然不同的风险演化路径：<code class="inline-code">doubao</code> 倾向于生成高度工整的制式作品，可能存在部分句式重复的问题；<code class="inline-code">deepseek</code> 容易落入宏观主题收缩与微观局部复刻的双重困境，问题比较严重；而 <code class="inline-code">qwen</code> 极易在处理长调时失控从而仅留下少量极度相似的遗留样本，基本认为没有创作能力。</li>
+<li>综上所述，同质化评估不能粗暴归结为“某项任务是否更具同质化”，而是必须通过“差值基数 + 差值走势 + 模型固有特征”三维交叉验证，方可精准剥离出合理的指令响应、应当警惕的局部模板化，以及诱发不同风险的深层动因。</li></ol>
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-119-六、回到项目最初的问题：这一轮实验究竟回答了什么" data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">六、回到项目最初的问题：这一轮实验究竟回答了什么</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-120-六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-section=""
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">六、回到项目最初的问题：这一轮实验究竟回答了什么</span></div>
+        <div class="content-spacer"></div>
+        <div class="content-body">
+          <p class="block-paragraph">到了这里，可以直接回到引言里提出的几个最初问题。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-121-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-1-AI-能不能写出基本成立的宋词"
+      data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-section="6.1 AI 能不能写出基本成立的宋词"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">六、回到项目最初的问题：这一轮实验究竟回答了什么</span><span class="crumb">6.1 AI 能不能写出基本成立的宋词</span></div>
+        <h3 class="content-title level-3">6.1 AI 能不能写出基本成立的宋词</h3>
+        <div class="content-body">
+          <p class="block-paragraph">可以，但能力非常不均衡，而且只在一部分条件下成立。</p>
+<p class="block-paragraph dense">如果只看整体均值，<code class="inline-code">a1</code> 的平均格律分是 <code class="inline-code">70.37</code>，<code class="inline-code">b1</code> 是 <code class="inline-code">71.74</code>，说明模型并不是完全不会写词；其中 <code class="inline-code">doubao-seed-2.0-pro</code> 在自由生成和固定五词牌任务中的均分分别达到 <code class="inline-code">94.32</code> 和 <code class="inline-code">92.12</code>，已经能稳定写出不少形式上成立的作品。但这并不意味着“AI 已经会写宋词”。一旦任务进入高压区，情况会迅速变化。<code class="inline-code">c2</code> 的平均格律分只有 <code class="inline-code">44.24</code>，<code class="inline-code">0</code> 分比例高达 <code class="inline-code">45.1%</code>；即使是给出显式模板的 <code class="inline-code">c1</code>，平均格律分也只有 <code class="inline-code">61.79</code>。</p>
+<p class="block-paragraph">这说明当前模型的能力边界很清楚：短调、小令、中等约束下，它们有机会写出“基本成立的词”；长调、强主题、持续平仄控制这三者一叠加，失误就会明显放大。换句话说，AI 不是不能写宋词，而是还远没有达到“无论什么词牌、什么题目都能稳定写成”的程度。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-122-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-2-什么模型更适合宋词创作"
+      data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-section="6.2 什么模型更适合宋词创作"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">六、回到项目最初的问题：这一轮实验究竟回答了什么</span><span class="crumb">6.2 什么模型更适合宋词创作</span></div>
+        <h3 class="content-title level-3">6.2 什么模型更适合宋词创作</h3>
+        <div class="content-body">
+          <p class="block-paragraph">如果把“更适合”理解为格律更稳、成稿率更高、在多种任务里不容易崩，那么在本项目覆盖到的模型中，<code class="inline-code">doubao-seed-2.0-pro</code> 是最合适的一档。</p>
+<p class="block-paragraph">它的优势不是只在某一条任务里偶然高分，而是沿整条任务链都比较稳。从 <code class="inline-code">a1</code>、<code class="inline-code">b1</code> 到 <code class="inline-code">b2</code>、<code class="inline-code">b3</code>，再到 <code class="inline-code">c1</code>、<code class="inline-code">c2</code>，<code class="inline-code">doubao</code> 都保持领先，尤其在《沁园春》这样的长调任务中，它仍能把均分维持在明显高于其他主力模型的水平。若把“能不能批量产出可读作品”作为标准，它目前是最接近可用的。</p>
+<p class="block-paragraph"><code class="inline-code">deepseek-3.2-thinking</code> 的特点则完全不同。它的主题响应很强，写改革时会迅速进入宗门、规训、冲突这套语汇，写玉兰时也会很快被中心物象吸住；但它在高压任务里的形式稳定性明显不足，而且高风险的来源相似案例几乎都集中在它身上。它更像是“有表达冲动，但不够稳”的模型。</p>
+<p class="block-paragraph"><code class="inline-code">qwen3.6-plus</code> 的问题则主要出在两点：一是默认题材惯性很强，容易迅速滑向 <code class="inline-code">离别羁旅</code>；二是长调处理能力明显不足，在 <code class="inline-code">c1</code>、<code class="inline-code">c2</code> 中失稳得最厉害。它能写出一些看起来古典感很强的句子，但整体可靠性不够。</p>
+<p class="block-paragraph">因此，如果只问“什么模型更适合当前这类宋词生成任务”，本项目给出的答案并不含糊：<code class="inline-code">doubao</code> 最稳，<code class="inline-code">deepseek</code> 有内容冲劲但风险更高，<code class="inline-code">qwen</code> 在长调和持续控制上明显偏弱。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-123-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-2-什么模型更适合宋词创作"
+      data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-section="6.2 什么模型更适合宋词创作"
+      data-subsection=""
+      class="content-slide continued"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">六、回到项目最初的问题：这一轮实验究竟回答了什么</span><span class="crumb">6.2 什么模型更适合宋词创作</span></div>
+        <h3 class="content-title level-3">6.2 什么模型更适合宋词创作</h3>
+        <div class="content-body">
+          <p class="block-paragraph">当然，有些模型考虑到成本因素虽然在项目中没有加入，但是经过我的体验，还是值得推荐的，比如：<code class="inline-code">gemini-3.1-pro</code>、<code class="inline-code">claude-opus-4.6</code></p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-124-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-3-什么样的-prompt-更适合宋词创作"
+      data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-section="6.3 什么样的 prompt 更适合宋词创作"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">六、回到项目最初的问题：这一轮实验究竟回答了什么</span><span class="crumb">6.3 什么样的 prompt 更适合宋词创作</span></div>
+        <h3 class="content-title level-3">6.3 什么样的 prompt 更适合宋词创作</h3>
+        <div class="content-body">
+          <p class="block-paragraph">这要分开回答，因为“更适合”本身有不同标准。</p>
+<p class="block-paragraph dense">如果目标是让作品尽量写对，最有效的做法不是完全自由生成，而是给模型适度而明确的形式支架。<code class="inline-code">a1 -&gt; b1</code> 已经说明，固定词牌后，格律整体会略微变稳；而在长调任务里，<code class="inline-code">c1</code> 和 <code class="inline-code">c2</code> 的差异更能说明问题。两者都固定《沁园春》，但 <code class="inline-code">c1</code> 直接给出显式格律模板，<code class="inline-code">c2</code> 只有简略提醒，结果前者平均格律分 <code class="inline-code">61.79</code>，后者只有 <code class="inline-code">44.24</code>。这表明：对于复杂词牌来说，具体模板远比抽象提醒更有用。</p>
+<p class="block-paragraph">但如果目标不是“尽量写对”，而是想看模型自然会写成什么样、或者希望它保留一些变化空间，那么约束也不能一味加重。前面几章已经显示，只要主题一进入，意象和类型就会快速收束；到了玉兰主题，<code class="inline-code">b3</code> 中 <code class="inline-code">咏物寄托</code> 已经占到 <code class="inline-code">92.0%</code>，<code class="inline-code">c1</code> 里仍有 <code class="inline-code">87.7%</code>。这说明 prompt 越强，结果越整齐，但也越容易失去变化。</p>
+<p class="block-paragraph">所以，这一轮实验对 prompt 的回答其实是双重的：若追求形式成立，应当尽量具体、尤其要把词牌和结构说清楚；若追求内容多样，则不能把词牌、主题、长调和模板同时全部压上去。Prompt 不是越强越好，而是要看你究竟想解决“写得对”，还是“写得活”。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-125-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-4-AI-宋词会不会千篇一律"
+      data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-section="6.4 AI 宋词会不会千篇一律"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">六、回到项目最初的问题：这一轮实验究竟回答了什么</span><span class="crumb">6.4 AI 宋词会不会千篇一律</span></div>
+        <h3 class="content-title level-3">6.4 AI 宋词会不会千篇一律</h3>
+        <div class="content-body">
+          <p class="block-paragraph">会，而且这种同质化不是到后期才出现，而是从一开始就已经存在，只是在不同任务里表现形式不同。</p>
+<p class="block-paragraph">在无主题任务里，模型会自动滑向少数默认路径。<code class="inline-code">a1</code> 和 <code class="inline-code">b1</code> 的第一大类型都是 <code class="inline-code">离别羁旅</code>，占比分别是 <code class="inline-code">34.3%</code> 和 <code class="inline-code">42.7%</code>，高频意象也长期集中在 <code class="inline-code">西风</code>、<code class="inline-code">孤舟</code>、<code class="inline-code">明月</code>、<code class="inline-code">雁字</code> 这一带。也就是说，就算不给主题，模型也不会真正自由发散，而是会回到它最熟悉的那套“宋词印象”。</p>
+<p class="block-paragraph dense">主题进入之后，同质化会进一步加速，但性质有所不同。改革主题把作品压向 <code class="inline-code">谈禅说理</code>、<code class="inline-code">咏物寄托</code>、<code class="inline-code">豪情壮志</code> 三类；玉兰主题则更直接，几乎把整批作品都锁进 <code class="inline-code">咏物寄托</code> 一路。与此同时，第五章已经说明，不能把所有“相似”都理解成坏的模板化。主题任务下，整词同质化度升高本来就是 prompt 生效的结果；真正需要警惕的，是句子层面的重复也跟着抬高，形成局部套语和稳定句法。</p>
+<p class="block-paragraph">因此，更准确的说法不是“AI 一定会写成一模一样”，而是：它非常容易在批量生成中迅速形成少数稳定通道。无主题时，它会滑向默认题材模板；强主题时，它会被压进更窄的中心写法。所谓“千篇一律”，在这个项目里首先表现为意象池、题材中心和句法骨架的快速收束。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-126-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-5-AI-宋词会不会借鉴真实宋词"
+      data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-section="6.5 AI 宋词会不会借鉴真实宋词"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">六、回到项目最初的问题：这一轮实验究竟回答了什么</span><span class="crumb">6.5 AI 宋词会不会借鉴真实宋词</span></div>
+        <h3 class="content-title level-3">6.5 AI 宋词会不会借鉴真实宋词</h3>
+        <div class="content-body">
+          <p class="block-paragraph">会，但绝大多数情况下，不是整首整首地照着某一首古词重写，而是从真实宋词中高密度调用现成的意象、短句和成熟词境。</p>
+<p class="block-paragraph dense">第四章的数据已经很清楚。整首语义分位达到历史库 <code class="inline-code">P95</code> 及以上的作品有 <code class="inline-code">45</code> 首，整首字面分位达到 <code class="inline-code">P95</code> 及以上的有 <code class="inline-code">46</code> 首，占全部 <code class="inline-code">3122</code> 首作品的比例都只在 <code class="inline-code">1.5%</code> 左右；更关键的是，主来源覆盖率 <code class="inline-code">&gt;= 0.5</code> 的作品，无论语义还是字面维度都是 <code class="inline-code">0</code>。这说明“对着某一首古词整首重写”并不是系统性的主流现象。</p>
+<p class="block-paragraph dense">但这并不意味着没有风险。真正值得警惕的，是局部语句和关键结构节点向单一来源过度聚拢。第四章列出的高风险样本里，确实已经能看到较明显的局部改写式借用，尤其集中在《祝英台近》和《沁园春》这类词牌上。再往模型层看，满足“高字面分位且主来源覆盖率较高”的 <code class="inline-code">15</code> 首作品全部出自 <code class="inline-code">deepseek-3.2-thinking</code>，说明这种风险并不是平均分布的，而是会被特定模型和特定任务组合放大。</p>
+<p class="block-paragraph">所以，对这个问题最准确的回答应当是：AI 宋词普遍会借用真实宋词的表达资源，但多数时候是分散吸收和重组；真正需要单独警惕的，是少数样本在局部层面明显过近，已经接近可识别的来源改写。</p>
+        </div>
+      </div>
+    </section>
+  
+
+    <section
+      id="slide-127-六、回到项目最初的问题：这一轮实验究竟回答了什么-6-6-最终回答"
+      data-chapter="六、回到项目最初的问题：这一轮实验究竟回答了什么"
+      data-section="6.6 最终回答"
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">六、回到项目最初的问题：这一轮实验究竟回答了什么</span><span class="crumb">6.6 最终回答</span></div>
+        <h3 class="content-title level-3">6.6 最终回答</h3>
+        <div class="content-body">
+          <p class="block-paragraph">如果把整个项目压缩成几句最直接的话，那么答案大概是这样的。</p>
+<p class="block-paragraph dense">第一，AI 已经可以写出一部分基本成立的宋词，但这种能力远不稳定，尤其经不起长调和强主题的持续压力。第二，不同模型差异很大，在本项目所测范围内，<code class="inline-code">doubao-seed-2.0-pro</code> 是最稳的一档，<code class="inline-code">deepseek-3.2-thinking</code> 内容反应更强但风险也更高，<code class="inline-code">qwen3.6-plus</code> 则更容易在长调里失控。第三，prompt 确实能显著改变结果，但“更强”不等于“更好”：强约束会提升可控性，也会快速压缩内容空间。第四，AI 宋词确实存在明显的同质化倾向，而且这种倾向在主题任务和批量生成中会被迅速放大。第五，它与真实宋词之间的关系，大多数时候不是整首照抄，而是对传统词境、短句资源和成熟表达方式的高密度再调用；少数局部过近的样本，则需要被单独识别和复核。</p>
+<p class="block-paragraph">因此，这个项目最后得到的并不是“AI 会不会写词”这样一个简单的结论，而是一条更具体的判断：AI 已经具备了有限而可操控的宋词生成能力，但这种能力高度依赖模型底座、prompt 设计和后续校验流程。它可以成为一个生成引擎，却还远远不是一个可以放心交付的“词人”。</p>
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-128-附：本报告各部分参考文件" data-chapter="附：本报告各部分参考文件" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">附：本报告各部分参考文件</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-129-附：本报告各部分参考文件"
+      data-chapter="附：本报告各部分参考文件"
+      data-section=""
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">附：本报告各部分参考文件</span></div>
+        <div class="content-spacer"></div>
+        <div class="content-body">
+          
+    <div class="table-wrap dense">
+      <table class="block-table dense">
+        <thead><tr><th>报告部分</th><th>参考文件</th></tr></thead>
+        <tbody><tr><td>任务定义与主题文本</td><td><code class="inline-code">generate/prompts.py</code>、<code class="inline-code">generate/json/3.json</code>、<code class="inline-code">generate/json/4.json</code>、<code class="inline-code">generate/json/5.json</code>、<code class="inline-code">generate/json/6.json</code></td></tr>
+<tr><td>原始样本与模型覆盖</td><td><code class="inline-code">database/a1.db</code> 至 <code class="inline-code">database/c2.db</code></td></tr>
+<tr><td>格律引擎与评分逻辑</td><td><code class="inline-code">engine/songci_engine.py</code>、<code class="inline-code">engine/词谱.json</code>、<code class="inline-code">engine/韵书.json</code>、<code class="inline-code">engine/词林正韵.json</code></td></tr>
+<tr><td>格律统计</td><td><code class="inline-code">result/rhythm-stats/rhythm_summary_by_db.csv</code>、<code class="inline-code">rhythm_summary_by_db_model.csv</code>、<code class="inline-code">rhythm_summary_by_db_model_cipai.csv</code>、<code class="inline-code">rhythm_issue_breakdown_by_db.csv</code></td></tr>
+<tr><td>意象与主题分布</td><td><code class="inline-code">result/descriptive-stats/imagery_top_by_db.csv</code>、<code class="inline-code">imagery_top_by_db_model.csv</code>、<code class="inline-code">category_distribution_by_db.csv</code>、数据库中的 <code class="inline-code">imagery</code>/<code class="inline-code">category</code> 字段</td></tr>
+<tr><td>同质化分析</td><td><code class="inline-code">result/neo-analysis/neo_model_summary.csv</code>、<code class="inline-code">neo_condition_deltas.csv</code>、<code class="inline-code">neo_model_constraint_sensitivity.csv</code>、<code class="inline-code">neo_low_sample_models.csv</code></td></tr>
+<tr><td>真实来源相似性</td><td><code class="inline-code">result/neo-real-analysis/run_metadata.json</code>、<code class="inline-code">ai_poem_source_profile.csv</code>、<code class="inline-code">ai_sentence_alignment_details.csv</code>、<code class="inline-code">b1_cipai_similarity_summary.csv</code>、<code class="inline-code">reference_baseline_whole.csv</code>、<code class="inline-code">reference_baseline_sentence.csv</code></td></tr></tbody>
+      </table>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-130-参考的开源项目" data-chapter="参考的开源项目" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">参考的开源项目</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-131-参考的开源项目"
+      data-chapter="参考的开源项目"
+      data-section=""
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">参考的开源项目</span></div>
+        <div class="content-spacer"></div>
+        <div class="content-body">
+          
+    <div class="table-wrap">
+      <table class="block-table">
+        <thead><tr><th>项目</th><th>链接</th><th>在本项目中的作用</th></tr></thead>
+        <tbody><tr><td><code class="inline-code">songciCheck</code></td><td><a class="inline-link" href="https://github.com/ZhangKX5522/songciCheck" target="_blank" rel="noreferrer noopener">https://github.com/ZhangKX5522/songciCheck</a></td><td>提供了 <code class="inline-code">songci_engine</code> 的实现方式，是本项目格律校验部分的重要参考来源。</td></tr>
+<tr><td><code class="inline-code">chinese-poetry</code></td><td><a class="inline-link" href="https://github.com/chinese-poetry/chinese-poetry" target="_blank" rel="noreferrer noopener">https://github.com/chinese-poetry/chinese-poetry</a></td><td>提供了真实古典诗词数据，是本项目真实诗词语料的重要来源之一。</td></tr>
+<tr><td><code class="inline-code">QuanSongCi</code></td><td><a class="inline-link" href="https://github.com/Moriafly/QuanSongCi" target="_blank" rel="noreferrer noopener">https://github.com/Moriafly/QuanSongCi</a></td><td>提供了部分真实宋词数据，用于补充和校验真实宋词语料来源。</td></tr>
+<tr><td><code class="inline-code">chinese_word_rhyme</code></td><td><a class="inline-link" href="https://github.com/charlesix59/chinese_word_rhyme" target="_blank" rel="noreferrer noopener">https://github.com/charlesix59/chinese_word_rhyme</a></td><td>提供了平仄格律和词谱相关数据，是本项目格律资源层的重要参考。</td></tr>
+<tr><td><code class="inline-code">BERT-CCPoem</code></td><td><a class="inline-link" href="https://github.com/THUNLP-AIPoet/BERT-CCPoem" target="_blank" rel="noreferrer noopener">https://github.com/THUNLP-AIPoet/BERT-CCPoem</a></td><td>提供了极为重要的 <code class="inline-code">BERT</code> 向量模型，是本项目相似性分析与语义表示环节的重要基础。</td></tr></tbody>
+      </table>
+    </div>
+  
+        </div>
+      </div>
+    </section>
+  
+</section>
+<section class="chapter-stack">
+
+      <section id="slide-132-感谢观看" data-chapter="感谢观看" data-section="" data-subsection="" class="chapter-slide">
+        <div class="slide-shell chapter-shell">
+          <div class="chapter-index">章节</div>
+          <h2 class="chapter-title">感谢观看</h2>
+        </div>
+      </section>
+    
+
+    <section
+      id="slide-133-感谢观看"
+      data-chapter="感谢观看"
+      data-section=""
+      data-subsection=""
+      class="content-slide"
+    >
+      <div class="slide-shell content-shell">
+        <div class="slide-chrome"><span class="crumb">感谢观看</span></div>
+        <div class="content-spacer"></div>
+        <div class="content-body">
+          <p class="block-paragraph">陈炫霖</p>
+<p class="block-paragraph">2026/4/22</p>
+<p class="block-paragraph">所有主要代码均已分享并开源<code class="inline-code">https://github.com/CXLtx1/songci</code>，更多内容请见<code class="inline-code">全项目总报告.md</code></p>
+        </div>
+      </div>
+    </section>
+  
+</section>
+      </div>
+    </div>
+    <script src="./reveal/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        width: 1600,
+        height: 900,
+        margin: 0.04,
+        minScale: 0.2,
+        maxScale: 1.5,
+        hash: true,
+        history: true,
+        transition: "fade",
+        controls: true,
+        progress: true,
+        slideNumber: "c/t",
+        center: false,
+        overview: true,
+        pdfSeparateFragments: false,
+        mouseWheel: false
+      });
+    </script>
+  </body>
+</html>

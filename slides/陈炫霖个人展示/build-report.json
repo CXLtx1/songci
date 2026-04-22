@@ -1,0 +1,36 @@
+{
+  "source": {
+    "path": "D:\\文件\\Projects\\songci\\docs\\新版pre完整报告.md",
+    "size": 81266,
+    "lines": 1033,
+    "chapters": 10,
+    "blocks": {
+      "headings": 80,
+      "code": 13,
+      "tables": 28,
+      "paragraphs": 180,
+      "lists": 26,
+      "blockquotes": 4
+    }
+  },
+  "output": {
+    "dir": "D:\\文件\\Projects\\songci\\slides\\新版pre完整报告-reveal",
+    "slides": 133
+  },
+  "checks": {
+    "textIntegrity": {
+      "ok": true,
+      "sourceEntries": 1115,
+      "renderedEntries": 1166,
+      "missing": []
+    },
+    "structureCheck": {
+      "ok": true,
+      "requiredMappings": 120,
+      "missing": []
+    },
+    "offlineCheck": {
+      "ok": true
+    }
+  }
+}

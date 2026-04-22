@@ -1,0 +1,16 @@
+﻿db,db_label,model,total_poems,status,used_poems,used_cipai_count,used_cipais,cipai_entropy,cipai,whole_lex_p50,top1_sent_mean,sentence_count,human_whole_score,whole_sem_p50,whole_score,imagery_entropy,topk_sent_mean,human_sent_score,imagery_jaccard_p50,sent_highsim_ratio,distinct_category_count,poem_count_used,sentence_pair_count,sent_pseudo_ratio,top10_imagery_concentration,whole_pair_count,core_mihi,resample_rounds,whole_highsim_ratio,category_entropy,whole_pseudo_ratio,human_core_mihi,poem_count_total,whole_sem_p90,excess_core_homogeneity,mihi_full,distinct_imagery_count,imagery_jaccard_p90,sent_score,whole_lex_p90,imagery_score
+a1,无限制生成,deepseek-3.2-thinking,26,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+a1,无限制生成,gemini-3-flash,13,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+a1,无限制生成,gemini-3.1-pro,9,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+a1,无限制生成,glm-4.7,9,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+a1,无限制生成,glm-5,29,low_sample,9,1,鹧鸪天,0.877090,鹧鸪天,0.125000,0.580741,81.000000,0.513214,0.614593,0.526100,0.996466,0.531312,0.293461,0.000000,0.000000,5.000000,9,2916.000000,0.452675,0.152174,36.000000,0.428866,5,0.000000,0.946265,1.000000,0.414325,9,0.729343,0.014540,0.353676,88.000000,0.023810,0.310025,0.156250,0.042114
+a1,无限制生成,gpt-5.4-high,2,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+a1,无限制生成,kimi-k2.5,11,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+a1,无限制生成,qwen3.5-flash,22,low_sample,11,1,鹧鸪天,0.764269,鹧鸪天,0.125000,0.675046,99.000000,0.528001,0.731263,0.627115,0.989591,0.626439,0.294124,0.000000,0.000673,3.000000,11,4455.000000,0.558923,0.164286,55.000000,0.511620,5,0.054545,0.691370,1.000000,0.422756,11,0.835249,0.088864,0.427153,123.000000,0.046753,0.370460,0.196875,0.076449
+a1,无限制生成,qwen3.6-plus,27,low_sample,13,1,鹧鸪天,0.773980,鹧鸪天,0.156250,0.709569,117.000000,0.529895,0.740960,0.628787,0.971530,0.648024,0.300823,0.037749,0.001266,3.000000,13,6318.000000,0.535613,0.218935,78.000000,0.514161,5,0.051282,0.487853,1.000000,0.426813,13,0.826838,0.087348,0.440850,126.000000,0.095238,0.374061,0.239062,0.134870
+b2,五词牌-改革主题,gemini-3.1-pro,4,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+b2,五词牌-改革主题,glm-5,23,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+b3,五词牌-玉兰主题,gemini-3.1-pro,2,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+c1,沁园春-玉兰主题,gemini-3.1-pro,2,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+c2,沁园春-改革主题,deepseek-3.2-thinking,4,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+c2,沁园春-改革主题,qwen3.6-plus,16,insufficient_usable_cipai,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
